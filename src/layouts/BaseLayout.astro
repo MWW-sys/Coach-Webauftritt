@@ -1,0 +1,75 @@
+---
+const {
+  title = 'Meine Seite',
+  backgroundImage = '/images/background.jpg'
+} = Astro.props;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("/images/background.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: sans-serif;
+        color: orange;
+      }
+
+      nav {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        color: orange;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      main {
+        padding: 160px 20px 40px 20px;
+      }
+
+      h1, h2, h3 {
+        color: orange;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Startseite</a></li>
+        <li><a href="/about">Über mich</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
