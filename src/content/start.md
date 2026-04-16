@@ -2,12 +2,12 @@
 title: Mario Wochner – Transformationsprozesse. Beide Seiten. Eine Sprache.
 ---
 
-Transformationsprozesse gelingen, wenn Führung und Belegschaft eine Sprache beherrschen, die beide Seiten verstehen.
+Transformationsprozesse scheitern selten an fehlendem Willen. Sie scheitern daran, dass Führung und Belegschaft dasselbe wollen — aber nicht dieselbe Sprache sprechen.
 
-Ich bringe beide Seiten zusammen – weil ich trainiere, wie diese Sprache funktioniert.
+Ich bringe beide Seiten an einen Tisch. Auf Augenhöhe.
 
-Ich habe beide Welten gelebt – 20 Jahre als Selbstständiger im operativen Bereich, 10 Jahre als Projektleiter. Ich kenne die Sorgen der Belegschaft und die Notwendigkeit klarer Zielsetzung auf Führungsebene. Dieses Wissen trainiere ich.
+Denn welches Unternehmen läuft effizienter? Das, in dem Entscheidungen knallhart von oben nach unten durchgezogen werden — oder jenes, in dem alle Beteiligten spüren: diese Entscheidung ist herausfordernd, aber notwendig. Und für alle von Vorteil.
 
-Den Umgang mit KI-gestützter Transformation bringe ich nicht aus dem Lehrbuch mit – sondern aus eigener Anwendung. Mein methodisches Fundament erweitere ich derzeit mit einer IHK-zertifizierten Ausbildung zum systemischen Trainer.
+Mehr Effizienz bedeutet mehr Gewinn. Und Verlässlichkeit — dass am Monatsende für alle etwas da ist.
 
 Sind Sie mitten in einem Veränderungsprozess? Sprechen wir.
