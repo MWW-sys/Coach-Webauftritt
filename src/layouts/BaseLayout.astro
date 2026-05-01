@@ -24,6 +24,7 @@ const {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        overflow: hidden;
       }
 
       body::before {
@@ -38,11 +39,12 @@ const {
 
       #background-video {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: -4vh;
+        right: 0;
+        width: 62vw;
+        height: 108vh;
         object-fit: contain;
+        object-position: right top;
         background-color: transparent;
         z-index: -1;
       }
@@ -74,6 +76,7 @@ const {
         flex-direction: column;
         justify-content: flex-end;
         padding: 80px 40px 60px 40px;
+        max-width: 38vw;
       }
 
       :global(main p) {
