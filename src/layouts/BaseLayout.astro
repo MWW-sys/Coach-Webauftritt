@@ -25,16 +25,8 @@ const {
         flex-direction: column;
         min-height: 100vh;
         overflow: hidden;
-      }
-
-      body::before {
-        content: '';
-        position: fixed;
-        inset: -60px;
-        background: url("/images/background.jpg") no-repeat center center;
-        background-size: 180%;
-        filter: blur(35px);
-        z-index: -2;
+        background: url("/images/background.jpg") no-repeat center center fixed;
+        background-size: cover;
       }
 
       #background-video {
@@ -75,12 +67,12 @@ const {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 80px 40px 60px 40px;
-        max-width: 38vw;
+        padding: 80px 2cm 60px 2cm;
+        max-width: calc(34vw - 2cm);
       }
 
       :global(main p) {
-        max-width: 380px;
+        max-width: 100%;
         text-align: justify;
         line-height: 1.85;
         margin-bottom: 1.1rem;
