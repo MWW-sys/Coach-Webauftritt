@@ -105,6 +105,37 @@ const {
       #unmute-btn:hover {
         background: rgba(0, 0, 0, 0.7);
       }
+
+      /* ── Mobil-Layout (bis 768px) ── */
+      @media (max-width: 768px) {
+        body {
+          overflow-y: auto;
+        }
+
+        #background-video {
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center center;
+        }
+
+        main {
+          max-width: 100%;
+          min-height: 100vh;
+          padding: 80px 1.5cm 100px 1.5cm;
+        }
+
+        :global(main p) {
+          text-align: left;
+        }
+
+        #unmute-btn {
+          bottom: 1cm;
+          right: 1cm;
+        }
+      }
     </style>
   </head>
 
