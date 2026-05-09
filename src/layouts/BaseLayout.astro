@@ -19,27 +19,58 @@ const {
       body {
         margin: 0;
         padding: 0;
-        font-family: sans-serif;
+        font-family: 'Georgia', 'Garamond', serif;
+        font-size: 1.25rem;
+        line-height: 1.7;
         color: rgb(245, 240, 232);
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         overflow-y: auto;
         scroll-padding-top: 80px;
-        background: url("/images/background.jpg") no-repeat center center fixed;
+        background: #0a0e1a;
+        background-image: url("/images/background.jpg");
         background-size: cover;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+        opacity: 1;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #0a0e1a;
+        opacity: 0.85;
+        z-index: -1;
       }
 
       #background-video {
+        display: none;
+      }
+
+      #hamburger-btn {
+        display: none;
         position: fixed;
-        top: -4vh;
-        right: 2cm;
-        width: 66vw;
-        height: 108vh;
-        object-fit: contain;
-        object-position: right top;
-        background-color: transparent;
-        z-index: -1;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+        background: rgba(10, 14, 26, 0.9);
+        border: 1px solid rgba(245, 240, 232, 0.3);
+        color: rgb(245, 240, 232);
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      #hamburger-btn:hover {
+        background: rgba(10, 14, 26, 1);
       }
 
       nav {
@@ -60,7 +91,12 @@ const {
       nav a {
         color: rgb(245, 232, 218);
         text-decoration: none;
-        font-weight: bold;
+        font-weight: normal;
+        font-size: 1rem;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
       }
 
       main {
@@ -111,25 +147,58 @@ const {
       @media (max-width: 768px) {
         body {
           overflow-y: auto;
-          background: #000;
+          background: #0a0e1a;
           background-image: none;
+          font-size: 1.1rem;
         }
 
-        #background-video {
-          top: 0;
-          right: 0;
+        body::before {
+          display: none;
+        }
+
+        #hamburger-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        nav {
+          position: fixed;
           left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center center;
-          -webkit-transform: translate3d(0, 0, 0);
+          right: 0;
+          top: 70px;
+          z-index: 99;
+          background: rgba(10, 14, 26, 0.95);
+          border-bottom: 1px solid rgba(245, 240, 232, 0.2);
+          padding: 1rem 0;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+        }
+
+        nav.open {
+          max-height: 300px;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 0;
+          padding: 0 1.5cm;
+        }
+
+        nav li {
+          padding: 0.75rem 0;
+          border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+        }
+
+        nav li:last-child {
+          border-bottom: none;
         }
 
         main {
           max-width: 100%;
           min-height: 100vh;
-          padding: 80px 1.5cm 100px 1.5cm;
+          padding: 100px 1.5cm 100px 1.5cm;
         }
 
         :global(main p) {
@@ -137,18 +206,15 @@ const {
         }
 
         #unmute-btn {
-          bottom: 1cm;
-          right: 1cm;
+          display: none;
         }
       }
     </style>
   </head>
 
   <body>
-    <video id="background-video" autoplay loop playsinline>
-      <source src="/images/background.mp4" type="video/mp4" />
-    </video>
-    <nav>
+    <button id="hamburger-btn" aria-label="Menü">☰</button>
+    <nav id="nav-menu">
       <ul>
         <li><a href="/">Startseite</a></li>
         <li><a href="/fuer-wen">Für wen das ist</a></li>
@@ -163,19 +229,28 @@ const {
       <slot />
     </main>
 
-    <button id="unmute-btn" title="Ton ein/aus">🔇</button>
-
     <script>
-      const video = document.getElementById('background-video');
-      const btn = document.getElementById('unmute-btn');
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const navMenu = document.getElementById('nav-menu');
+      const navLinks = navMenu.querySelectorAll('a');
 
-      // Browser blockieren Autoplay mit Ton – Video startet stumm
-      video.muted = true;
-      video.volume = 0.125;
+      // Toggle menu
+      hamburgerBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
 
-      btn.addEventListener('click', () => {
-        video.muted = !video.muted;
-        btn.textContent = video.muted ? '🔇' : '🔊';
+      // Close menu when link is clicked
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('open');
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+          navMenu.classList.remove('open');
+        }
       });
     </script>
   </body>
