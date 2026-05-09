@@ -77,7 +77,7 @@ const {
       #hamburger-btn:hover + nav,
       nav:hover,
       nav.open {
-        max-height: 400px;
+        max-height: 520px;
       }
 
       nav ul {
@@ -141,6 +141,13 @@ const {
 
       :global(.page-section--last) {
         padding-bottom: 8rem;
+      }
+
+      /* Placeholder sections: anchor works, but no visible content yet */
+      :global(.page-section--placeholder) {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        min-height: 4rem;
       }
 
       :global(.page-section p) {
@@ -229,7 +236,10 @@ const {
     <button id="hamburger-btn" aria-label="Menü">☰</button>
     <nav id="nav-menu">
       <ul>
+        <li><a href="/#start">Startseite</a></li>
         <li><a href="/#fuer-wen">Für wen das ist</a></li>
+        <li><a href="/#fuer-wen-nicht">Für wen das nichts ist</a></li>
+        <li><a href="/#angebot">Mein Angebot</a></li>
         <li><a href="/#ueber-mich">Über mich</a></li>
         <li><a href="/#kontakt">Kontakt</a></li>
         <li><a href="/impressum">Impressum</a></li>

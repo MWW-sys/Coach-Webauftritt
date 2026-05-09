@@ -6,14 +6,22 @@ const { default: UeberMichContent } = await import('../content/ueber-mich.md');
 
 <BaseLayout title="Mario Wochner – Transformationsprozesse">
 
-  <!-- Hero -->
-  <section id="home" class="hero-section">
-    <p class="hero-text">Schon wieder aufgewacht. 3&nbsp;Uhr 33.</p>
+  <!-- Hero / Startseite -->
+  <section id="start" class="hero-section">
+    <p class="hero-text">Schon wieder aufgewacht. 3&nbsp;Uhr 33. Warum...?</p>
   </section>
 
   <!-- Für wen das ist -->
   <section id="fuer-wen" class="page-section">
     <FuerWenContent />
+  </section>
+
+  <!-- Für wen das nichts ist (Platzhalter) -->
+  <section id="fuer-wen-nicht" class="page-section page-section--placeholder">
+  </section>
+
+  <!-- Mein Angebot (Platzhalter) -->
+  <section id="angebot" class="page-section page-section--placeholder">
   </section>
 
   <!-- Über mich -->
