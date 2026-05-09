@@ -4,5 +4,10 @@ const { default: Content, frontmatter } = await import('../content/start.md');
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <Content />
+  <section id="home" class="hero-section">
+    <p class="hero-text">Schon wieder aufgewacht. 3&nbsp;Uhr 33.</p>
+  </section>
+  <section class="page-content">
+    <Content />
+  </section>
 </BaseLayout>
