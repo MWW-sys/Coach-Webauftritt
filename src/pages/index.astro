@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const { default: FuerWenContent } = await import('../content/fuer-wen.md');
+const { default: FuerWenNichtContent } = await import('../content/fuer-wen-nicht.md');
 const { default: UeberMichContent } = await import('../content/ueber-mich.md');
 ---
 
@@ -16,8 +17,9 @@ const { default: UeberMichContent } = await import('../content/ueber-mich.md');
     <FuerWenContent />
   </section>
 
-  <!-- Für wen das nichts ist (Platzhalter) -->
-  <section id="fuer-wen-nicht" class="page-section page-section--placeholder">
+  <!-- Für wen das nichts ist -->
+  <section id="fuer-wen-nicht" class="page-section">
+    <FuerWenNichtContent />
   </section>
 
   <!-- Mein Angebot (Platzhalter) -->
