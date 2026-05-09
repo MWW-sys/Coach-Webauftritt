@@ -1,13 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const { default: Content, frontmatter } = await import('../content/start.md');
+const { default: FuerWenContent } = await import('../content/fuer-wen.md');
+const { default: UeberMichContent } = await import('../content/ueber-mich.md');
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title="Mario Wochner – Transformationsprozesse">
+
+  <!-- Hero -->
   <section id="home" class="hero-section">
     <p class="hero-text">Schon wieder aufgewacht. 3&nbsp;Uhr 33.</p>
   </section>
-  <section class="page-content">
-    <Content />
+
+  <!-- Für wen das ist -->
+  <section id="fuer-wen" class="page-section">
+    <FuerWenContent />
   </section>
+
+  <!-- Über mich -->
+  <section id="ueber-mich" class="page-section">
+    <UeberMichContent />
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="page-section page-section--last">
+    <p>Sind Sie mitten in einem Veränderungsprozess? Sprechen wir.</p>
+    <p><a href="mailto:mario@example.com">mario@example.com</a></p>
+  </section>
+
 </BaseLayout>
