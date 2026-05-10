@@ -18,10 +18,4 @@ Ich arbeite mit Menschen, die satt haben, vor sich selbst wegzulaufen. Die satt 
 
 Wenn du dich hier wiedererkennst — auch nur in einem dieser Sätze — dann sind wir wahrscheinlich im selben Raum.
 
-Transformationsprozesse scheitern selten an fehlendem Willen. Sie scheitern daran, dass Führung und Belegschaft dasselbe wollen — aber nicht dieselbe Sprache sprechen.
-
-Ich bringe beide Seiten an einen Tisch. Auf Augenhöhe.
-
-Denn welches Unternehmen läuft effizienter? Das, in dem Entscheidungen knallhart von oben nach unten durchgezogen werden — oder jenes, in dem alle Beteiligten spüren: diese Entscheidung ist herausfordernd, aber notwendig. Und für alle von Vorteil.
-
-Mehr Effizienz bedeutet mehr Gewinn. Und Verlässlichkeit — dass am Monatsende für alle etwas da ist.
+Der Weg zu dir selbst scheitert selten an fehlendem Willen. Er scheitert daran, dass dein Wille und das, was dich schützt, dasselbe wollen — aber gegeneinander kämpfen statt miteinander.
