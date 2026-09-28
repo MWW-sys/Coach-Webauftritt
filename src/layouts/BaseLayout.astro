@@ -180,6 +180,42 @@ const {
         text-decoration: underline;
       }
 
+      /* ─── Über mich – Foto-Layout ─── */
+      :global(.ueber-mich-section) {
+        position: relative;
+      }
+
+      :global(.ueber-mich-image-wrap) {
+        position: absolute;
+        right: 0;
+        top: 9.5rem;
+        width: 340px;
+        z-index: 0;
+      }
+
+      :global(.ueber-mich-image-wrap::before) {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to right, #0a0e1a 0%, rgba(10,14,26,0.65) 30%, rgba(10,14,26,0.1) 65%, transparent 100%),
+          linear-gradient(to top, #0a0e1a 0%, transparent 30%);
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      :global(.ueber-mich-img) {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.88;
+      }
+
+      :global(.ueber-mich-text) {
+        position: relative;
+        z-index: 1;
+      }
+
       /* ─── Subpage content ─── */
       :global(.subpage-content) {
         padding: 6rem 2cm 6rem;
@@ -210,6 +246,19 @@ const {
       }
 
       /* ─── Mobile ─── */
+      /* Mobil: Foto über den Text */
+      @media (max-width: 900px) {
+        :global(.ueber-mich-image-wrap) {
+          position: static;
+          width: 100%;
+          margin-bottom: 2.5rem;
+        }
+
+        :global(.ueber-mich-image-wrap::before) {
+          background: linear-gradient(to top, #0a0e1a 0%, transparent 30%);
+        }
+      }
+
       @media (max-width: 700px) {
         body {
           font-size: 1.1rem;
