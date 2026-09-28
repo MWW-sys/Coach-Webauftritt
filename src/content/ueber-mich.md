@@ -2,6 +2,8 @@
 title: Über mich
 ---
 
+## Über mich
+
 Als ich vier war, zerbrach meine Welt. Die Ehe meiner Eltern ging zu Ende, und ich verlor meinen Vater. Meiner Mutter ging es danach so schlecht, dass mein Bruder zu meiner Tante kam und ich zu meiner Oma. Nach etwa einem Jahr waren wir drei wieder zusammen, kurz darauf kam mein Stiefvater dazu. Wir wurden eine wunderbare, normale Familie, mit allen Höhen und Tiefen.
 
 Aber für das Kind, das ich damals war, fühlte es sich an, als hätte ich alles verloren. Und ein Gefühl blieb, über den größten Teil meines Lebens: Irgendetwas fehlt.
@@ -14,9 +16,7 @@ So konnte ich bis auf den Grund meines inneren Sees tauchen. Auf dem Weg nach un
 
 Der Weg ist nicht abgeschlossen. Aber ich kämpfe nicht mehr gegen das Gefühl. Ich gehe mit ihm in Kontakt, und das verändert alles.
 
-Dabei habe ich gemerkt, dass es nicht nur mir so geht. Deshalb bin ich Coach geworden: um dabei zu sein, wenn jemand das Gold am Grund seiner eigenen Frage findet. Mein Ziel ist, dass du mich danach nicht mehr brauchst.
-
-Es geht nicht darum, dass etwas weggemacht wird, sondern dass jemand mit dir hinschaut.
+Dabei habe ich gemerkt, dass es nicht nur mir so geht. Deshalb bin ich Coach geworden: um dabei zu sein, wenn jemand das Gold am Grund seiner eigenen Frage findet. Im Coaching mit mir geht es nicht darum, dass die Leere, die Schwere oder was auch immer du mitbringst, weggemacht wird. Sondern darum, dass ich genau an dieser Stelle mit dir stehen bleibe und wir gemeinsam hinschauen. Mein Ziel ist, dass du mich danach nicht mehr brauchst.
 
 Ich coache aus Erfahrung, nicht aus dem Lehrbuch. Hinter mir liegen 30 Jahre Handwerk, Selbstständigkeit und Projektleitung. Ich weiß, wie es ist, zu liefern und sich dabei selbst zu verlieren. Und ich weiß, wie der Weg zurück sich anfühlt.
 
