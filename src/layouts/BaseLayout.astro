@@ -187,19 +187,30 @@ const {
 
       :global(.ueber-mich-image-wrap) {
         position: absolute;
-        right: 0;
+        /* An Textspalte verankert: linker Bildrand 90px vor Textspalten-Ende */
+        left: calc(2cm + 530px);
         top: 9.5rem;
-        width: 340px;
+        /* Breite: max. 420px, aber nie über den Seitenrand hinaus */
+        width: min(420px, calc(100% - 2cm - 540px));
         z-index: 0;
       }
 
       :global(.ueber-mich-image-wrap::before) {
         content: '';
         position: absolute;
-        inset: 0;
+        /* 4px über Oberkante ausdehnen: überdeckt jeden Sub-Pixel-Saum */
+        inset: -4px 0 0 0;
         background:
-          linear-gradient(to right, #0a0e1a 0%, rgba(10,14,26,0.65) 30%, rgba(10,14,26,0.1) 65%, transparent 100%),
-          linear-gradient(to top, #0a0e1a 0%, transparent 30%);
+          /* Personen unten rechts komplett abdecken (radial vom Eck) */
+          radial-gradient(ellipse 60% 50% at 100% 100%, #0a0e1a 0%, rgba(10,14,26,0.97) 20%, rgba(10,14,26,0.7) 40%, transparent 65%),
+          /* Rechten Rand vollständig abdunkeln */
+          linear-gradient(to left, #0a0e1a 0%, rgba(10,14,26,0.85) 18%, rgba(10,14,26,0.3) 36%, transparent 55%),
+          /* Links: starker Verlauf für Lesbarkeit der überlappenden Zeilen */
+          linear-gradient(to right, #0a0e1a 0%, rgba(10,14,26,0.85) 22%, rgba(10,14,26,0.25) 52%, transparent 72%),
+          /* Oben: feste Abdeckung für 5%, dann Fade — eliminiert Saum-Linie */
+          linear-gradient(to bottom, #0a0e1a 0%, #0a0e1a 5%, transparent 18%),
+          /* Unten: weicher Ausklang */
+          linear-gradient(to top, #0a0e1a 0%, transparent 22%);
         z-index: 1;
         pointer-events: none;
       }
@@ -208,7 +219,7 @@ const {
         width: 100%;
         height: auto;
         display: block;
-        opacity: 0.88;
+        opacity: 0.9;
       }
 
       :global(.ueber-mich-text) {
