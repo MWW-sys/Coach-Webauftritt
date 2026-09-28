@@ -3,7 +3,8 @@ import '@fontsource/lora/400.css';
 import '@fontsource/lora/400-italic.css';
 import '@fontsource/lora/500.css';
 const {
-  title = 'Mario Wochner'
+  title = 'Mario Wochner',
+  description = ''
 } = Astro.props;
 ---
 
@@ -12,6 +13,7 @@ const {
     <meta charset="UTF-8" />
     <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {description && <meta name="description" content={description} />}
     <style>
       *, *::before, *::after {
         box-sizing: border-box;
@@ -136,7 +138,7 @@ const {
 
       /* ─── One-pager body sections ─── */
       :global(.page-section) {
-        padding: 5rem 2cm 2rem;
+        padding: 9.5rem 2cm 2rem;
       }
 
       :global(.page-section--last) {
@@ -208,7 +210,7 @@ const {
       }
 
       /* ─── Mobile ─── */
-      @media (max-width: 768px) {
+      @media (max-width: 700px) {
         body {
           font-size: 1.1rem;
         }
@@ -225,7 +227,7 @@ const {
         }
 
         :global(.page-section) {
-          padding: 4rem 1.5rem 2rem;
+          padding: 6rem 1.5rem 2rem;
         }
 
         :global(.page-section--last) {
@@ -294,7 +296,7 @@ const {
 
       // Mobile: toggle on tap
       hamburgerBtn.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 700) {
           e.stopPropagation();
           navMenu.classList.toggle('open');
         }

@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const { default: FuerWenContent } = await import('../content/fuer-wen.md');
 const { default: FuerWenNichtContent } = await import('../content/fuer-wen-nicht.md');
+const { default: AngebotContent } = await import('../content/angebot.md');
 const { default: UeberMichContent } = await import('../content/ueber-mich.md');
 ---
 
-<BaseLayout title="Mario Wochner – Transformationsprozesse">
+<BaseLayout title="Mario Wochner – Coaching aus Erfahrung" description="Coaching für Menschen, die geliefert haben und trotzdem nachts wach liegen. Nicht nur warum. Vor allem wie und wo. Online und vor Ort in Bielefeld, Hannover, Wolfsburg und Berlin.">
 
   <!-- Hero / Startseite -->
   <section id="start" class="hero-section">
@@ -22,8 +23,9 @@ const { default: UeberMichContent } = await import('../content/ueber-mich.md');
     <FuerWenNichtContent />
   </section>
 
-  <!-- Mein Angebot (Platzhalter) -->
-  <section id="angebot" class="page-section page-section--placeholder">
+  <!-- Mein Angebot -->
+  <section id="angebot" class="page-section">
+    <AngebotContent />
   </section>
 
   <!-- Über mich -->
@@ -33,6 +35,7 @@ const { default: UeberMichContent } = await import('../content/ueber-mich.md');
 
   <!-- Kontakt -->
   <section id="kontakt" class="page-section page-section--last">
+    <h2>Kontakt</h2>
     <p>Wenn du das Gefühl hast, hier könnte etwas anfangen — schreib mir.</p>
     <p>Ich antworte persönlich. Nicht in einer Stunde. Aber innerhalb weniger Tage. Und nicht mit einer Vorlage.</p>
     <p>mario.wochner [at] t-online [dot] de</p>

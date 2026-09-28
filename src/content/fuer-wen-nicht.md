@@ -2,6 +2,8 @@
 title: Für wen das nichts ist
 ---
 
+## Für wen das nichts ist
+
 Wenn du jemanden suchst, der dir die Verantwortung abnimmt — bin ich nicht der Richtige.
 
 Wenn du hoffst, dass sich etwas ändert, ohne dass du dich bewegst — auch nicht.
