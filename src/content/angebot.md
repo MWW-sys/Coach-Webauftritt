@@ -6,9 +6,9 @@ title: Mein Angebot
 
 Einzelcoaching für Menschen, die für sich selbst Verantwortung übernehmen wollen, aber gemerkt haben, dass mehr Druck nicht die Lösung ist.
 
-Nicht nur warum. Vor allem wie und wo.
+Nicht nur wofür. Vor allem wie und wo.
 
-Wir schauen nicht nur darauf, warum sich etwas leer oder schwer anfühlt. Sondern wie es sich anfühlt und wo du es spürst. Dort beginnt der Weg.
+Wir schauen nicht nur darauf, wofür du nachts wach wirst. Sondern wie es sich anfühlt und wo du es spürst. Dort beginnt der Weg.
 
 Das Erstgespräch ist kostenlos und unverbindlich. Zurzeit ist außerdem ein Probecoaching pro Person kostenlos. Alle weiteren Coachings sind kostenpflichtig. Über den Preis sprechen wir, bevor es losgeht.
 

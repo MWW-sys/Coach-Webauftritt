@@ -2,20 +2,30 @@
 title: Für wen das ist
 ---
 
-Es ist halb vier nachts. Du bist wach... schon wieder. Warum?
+Es ist halb vier nachts. Du bist wach. Schon wieder.
 
-Es gibt nichts, worüber du dir Sorgen machen müsstest.
+Es gibt nichts, worüber du dir Sorgen machen müsstest. Familie, Kind, Katze, Hund. Karriere, Haus, Auto, toller Urlaub. Du hast geliefert. Du lieferst weiter. Du hast etwas aufgebaut. Aber doch nicht für nichts. Du hast doch etwas damit verbunden. Du wolltest doch etwas damit erleben.
 
-Auto, Haus, Frau, Kind, Katze, Boot. Du hast geliefert. Du lieferst weiter. Und trotzdem liegst du wach.
+Und trotzdem liegst du wach.
 
-Irgendwann denkst du den Satz, den du eigentlich nicht denken willst: Das kann nicht so weitergehen.
+Vielleicht fragst du dich, warum.
 
-Du bist nicht der Erste, dem das so geht. Du bist auch nicht der Einzige, der nachts denkt: Warum spüre ich nur eine harte Schale? Müsste da drin nicht irgendetwas sein? Die anderen reden doch davon. Da müssten Gefühle sein. Was ist das eigentlich — Gefühle?
+Frag dich einmal: Warum liege ich wach? Und dann: Wofür liege ich wach? Das Warum schaut zurück, dorthin, wo es keine Antwort gibt, nur das, was passiert ist. Das Wofür schaut auf das, was du erleben willst, jetzt und in Zukunft.
 
-Es ist nichts kaputt mit dir. Du hast nur über lange Zeit gelernt, das Außen zu liefern. Und das Innen — das hat sich irgendwann zurückgezogen, weil es da nichts zu tun hatte.
+Wofür wachst du auf? Was will gesehen werden, wenn es nachts still wird? Welches Erleben fehlt dir, das all das Geleistete nicht ersetzen kann?
 
-Ich arbeite mit Menschen, die satt haben, vor sich selbst wegzulaufen. Die satt haben, eine Konfrontation lieber zu vermeiden, damit die Harmonie stehen bleibt. Die satt haben, ständig mehr zu geben und das Gefühl haben, sie kriegen eigentlich gar nichts zurück.
+Es ist nichts kaputt mit dir. Du hast über lange Zeit gelernt, für das Außen zu liefern. Und das Innen hast du lange auf Pause gestellt. Irgendwann hat es sich zurückgezogen, weil es da nichts zu tun hatte. Vielleicht ist das Aufwachen kein Fehler, sondern ein Zeichen, dass da drin noch jemand ist. Vielleicht der Teil, der jetzt nachts nach dir ruft.
 
-Wenn du dich hier wiedererkennst — auch nur in einem dieser Sätze — dann sind wir wahrscheinlich im selben Raum.
+Du bist damit nicht allein. Vielleicht kennst du auch diesen Gedanken: Warum spüre ich nur eine harte Schale? Müsste da drin nicht irgendetwas sein? Die anderen reden doch davon. Da müssten doch Gefühle sein. Da müsste doch mehr sein. Ich habe das alles doch für etwas gemacht, aber doch nicht, um nachts wach zu liegen.
 
-Der Weg zu dir selbst scheitert selten an fehlendem Willen. Er scheitert daran, dass dein Wille und das, was dich schützt, dasselbe wollen — aber gegeneinander kämpfen statt miteinander.
+Vielleicht fühlt es sich leer an. Vielleicht besorgt dich etwas. Vielleicht ängstigt dich etwas. Vielleicht verunsichert dich der Plan deines Lebens, der sich eigentlich mal richtig angefühlt hat. All das muss nicht falsch sein. Vielleicht weißt du einfach nicht, wofür du nachts wach wirst.
+
+Schau dir die Aufzählung von oben noch einmal an. Familie, Kind, Katze, Hund. Karriere, Haus, Auto, toller Urlaub. An welcher Stelle kommst du darin eigentlich selbst vor?
+
+Umso wichtiger ist es, die Frage nach dem Wofür stehen zu lassen.
+
+Ich arbeite mit Menschen, die es satt haben, vor sich selbst wegzulaufen. Die es satt haben, Konfrontationen zu vermeiden, damit die Harmonie stehen bleibt. Die es satt haben, ständig mehr zu geben, und das Gefühl haben, dafür nicht das zu bekommen, was sie jetzt brauchen.
+
+Wenn du dich hier wiedererkennst, auch nur in einem dieser Sätze, dann sind wir wahrscheinlich im selben Raum.
+
+Der Weg zu dir selbst scheitert selten an fehlendem Willen. Er scheitert daran, dass dein Wille und das, was dich schützt, dasselbe wollen, aber gegeneinander kämpfen statt miteinander.
