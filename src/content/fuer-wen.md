@@ -10,19 +10,13 @@ Und trotzdem liegst du wach.
 
 Vielleicht fragst du dich, warum.
 
-Frag dich einmal: Warum liege ich wach? Und dann: Wofür liege ich wach? Das Warum schaut zurück, dorthin, wo es keine Antwort gibt, nur das, was passiert ist. Das Wofür schaut auf das, was du erleben willst, jetzt und in Zukunft.
-
-Wofür wachst du auf? Was will gesehen werden, wenn es nachts still wird? Welches Erleben fehlt dir, das all das Geleistete nicht ersetzen kann?
-
 Es ist nichts kaputt mit dir. Du hast über lange Zeit gelernt, für das Außen zu liefern. Und das Innen hast du lange auf Pause gestellt. Irgendwann hat es sich zurückgezogen, weil es da nichts zu tun hatte. Vielleicht ist das Aufwachen kein Fehler, sondern ein Zeichen, dass da drin noch jemand ist. Vielleicht der Teil, der jetzt nachts nach dir ruft.
 
 Du bist damit nicht allein. Vielleicht kennst du auch diesen Gedanken: Warum spüre ich nur eine harte Schale? Müsste da drin nicht irgendetwas sein? Die anderen reden doch davon. Da müssten doch Gefühle sein. Da müsste doch mehr sein. Ich habe das alles doch für etwas gemacht, aber doch nicht, um nachts wach zu liegen.
 
-Vielleicht fühlt es sich leer an. Vielleicht besorgt dich etwas. Vielleicht ängstigt dich etwas. Vielleicht verunsichert dich der Plan deines Lebens, der sich eigentlich mal richtig angefühlt hat. All das muss nicht falsch sein. Vielleicht weißt du einfach nicht, wofür du nachts wach wirst.
+Vielleicht fühlt es sich leer an. Vielleicht besorgt dich etwas. Vielleicht ängstigt dich etwas. Vielleicht verunsichert dich der Plan deines Lebens, der sich eigentlich mal richtig angefühlt hat. All das muss nicht falsch sein.
 
 Schau dir die Aufzählung von oben noch einmal an. Familie, Kind, Katze, Hund. Karriere, Haus, Auto, toller Urlaub. An welcher Stelle kommst du darin eigentlich selbst vor?
-
-Umso wichtiger ist es, die Frage nach dem Wofür stehen zu lassen.
 
 Ich arbeite mit Menschen, die es satt haben, vor sich selbst wegzulaufen. Die es satt haben, Konfrontationen zu vermeiden, damit die Harmonie stehen bleibt. Die es satt haben, ständig mehr zu geben, und das Gefühl haben, dafür nicht das zu bekommen, was sie jetzt brauchen.
 
