@@ -16,7 +16,9 @@ So konnte ich bis auf den Grund meines inneren Sees tauchen. Auf dem Weg nach un
 
 Der Weg ist nicht abgeschlossen. Aber ich kämpfe nicht mehr gegen das Gefühl. Ich gehe mit ihm in Kontakt, und das verändert alles.
 
-Dabei habe ich gemerkt, dass es nicht nur mir so geht. Deshalb bin ich Coach geworden: um dabei zu sein, wenn jemand das Gold am Grund seiner eigenen Frage findet. Im Coaching mit mir geht es nicht darum, dass die Leere, die Schwere oder was auch immer du mitbringst, weggemacht wird. Sondern darum, dass ich genau an dieser Stelle mit dir stehen bleibe und wir gemeinsam hinschauen. Mein Ziel ist, dass du mich danach nicht mehr brauchst.
+Dabei habe ich gemerkt, dass es nicht nur mir so geht. Deshalb bin ich Coach geworden: um dabei zu sein, wenn jemand das Gold am Grund seiner eigenen Frage findet. Im Coaching mit mir geht es nicht darum, dass die Leere, die Schwere oder was auch immer du mitbringst, weggemacht wird. Sondern darum, dass ich genau an dieser Stelle mit dir stehen bleibe und wir gemeinsam hinschauen.
+
+<p class="pull-quote">Mein Ziel ist, dass du mich danach nicht mehr brauchst.</p>
 
 Ich coache aus Erfahrung, nicht aus dem Lehrbuch. Hinter mir liegen 30 Jahre Handwerk, Selbstständigkeit und Projektleitung. Ich weiß, wie es ist, zu liefern und sich dabei selbst zu verlieren. Und ich weiß, wie der Weg zurück sich anfühlt.
 

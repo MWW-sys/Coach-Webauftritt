@@ -6,7 +6,7 @@ title: Mein Angebot
 
 Einzelcoaching für Menschen, die für sich selbst Verantwortung übernehmen wollen, aber gemerkt haben, dass mehr Druck nicht die Lösung ist.
 
-Nicht nur warum. Vor allem wie und wo.
+<p class="pull-quote">Nicht nur warum. Vor allem wie und wo.</p>
 
 Das Warum erklärt, was passiert ist. Wir schauen, wie es jetzt ist. Und wo das ist, was auf deinem Weg bis hierhin verloren gegangen ist oder noch nicht gefunden wurde. Dort fangen wir an.
 

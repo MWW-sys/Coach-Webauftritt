@@ -16,7 +16,9 @@ Du bist damit nicht allein. Vielleicht kennst du auch diesen Gedanken: Warum sp�
 
 Vielleicht f체hlt es sich leer an. Vielleicht besorgt dich etwas. Vielleicht 채ngstigt dich etwas. Vielleicht verunsichert dich der Plan deines Lebens, der sich eigentlich mal richtig angef체hlt hat. All das muss nicht falsch sein.
 
-Schau dir die Aufz채hlung von oben noch einmal an. Familie, Kind, Katze, Hund. Karriere, Haus, Auto, toller Urlaub. An welcher Stelle kommst du darin eigentlich selbst vor?
+Schau dir die Aufz채hlung von oben noch einmal an. Familie, Kind, Katze, Hund. Karriere, Haus, Auto, toller Urlaub.
+
+<p class="pull-quote">An welcher Stelle kommst du darin eigentlich selbst vor?</p>
 
 Ich arbeite mit Menschen, die es satt haben, vor sich selbst wegzulaufen. Die es satt haben, Konfrontationen zu vermeiden, damit die Harmonie stehen bleibt. Die es satt haben, st채ndig mehr zu geben, und das Gef체hl haben, daf체r nicht das zu bekommen, was sie jetzt brauchen.
 
