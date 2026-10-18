@@ -18,7 +18,7 @@ Vielleicht fühlt es sich leer an. Vielleicht besorgt dich etwas. Vielleicht än
 
 Schau dir die Aufzählung von oben noch einmal an. Familie, Kind, Katze, Hund. Karriere, Haus, Auto, toller Urlaub.
 
-<p class="pull-quote">An welcher Stelle kommst du darin eigentlich selbst vor?</p>
+<p class="pull-quote">An welcher Stelle kommst du eigentlich selbst vor?</p>
 
 Ich arbeite mit Menschen, die es satt haben, vor sich selbst wegzulaufen. Die es satt haben, Konfrontationen zu vermeiden, damit die Harmonie stehen bleibt. Die es satt haben, ständig mehr zu geben, und das Gefühl haben, dafür nicht das zu bekommen, was sie jetzt brauchen.
 
