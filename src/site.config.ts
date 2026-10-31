@@ -1,0 +1,25 @@
+// Zentrale Angaben, die auf mehreren Seiten und in den strukturierten Daten vorkommen.
+// Hier ändern, nicht in den einzelnen Seiten.
+
+export const SITE = {
+  name: 'Mario Wochner',
+  brand: 'Mario Wochner · Coaching aus Erfahrung',
+  email: 'mario.wochner@t-online.de',
+  phone: '+4915563417899',
+  phoneDisplay: '0155 63417899',
+  orte: ['Berlin', 'Bielefeld', 'Hannover', 'Wolfsburg'],
+  // Link zur Terminbuchung, sobald das Werkzeug feststeht (offene Entscheidung im Projektstand)
+  bookingUrl: '',
+  social: {
+    linkedin: '',
+    instagram: 'https://www.instagram.com/mario_on_offroad/',
+  },
+  preise: {
+    einzel: 120,
+    zweier: 220,
+    dreier: 300,
+  },
+};
+
+// Zeile im Fußbereich: sichtbarer, ehrlicher Ortsbezug für Suchmaschinen
+export const ORTSZEILE = `Coaching in ${SITE.orte.slice(0, -1).join(', ')} und ${SITE.orte.at(-1)} sowie online.`;

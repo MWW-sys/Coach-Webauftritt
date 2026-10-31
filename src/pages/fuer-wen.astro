@@ -1,8 +1,0 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-const { default: Content, frontmatter } = await import('../content/fuer-wen.md');
----
-
-<BaseLayout title={frontmatter.title}>
-  <Content />
-</BaseLayout>

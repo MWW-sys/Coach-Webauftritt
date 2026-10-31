@@ -1,0 +1,95 @@
+/* Gestaltung nach dem Canvas-Entwurf „Webseite und Buchcover" (Stand 29.10.2026).
+   Farben und Schriften als Variablen, damit Änderungen aus der Designwerkstatt an einer Stelle landen. */
+
+:root {
+  --bg: #14120f;
+  --bg-raised: #1b1814;
+  --bg-light: #ece5d8;
+  --text: #ece5d8;
+  --text-muted: #c9c0b2;
+  --text-faint: #a89f91;
+  --text-on-light: #1c1915;
+  --text-on-light-muted: #4a433a;
+  --line: #2e2923;
+  --line-strong: #3a332b;
+  --accent: #d49a5a;
+  --accent-hover: #e8b67e;
+  --accent-on-light: #8a5a24;
+
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  --max: 1120px;
+  --gutter: 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 8px;
+  background: var(--accent); color: var(--bg); padding: 8px 16px; z-index: 100;
+}
+.skip-link:focus { left: 8px; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.1; }
+h1 { font-weight: 300; font-size: clamp(44px, 7vw, 80px); letter-spacing: -0.02em; line-height: 1.02; }
+h2 { font-size: clamp(32px, 4.5vw, 44px); }
+h3 { font-size: 26px; }
+p { margin: 0; }
+
+.eyebrow { font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); }
+.muted { color: var(--text-muted); }
+
+/* Platzhalter für Texte, die noch aus der Textwerkstatt kommen */
+.platzhalter {
+  border: 1px dashed var(--line-strong);
+  color: var(--text-faint);
+  padding: 16px 20px;
+  font-size: 16px;
+}
+
+.button {
+  display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px;
+  background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600; border-radius: 2px;
+}
+.button:hover { background: var(--accent-hover); color: var(--bg); }
+.textlink { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); }
+
+.section { padding: 96px 0; }
+.section + .section { border-top: 1px solid var(--line); }
+.section--light { background: var(--bg-light); color: var(--text-on-light); }
+.section--light .muted { color: var(--text-on-light-muted); }
+.section--light .platzhalter { color: var(--text-on-light-muted); border-color: #b9b0a2; }
+.section--light a { color: var(--accent-on-light); }
+.stack { display: flex; flex-direction: column; gap: 20px; max-width: 680px; }
+
+.zitat {
+  font-family: var(--font-display); font-weight: 300; font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.15; letter-spacing: -0.01em; margin: 0;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .section { padding: 64px 0; }
+}

@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<BaseLayout title="Impressum – Mario Wochner">
-  <div class="subpage-content">
+<Layout title="Impressum · Mario Wochner" description="Impressum der Website von Mario Wochner, Coaching aus Erfahrung.">
+  <section class="section"><div class="wrap stack">
     <h1>Impressum</h1>
 
-    <p><strong>Angaben gemäß § 5 DDG</strong></p>
+    <h2>Angaben gemäß § 5 DDG</h2>
     <p>
       Mario Wilhelm Wochner<br />
       Mitteldorf 2<br />
@@ -15,23 +15,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
     <p>Einzelunternehmer (Kleingewerbe)</p>
 
-    <p><strong>Kontakt</strong></p>
+    <h2>Kontakt</h2>
     <p>E-Mail: mario.wochner [at] t-online [dot] de</p>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28" style="display:block; max-width:100%; height:auto;" aria-label="Telefonnummer" role="img">
-      <text x="0" y="22" font-family="'Lora', Georgia, serif" font-size="20" fill="#e8e4dc">015563417899</text>
-    </svg>
+    <p>Telefon: <a href="tel:+4915563417899">0155 63417899</a></p>
 
-    <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong></p>
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
     <p>Mario Wilhelm Wochner, Anschrift wie oben.</p>
 
-    <p><strong>Verbraucherstreitbeilegung</strong></p>
+    <h2>Verbraucherstreitbeilegung</h2>
     <p>
       Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
     </p>
 
-    <p><strong>Urheberrecht</strong></p>
+    <h2>Urheberrecht</h2>
     <p>
       Alle Texte auf dieser Website stammen von mir und sind urheberrechtlich geschützt. Wenn du sie verwenden oder zitieren möchtest, frag mich bitte vorher.
     </p>
-  </div>
-</BaseLayout>
+  </div></section>
+</Layout>

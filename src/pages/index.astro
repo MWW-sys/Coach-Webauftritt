@@ -1,62 +1,202 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+// Startseite Version 1. Aufbau nach der Seitenstruktur, freigegeben am 31.10.2026 (Projektstand, Schritt 1).
+// Platzhalter in eckigen Klammern werden durch freigegebene Texte aus „Website-Texte" ersetzt.
 import { Image } from 'astro:assets';
-import marioImg from '../assets/mario.jpg';
-const { default: FuerWenContent } = await import('../content/fuer-wen.md');
-const { default: FuerWenNichtContent } = await import('../content/fuer-wen-nicht.md');
-const { default: AngebotContent } = await import('../content/angebot.md');
-const { default: WarumIchContent } = await import('../content/warum-ich.md');
-const { default: UeberMichContent } = await import('../content/ueber-mich.md');
+import Layout from '../layouts/Layout.astro';
+import fotoEinstieg from '../assets/mario-seitlich.jpg';
+import fotoKontakt from '../assets/mario-frontal.jpg';
+import fotoGeschichte from '../assets/mario-auto.jpg';
+import { SITE } from '../site.config';
+
+const title = '[Title aus der Textwerkstatt, höchstens 60 Zeichen]';
+const description = '[Beschreibung aus der Textwerkstatt, höchstens 155 Zeichen]';
+
+const fragen = [
+  'Warum wache ich immer um 3 Uhr nachts auf?',
+  'Was tun gegen innere Leere?',
+  'Warum fühle ich mich leer, obwohl ich alles erreicht habe?',
+  'Warum gerate ich immer wieder an die Falschen?',
+  'Coaching oder Therapie: Woher weiß ich, was ich brauche?',
+  'Was kostet ein Coaching?',
+  'Was passiert im kostenlosen Erstgespräch?',
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: SITE.brand,
+    url: new URL('/', Astro.site).href,
+    email: SITE.email,
+    telephone: SITE.phone,
+    areaServed: [...SITE.orte.map((ort) => ({ '@type': 'City', name: ort })), { '@type': 'Place', name: 'Online' }],
+    priceRange: `${SITE.preise.einzel} € bis ${SITE.preise.dreier} €`,
+    founder: { '@type': 'Person', name: SITE.name, jobTitle: 'Coach' },
+  },
+];
+
+const buchung = SITE.bookingUrl || '#kontakt';
 ---
 
-<BaseLayout title="Mario Wochner – Coaching aus Erfahrung" description="Coaching für Menschen, die geliefert haben und trotzdem nachts wach liegen. Nicht nur warum. Vor allem wie und wo. Online und vor Ort in Bielefeld, Hannover, Wolfsburg und Berlin.">
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <style>
+    .hero .wrap { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 96px; }
+    .hero-text { flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+    .hero-foto { flex: 1 1 300px; min-width: 0; max-width: 420px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding-top: 8px; }
+    .zweispaltig { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
+    .zweispaltig > * { flex: 1 1 360px; min-width: 0; }
+    .karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+    .karte { border: 1px solid var(--line-strong); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .preis { font-family: var(--font-display); font-size: 40px; color: var(--accent); }
+    .fragen { margin-top: 40px; max-width: 760px; }
+    .fragen details { border-top: 1px solid var(--line); padding: 8px 0; }
+    .fragen details:last-child { border-bottom: 1px solid var(--line); }
+    .fragen summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+    .fragen summary h3 { font-size: 22px; }
+    .fragen .platzhalter { margin: 8px 0 16px; }
+    .kontakt-daten { display: flex; flex-direction: column; gap: 4px; font-size: 20px; }
+  </style>
 
-  <!-- Hero / Startseite -->
-  <section id="start" class="hero-section">
-    <p class="hero-text">Schon wieder aufgewacht. 3&nbsp;Uhr 33. Warum...?</p>
-  </section>
-
-  <!-- Für wen das ist -->
-  <section id="fuer-wen" class="page-section">
-    <FuerWenContent />
-  </section>
-
-  <!-- Für wen das nichts ist -->
-  <section id="fuer-wen-nicht" class="page-section">
-    <FuerWenNichtContent />
-  </section>
-
-  <!-- Mein Angebot -->
-  <section id="angebot" class="page-section">
-    <AngebotContent />
-  </section>
-
-  <!-- Warum ich? -->
-  <section id="warum-ich" class="page-section">
-    <WarumIchContent />
-  </section>
-
-  <!-- Über mich -->
-  <section id="ueber-mich" class="page-section ueber-mich-section">
-    <div class="ueber-mich-image-wrap">
-      <Image src={marioImg} alt="Mario Wochner" width={680} height={853} format="webp" class="ueber-mich-img" />
+  <!-- 2. Einstieg mit H1 -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="eyebrow">Coaching in Berlin, Bielefeld, Hannover, Wolfsburg und online</p>
+        <p class="platzhalter">[Kurze Szene zum Einstieg. Entscheidung offen: „3 Uhr 33" oder die Gesprächsszene]</p>
+        <h1 id="h1">[H1 aus der Textwerkstatt: was, für wen, wo]</h1>
+        <div class="actions">
+          <a class="button" href={buchung}>Erstgespräch vereinbaren</a>
+          <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
+        </div>
+      </div>
+      <div class="hero-foto">
+        <Image src={fotoEinstieg} alt="Mario Wochner, Coach" widths={[420, 840]} sizes="(max-width: 700px) 100vw, 420px" loading="eager" />
+      </div>
     </div>
-    <div class="ueber-mich-text">
-      <UeberMichContent />
+  </section>
+
+  <!-- 3. Wer ich bin, kurz -->
+  <section id="wer-ich-bin" class="section">
+    <div class="wrap stack">
+      <h2>Wer ich bin</h2>
+      <p class="platzhalter">[Kurzfassung, drei bis vier Sätze: Herkunft, 30 Jahre Handwerk, Selbstständigkeit und Projektleitung, aus Erfahrung und nicht aus dem Lehrbuch]</p>
+      <p class="zitat">„So habe ich meine Antwort gefunden. Mich.“</p>
     </div>
   </section>
 
-  <!-- Kontakt -->
-  <section id="kontakt" class="page-section page-section--last">
-    <h2>Kontakt</h2>
-    <p>Wenn du das Gefühl hast, hier könnte etwas anfangen. Schreib mir.</p>
-    <p>Ich antworte persönlich. Und nicht mit einer Vorlage.</p>
-    <p><a href="mailto:mario.wochner@t-online.de">mario.wochner@t-online.de</a></p>
-    <a href="tel:015563417899" style="display:block; margin-top:0.3rem;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28" style="display:block; max-width:100%; height:auto;" aria-label="Telefonnummer" role="img">
-        <text x="0" y="22" font-family="'Lora', Georgia, serif" font-size="20" fill="#e8e4dc">015563417899</text>
-      </svg>
-    </a>
+  <!-- 4. Für wen das ist -->
+  <section id="fuer-wen" class="section">
+    <div class="wrap stack">
+      <h2>Für wen das ist</h2>
+      <p class="platzhalter">[Text aus der Textwerkstatt. Beziehung weit gemeint: Arbeit, Führung, Familie, Freundschaft, Liebe]</p>
+      <p class="zitat">„An welcher Stelle kommst du eigentlich selbst vor?“</p>
+    </div>
   </section>
 
-</BaseLayout>
+  <!-- 5. Mein Ansatz -->
+  <section id="ansatz" class="section">
+    <div class="wrap stack">
+      <h2>Mein Ansatz</h2>
+      <p class="zitat">„Nicht nur warum. Vor allem wie und wo.“</p>
+      <p class="platzhalter">[Absatz zum Ansatz aus der Textwerkstatt]</p>
+    </div>
+  </section>
+
+  <!-- 6. Wie ich arbeite -->
+  <section id="wie-ich-arbeite" class="section section--light">
+    <div class="wrap zweispaltig">
+      <p class="zitat">„Was ich kann: bleiben, wenn es eng wird.“</p>
+      <div class="stack">
+        <h2>Wie ich arbeite</h2>
+        <p class="platzhalter">[Wie eine Stunde abläuft und welche Methoden ich nutze. Marios Fassung aus der Textwerkstatt]</p>
+        <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Angebot und Preise -->
+  <section id="angebot" class="section">
+    <div class="wrap">
+      <h2>Angebot und Preise</h2>
+      <div class="karten">
+        <div class="karte">
+          <p class="eyebrow">Zum Kennenlernen</p>
+          <h3>Erstgespräch</h3>
+          <p class="preis">kostenlos</p>
+          <p class="platzhalter">[Dauer und Ablauf]</p>
+        </div>
+        <div class="karte">
+          <p class="eyebrow">Einzeln</p>
+          <h3>Einzelstunde</h3>
+          <p class="preis">{SITE.preise.einzel} €</p>
+          <p class="platzhalter">[Dauer, Hinweis zur Umsatzsteuer]</p>
+        </div>
+        <div class="karte">
+          <p class="eyebrow">Paket</p>
+          <h3>Zwei Stunden</h3>
+          <p class="preis">{SITE.preise.zweier} €</p>
+          <p class="platzhalter">[Kurzbeschreibung]</p>
+        </div>
+        <div class="karte">
+          <p class="eyebrow">Paket</p>
+          <h3>Drei Stunden</h3>
+          <p class="preis">{SITE.preise.dreier} €</p>
+          <p class="platzhalter">[Kurzbeschreibung]</p>
+        </div>
+        <div class="karte">
+          <p class="eyebrow">8 Plätze im Monat</p>
+          <h3>Zahl, was du kannst</h3>
+          <p class="platzhalter">[Text mit Marios Begründung aus der Textwerkstatt]</p>
+        </div>
+      </div>
+      <div class="stack" style="margin-top: 48px;">
+        <p class="platzhalter">[Orte: online oder vor Ort, bei dir, im Café, beim Spaziergang, in der Natur, in den Praxisräumen bei Bielefeld und bei Berlin]</p>
+        <div class="actions"><a class="button" href={buchung}>Termin buchen</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Meine Geschichte (Verweis auf die Unterseite) -->
+  <section id="geschichte" class="section section--light">
+    <div class="wrap zweispaltig">
+      <Image src={fotoGeschichte} alt="Mario Wochner an einem Seeufer" widths={[480, 960]} sizes="(max-width: 700px) 100vw, 480px" />
+      <div class="stack">
+        <h2>Meine Geschichte</h2>
+        <p class="platzhalter">[Zwei, drei Sätze als Einladung zum Weiterlesen]</p>
+        <a href="/meine-geschichte">Weiterlesen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Häufige Fragen -->
+  <section id="fragen" class="section">
+    <div class="wrap">
+      <h2>Häufige Fragen</h2>
+      <div class="fragen">
+        {fragen.map((frage) => (
+          <details>
+            <summary><h3>{frage}</h3></summary>
+            <p class="platzhalter">[Antwort aus der Textwerkstatt]</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Kontakt -->
+  <section id="kontakt" class="section">
+    <div class="wrap zweispaltig">
+      <div class="stack">
+        <h2>Kontakt</h2>
+        <p class="platzhalter">[Kontakttext aus der Textwerkstatt. Bisher: „Wenn du das Gefühl hast, hier könnte etwas anfangen. Schreib mir. Ich antworte persönlich. Und nicht mit einer Vorlage.“]</p>
+        <div class="kontakt-daten">
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>
+        </div>
+        <div class="actions"><a class="button" href={buchung}>Erstgespräch vereinbaren</a></div>
+      </div>
+      <Image src={fotoKontakt} alt="Mario Wochner lächelt in die Kamera" widths={[420, 840]} sizes="(max-width: 700px) 100vw, 420px" style="max-width: 420px;" />
+    </div>
+  </section>
+</Layout>

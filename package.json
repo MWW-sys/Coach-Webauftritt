@@ -1,5 +1,5 @@
 {
-  "name": "leuchtturm-coaching",
+  "name": "coach-mario-wochner",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/lora": "^5.2.8",
     "astro": "^5.11.0",
-    "gray-matter": "^4.0.3"
+    "@fontsource-variable/fraunces": "^5.2.0",
+    "@fontsource/manrope": "^5.2.0"
   }
 }

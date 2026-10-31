@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<BaseLayout title="Datenschutz – Mario Wochner">
-  <div class="subpage-content">
+<Layout title="Datenschutz · Mario Wochner" description="Datenschutz der Website von Mario Wochner, Coaching aus Erfahrung.">
+  <section class="section"><div class="wrap stack">
     <h1>Datenschutz</h1>
 
-    <p><strong>1. Verantwortlicher</strong></p>
+    <h2>1. Verantwortlicher</h2>
     <p>
       Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
       Mario Wilhelm Wochner<br />
@@ -16,23 +16,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Telefon: 015563417899
     </p>
 
-    <p><strong>2. Erhebung und Verarbeitung personenbezogener Daten</strong></p>
+    <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
     <p>
       Diese Website setzt keine Cookies, verwendet kein Tracking, keine Analyse-Tools und kein Kontaktformular. Schriften (Fonts) sind lokal eingebunden – es findet keine Verbindung zu Google oder anderen externen Anbietern statt. Personenbezogene Daten werden nur in dem Umfang verarbeitet, der für den technischen Betrieb der Website (siehe Abschnitt 3) oder bei einer Kontaktaufnahme (siehe Abschnitt 4) erforderlich ist.
     </p>
 
-    <p><strong>3. Server-Logfiles</strong></p>
+    <h2>3. Server-Logfiles</h2>
     <p>
       Beim Aufruf dieser Website werden durch den Hosting-Anbieter (Netlify) automatisch technische Daten in sogenannten Server-Logfiles erfasst, die der Browser automatisch übermittelt. Dies sind:
     </p>
-    <p>
-      — Browsertyp und Browserversion<br />
-      — verwendetes Betriebssystem<br />
-      — Referrer-URL<br />
-      — Hostname des zugreifenden Rechners<br />
-      — Uhrzeit der Serveranfrage<br />
-      — IP-Adresse
-    </p>
+    <ul>
+      <li>Browsertyp und Browserversion</li>
+      <li>verwendetes Betriebssystem</li>
+      <li>Referrer-URL</li>
+      <li>Hostname des zugreifenden Rechners</li>
+      <li>Uhrzeit der Serveranfrage</li>
+      <li>IP-Adresse</li>
+    </ul>
     <p>
       Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und nicht für eine Identifizierung der Besucher verwendet. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem technisch fehlerfreien Betrieb der Website).
     </p>
@@ -44,28 +44,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Mit Netlify besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO. Da Netlify seinen Sitz in den USA hat, können Daten in die USA übermittelt werden. Netlify ist unter dem EU-U.S. Data Privacy Framework zertifiziert; die Übermittlung erfolgt auf Grundlage des Angemessenheitsbeschlusses der EU-Kommission (Art. 45 DSGVO). Die Logdaten werden von Netlify nur so lange gespeichert, wie es für den Betrieb und die Sicherheit der Website erforderlich ist.
     </p>
 
-    <p><strong>4. Kontaktaufnahme per E-Mail oder Telefon</strong></p>
+    <h2>4. Kontaktaufnahme per E-Mail oder Telefon</h2>
     <p>
       Wenn du mir per E-Mail oder Telefon Anfragen zukommen lässt, werden deine Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne deine Einwilligung weiter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Deine Daten werden gelöscht, sobald deine Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
     </p>
 
-    <p><strong>5. Deine Rechte</strong></p>
+    <h2>5. Deine Rechte</h2>
     <p>Du hast jederzeit das Recht auf:</p>
-    <p>
-      — Auskunft über die zu deiner Person gespeicherten Daten (Art. 15 DSGVO)<br />
-      — Berichtigung unrichtiger Daten (Art. 16 DSGVO)<br />
-      — Löschung deiner Daten (Art. 17 DSGVO)<br />
-      — Einschränkung der Verarbeitung (Art. 18 DSGVO)<br />
-      — Datenübertragbarkeit (Art. 20 DSGVO)<br />
-      — Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
-    </p>
+    <ul>
+      <li>Auskunft über die zu deiner Person gespeicherten Daten (Art. 15 DSGVO)</li>
+      <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+      <li>Löschung deiner Daten (Art. 17 DSGVO)</li>
+      <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+      <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+      <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+    </ul>
     <p>
       Du hast außerdem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Für mich zuständig ist die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW).
     </p>
 
-    <p><strong>6. Aktualität dieser Datenschutzerklärung</strong></p>
+    <h2>6. Aktualität dieser Datenschutzerklärung</h2>
     <p>
       Stand: September 2026. Durch die Weiterentwicklung der Website oder geänderte gesetzliche Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Version ist auf dieser Seite einsehbar.
     </p>
-  </div>
-</BaseLayout>
+  </div></section>
+</Layout>

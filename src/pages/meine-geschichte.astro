@@ -1,0 +1,50 @@
+---
+// Unterseite „Meine Geschichte". H1 ist eine Suchfrage, darunter die Zeile „Meine Geschichte".
+// Welche Frage es wird, entscheidet Mario (Hinweis im Projektstand vom 31.10.2026).
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import foto from '../assets/mario-auto.jpg';
+import { SITE } from '../site.config';
+
+const title = '[Title für „Meine Geschichte", höchstens 60 Zeichen]';
+const description = '[Beschreibung für „Meine Geschichte", höchstens 155 Zeichen]';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: '[H1 von „Meine Geschichte"]',
+    author: { '@type': 'Person', name: SITE.name },
+    inLanguage: 'de',
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <style>
+    .kopf { padding: 72px 0 48px; }
+    .kopf .stack { max-width: 820px; }
+    .text { padding-bottom: 96px; }
+    .text .stack { max-width: 680px; }
+    .foto { max-width: 520px; }
+  </style>
+
+  <section class="kopf">
+    <div class="wrap stack">
+      <h1>[Suchfrage als H1, zum Beispiel „Warum fühle ich mich leer, obwohl ich alles habe?"]</h1>
+      <p class="eyebrow">Meine Geschichte</p>
+    </div>
+  </section>
+
+  <section class="text">
+    <div class="wrap stack">
+      <Image class="foto" src={foto} alt="Mario Wochner an einem Seeufer" widths={[520, 1040]} sizes="(max-width: 700px) 100vw, 520px" />
+      <p class="platzhalter">[Text „Meine Geschichte" aus der Textwerkstatt, gegliedert mit Zwischenüberschriften (H2)]</p>
+      <p class="platzhalter">[Hinweis: Coaching ersetzt keine Therapie]</p>
+      <div class="actions" style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a class="button" href="/#kontakt">Erstgespräch vereinbaren</a>
+        <a class="textlink" href="/">Zur Startseite</a>
+      </div>
+    </div>
+  </section>
+</Layout>

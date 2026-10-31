@@ -1,5 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+// Adresse der Seite. Wird beim Livegang durch die eigene Domain ersetzt.
+// Daraus entstehen Canonical-Links, Vorschaubilder und die Sitemap-Adressen.
+export default defineConfig({
+  site: 'https://coach-mario.netlify.app',
+  trailingSlash: 'never',
+  build: { format: 'file' },
+});
