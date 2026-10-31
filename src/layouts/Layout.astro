@@ -104,7 +104,11 @@ const nav = [
       if (menu && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         menu.addEventListener('mouseenter', () => { menu.open = true; });
         menu.addEventListener('mouseleave', () => { menu.open = false; });
+        // Ein Klick auf „Menü“ soll das schon offene Menü nicht wieder schließen
+        menu.querySelector('summary')?.addEventListener('click', (e) => { e.preventDefault(); menu.open = true; });
       }
+      // Mit der Escape-Taste schließen
+      menu?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menu.open = false; menu.querySelector('summary')?.focus(); } });
     </script>
 
     <main id="inhalt">
