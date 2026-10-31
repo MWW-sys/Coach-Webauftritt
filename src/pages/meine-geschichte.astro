@@ -31,8 +31,13 @@ const jsonLd = [
     .text .stack { max-width: 680px; }
     .foto { max-width: 520px; }
     .aufklapp { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px 0; }
-    .aufklapp summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-family: var(--font-display); font-size: 22px; }
-    .aufklapp p { padding: 8px 0 16px; }
+    .aufklapp summary { cursor: pointer; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; list-style: none; }
+    .aufklapp summary::-webkit-details-marker { display: none; }
+    .aufklapp summary::after { content: '+'; font-family: var(--font-display); font-size: 28px; color: var(--accent); }
+    .aufklapp[open] summary::after { content: '−'; }
+    .aufklapp summary h3 { font-size: 24px; }
+    .aufklapp-text { display: flex; flex-direction: column; gap: 20px; padding: 8px 0 20px; }
+    .text h2 { margin-top: 24px; }
   </style>
 
   <section class="kopf">
@@ -45,13 +50,30 @@ const jsonLd = [
   <section class="text">
     <div class="wrap stack">
       <Image class="foto" src={foto} alt="Mario Wochner an einem Seeufer" width={1040} widths={[520, 1040]} sizes="(max-width: 700px) 100vw, 520px" />
-      <p class="platzhalter">[Sofa-Szene, Text aus der Textwerkstatt]</p>
+      <!-- Entwurf der Textwerkstatt vom 31.10.2026 (Website-Texte, Abschnitt 6). Live erst nach Marios Freigabe. -->
+      <p>Ich liege auf dem Sofa und schaue schräg durch das Wohnmobilfenster nach oben. Ich sehe den blauen Himmel, die Baumkronen. Ich sehe, wie die Blätter sich im Wind bewegen und von oben von der schönen Sonne angeschienen werden. Ich denke, es muss ein schöner Tag draußen sein. Und hier drin liege ich wie festgenagelt auf dem Sofa.</p>
+      <p>Und mir ist es schwerer, viel schwerer, als ich noch in der Beziehung war. Das hat keiner gesagt. Und ich wünsche beinahe, ich könnte zurück.</p>
+      <p>In dem Augenblick brülle ich. Nein, ich will nicht zurück. Und ich will verdammt nochmal nicht hier auf dem Sofa liegen. Ich stehe auf, drehe mich um, schaue zum Sofa.</p>
+      <p>Und mit einem Mal fährt das wie ein Blitz in mich. Das Einzige, was immer gleich war in meinem ganzen Leben, in allen Beziehungen, oder besser gesagt, der Einzige bin ich. Ich bin in jeder Geschichte der rote Faden.</p>
+      <p>Und ich habe gedacht, ich hätte alles getan in der Beziehung. Ich habe den roten Teppich für sie ausgerollt. Ich habe Rosenblätter hingestreut. Ich habe ihr jeden Wunsch von den Lippen abgelesen. Alles, damit sie sich wohlfühlt. Nichts davon hat am Ende funktioniert.</p>
+      <p>Ich wollte die Bindung erhalten. Und jetzt sehe ich, dass ich keine Bindung zu mir habe.</p>
       <h2>Wie geht Selbstliebe?</h2>
       <p>Ich habe das unzählige Male gehört: „Du musst dich selbst lieben.“ Aber keiner konnte mir beantworten: Wie geht das mit der Selbstliebe? Und doch habe ich für mich eine Antwort darauf gefunden. Und die klingt für mich nicht wie Selbstliebe.</p>
+      <p>Ich kenne das Gefühl, dass etwas fehlt, obwohl alles da ist. Wie ein schweres schwarzes Loch in der Brust. Etwas, das fehlt und trotzdem ständig Energie braucht. Wie eine App, die im Hintergrund läuft und auf eine Eingabe wartet.</p>
       <details class="aufklapp">
-        <summary>[Überschrift für die Kindheitsgeschichte]</summary>
-        <p class="platzhalter">[Kindheitsgeschichte zum Aufklappen, Text aus der Textwerkstatt]</p>
+        <summary><h3>Als ich vier war</h3></summary>
+        <div class="aufklapp-text">
+          <p>Als ich vier war, zerbrach meine Welt. Die Ehe meiner Eltern ging zu Ende, und ich verlor meinen Vater. Meiner Mutter ging es danach so schlecht, dass mein Bruder zu meiner Tante kam und ich zu meiner Oma. Nach etwa einem Jahr waren wir drei wieder zusammen, kurz darauf kam mein Stiefvater dazu. Wir wurden eine wunderbare, normale Familie, mit allen Höhen und Tiefen.</p>
+          <p>Aber für das Kind, das ich damals war, fühlte es sich an, als hätte ich alles verloren. Und ein Gefühl blieb, über den größten Teil meines Lebens: Irgendetwas fehlt.</p>
+        </div>
       </details>
+      <p>Lange hielt ich dieses Gefühl für normal und habe es einfach ignoriert. Später habe ich versucht, es auszugleichen. Mit Leistung, mit Perfektion, mit Abliefern. Auto, Haus, Hund, Katze, Hof. Das Übliche. Irgendwann habe ich meine Geschichte verstanden und eingeordnet. Das half, eine Ursache zu finden, aber nicht, das Gefühl zu lösen. Es war alles ein Kampf, ein Weglaufen vor mir selbst.</p>
+      <p>Erst als ich aufhörte zu fragen, warum, und anfing zu fragen, wie sich dieses Gefühl anfühlt und wo es sitzt, wurde es ruhiger. Ich wandte mich ihm zu und blieb bei ihm.</p>
+      <p>So konnte ich bis auf den Grund meines inneren Sees tauchen. Auf dem Weg nach unten war die Verbindung mal da, mal schwächer, dann wieder da. Dabei entdeckte ich: Die Leere war ein Teil von mir, zu dem ich keine Verbindung hatte. Mit der Verbindung kam eine Leichtigkeit zurück. Nicht die des Kindes, sondern eine erwachsene. Und am Grund lag das Gold: Der Weg hatte die Verbindung geschaffen. Und ich wusste jetzt, dass ich ihn selbst gehen kann.</p>
+      <p>Der Weg ist nicht abgeschlossen. Aber ich kämpfe nicht mehr gegen das Gefühl. Ich gehe mit ihm in Kontakt, und das verändert alles.</p>
+      <h2>Wofür bin ich Coach geworden?</h2>
+      <p>Dabei habe ich gemerkt, dass es nicht nur mir so geht. Deshalb bin ich Coach geworden: um dabei zu sein, wenn jemand das Gold am Grund seiner eigenen Frage findet.</p>
+      <p>Im Coaching mit mir geht es nicht darum, dass die Leere, die Schwere oder was auch immer du mitbringst, weggemacht wird. Sondern darum, dass ich genau an dieser Stelle mit dir stehen bleibe und wir gemeinsam hinschauen.</p>
       <div class="actions" style="display:flex; gap:16px; flex-wrap:wrap;">
         <a class="button" href="/#kontakt">Kostenloses Erstgespräch</a>
         <a class="textlink" href="/">Zur Startseite</a>
