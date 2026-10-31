@@ -1,6 +1,9 @@
 ---
-// Startseite Version 1. Aufbau nach der Seitenstruktur, freigegeben am 31.10.2026 (Projektstand, Schritt 1).
-// Platzhalter in eckigen Klammern werden durch freigegebene Texte aus „Website-Texte" ersetzt.
+// Startseite Version 1. Aufbau nach der Seitenstruktur (Projektstand, Schritt 1, 10 Abschnitte),
+// Aussehen nach dem Canvas „Webseite und Buchcover", Artboard Main.
+// Texte: Entwürfe aus dem Dokument „Website-Texte" (Stand 31.10.2026) und aus dem Canvas.
+// Entwürfe dürfen in die Vorschau. Live geht nur, was Mario freigegeben hat.
+// Text in eckigen Klammern fehlt noch und kommt aus der Textwerkstatt.
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import fotoEinstieg from '../assets/mario-seitlich.jpg';
@@ -8,17 +11,56 @@ import fotoKontakt from '../assets/mario-frontal.jpg';
 import fotoGeschichte from '../assets/mario-auto.jpg';
 import { SITE } from '../site.config';
 
-const title = '[Title aus der Textwerkstatt, höchstens 60 Zeichen]';
+const title = 'Mario Wochner · Coaching';
 const description = '[Beschreibung aus der Textwerkstatt, höchstens 155 Zeichen]';
 
 const fragen = [
-  'Warum wache ich immer um 3 Uhr nachts auf?',
-  'Was tun gegen innere Leere?',
-  'Warum fühle ich mich leer, obwohl ich alles erreicht habe?',
-  'Warum gerate ich immer wieder an die Falschen?',
-  'Coaching oder Therapie: Woher weiß ich, was ich brauche?',
-  'Was kostet ein Coaching?',
-  'Was passiert im kostenlosen Erstgespräch?',
+  {
+    frage: 'Warum wache ich immer um 3 Uhr nachts auf?',
+    antwort: [
+      'Es ist nichts kaputt mit dir. Vielleicht ist das Aufwachen kein Fehler, sondern ein Zeichen, dass da drin noch jemand ist.',
+      'Wenn du über längere Zeit schlecht schläfst, lass das bitte ärztlich abklären. Im Coaching geht es um das, was dich innerlich wach hält.',
+    ],
+  },
+  {
+    frage: 'Was tun gegen innere Leere?',
+    antwort: [
+      'Erst als ich aufhörte zu fragen, warum, und anfing zu fragen, wie sich dieses Gefühl anfühlt und wo es sitzt, wurde es ruhiger. Ich wandte mich ihm zu und blieb bei ihm.',
+      'Im Coaching mit mir geht es nicht darum, dass die Leere, die Schwere oder was auch immer du mitbringst, weggemacht wird. Sondern darum, dass ich genau an dieser Stelle mit dir stehen bleibe und wir gemeinsam hinschauen.',
+    ],
+  },
+  {
+    frage: 'Warum fühle ich mich leer, obwohl ich alles erreicht habe?',
+    antwort: [
+      'Du hast über lange Zeit gelernt, für das Außen zu liefern. Und das Innen hast du lange auf Pause gestellt. Irgendwann hat es sich zurückgezogen, weil es da nichts zu tun hatte.',
+      'Ich kenne das Gefühl, dass etwas fehlt, obwohl alles da ist.',
+    ],
+  },
+  {
+    frage: 'Warum gerate ich immer wieder an die Falschen?',
+    antwort: [
+      'Wenn sich etwas immer wiederholt, lohnt der Blick auf das Muster dahinter. Das gilt in der Liebe genauso wie bei der Arbeit, in der Familie und unter Freunden.',
+      'Der Weg zu dir selbst scheitert selten an fehlendem Willen. Er scheitert daran, dass dein Wille und das, was dich schützt, dasselbe wollen, aber gegeneinander kämpfen statt miteinander.',
+    ],
+  },
+  {
+    frage: 'Coaching oder Therapie: Woher weiß ich, was ich brauche?',
+    antwort: [
+      'Ich arbeite nicht mit Diagnosen, sondern mit dem, was du erlebst. Coaching ersetzt keine Therapie. Wenn du in therapeutischer Behandlung bist, sprich bitte mit deiner Therapeutin oder deinem Therapeuten, ob Coaching gerade sinnvoll für dich ist.',
+    ],
+  },
+  {
+    frage: 'Was kostet ein Coaching?',
+    antwort: [
+      `Das Erstgespräch ist kostenlos. Eine Einzelstunde kostet ${SITE.preise.einzel} €, das Zweierpaket ${SITE.preise.zweier} €, das Dreierpaket ${SITE.preise.dreier} €. Dazu gibt es jeden Monat 8 Termine, bei denen du zahlst, was du kannst.`,
+    ],
+  },
+  {
+    frage: 'Was passiert im kostenlosen Erstgespräch?',
+    antwort: [
+      'Das Erstgespräch ist kostenlos und unverbindlich. Wir schauen, worum es dir geht und ob wir zusammenpassen. Wichtig ist mir, dass ich dir an der Stelle begegne, wo du mit deinem Thema bist. Ich erzähle dir auch, mit welchen Methoden ich arbeiten kann, und frage dich, ob das für dich passt.',
+    ],
+  },
 ];
 
 const jsonLd = [
@@ -40,148 +82,228 @@ const buchung = SITE.bookingUrl || '#kontakt';
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
   <style>
-    .hero .wrap { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 96px; }
+    .hero .wrap { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
     .hero-text { flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
-    .hero-foto { flex: 1 1 300px; min-width: 0; max-width: 420px; }
+    .hero-foto { flex: 1 1 300px; min-width: 0; display: flex; justify-content: center; }
+    .hero-foto img { width: 100%; max-width: 400px; aspect-ratio: 4 / 5; object-fit: cover; }
+    .hero h1 { font-family: var(--font-body); font-size: 15px; font-weight: 500; letter-spacing: 0.04em; line-height: 1.5; color: var(--text-faint); max-width: 560px; }
+    .uhrzeit { font-family: var(--font-display); font-weight: 300; font-size: clamp(64px, 9vw, 88px); line-height: 1; letter-spacing: -0.02em; }
+    .leitsatz { font-family: var(--font-display); font-size: clamp(26px, 3vw, 32px); line-height: 1.25; max-width: 560px; }
+    .leitzeile { color: var(--text-muted); max-width: 520px; }
     .actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding-top: 8px; }
+
+    .szene .wrap { padding-bottom: 96px; }
+    .szene .stack { max-width: 680px; gap: 20px; color: var(--text-muted); font-size: 20px; }
+    .szene .gedanke { font-family: var(--font-display); font-size: clamp(26px, 3vw, 32px); color: var(--text); line-height: 1.25; }
+
+    .trenner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .trenner div { height: 1px; background: var(--line); }
+
+    .hell { background: var(--bg-light); color: var(--text-on-light); }
+    .hell .wrap { padding-top: 112px; padding-bottom: 112px; }
+    .hell a { color: var(--accent-on-light); }
+    .hell .label { color: #5E564B; }
     .zweispaltig { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
     .zweispaltig > * { flex: 1 1 360px; min-width: 0; }
-    .karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
-    .karte { border: 1px solid var(--line-strong); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
-    .preis { font-family: var(--font-display); font-size: 40px; color: var(--accent); }
-    .fragen { margin-top: 40px; max-width: 760px; }
+    .gross-zitat { font-family: var(--font-display); font-weight: 300; font-size: clamp(34px, 4.5vw, 48px); line-height: 1.12; letter-spacing: -0.01em; }
+    .label { font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; }
+    .spalte { display: flex; flex-direction: column; gap: 20px; }
+
+    .block { max-width: var(--max); margin: 0 auto; padding: 96px var(--gutter); display: flex; flex-direction: column; gap: 48px; }
+    .block-kopf { display: flex; flex-direction: column; gap: 16px; max-width: 640px; }
+    .block-kopf p { color: var(--text-muted); }
+    .karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .karte { background: var(--bg-raised); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .karte .nr { font-family: var(--font-display); font-size: 15px; color: var(--accent); }
+    .karte p { color: var(--text-muted); font-size: 16px; }
+    .schluss-zitat { font-family: var(--font-display); font-weight: 300; font-size: clamp(28px, 3.5vw, 36px); line-height: 1.2; max-width: 760px; }
+
+    .angebot-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .angebot-karte { border: 1px solid var(--line-strong); padding: 36px; display: flex; flex-direction: column; gap: 14px; }
+    .angebot-karte h3 { font-size: 30px; }
+    .angebot-karte p { color: var(--text-muted); font-size: 16px; }
+    .angebot-karte .preis { font-family: var(--font-display); font-size: 40px; color: var(--accent); line-height: 1.1; }
+    .preise { width: 100%; border-collapse: collapse; font-size: 17px; }
+    .preise th { text-align: left; font-weight: 400; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .preise td { text-align: right; font-family: var(--font-display); font-size: 26px; color: var(--accent); padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .klein { font-size: 14px; color: var(--text-faint); }
+    .wo { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
+    .wo p { color: var(--text-muted); }
+
+    .fragen { max-width: 760px; }
     .fragen details { border-top: 1px solid var(--line); padding: 8px 0; }
     .fragen details:last-child { border-bottom: 1px solid var(--line); }
-    .fragen summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+    .fragen summary { cursor: pointer; min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; list-style: none; }
+    .fragen summary::-webkit-details-marker { display: none; }
+    .fragen summary::after { content: '+'; font-family: var(--font-display); font-size: 28px; color: var(--accent); }
+    .fragen details[open] summary::after { content: '−'; }
     .fragen summary h3 { font-size: 22px; }
-    .fragen .platzhalter { margin: 8px 0 16px; }
+    .fragen .antwort { display: flex; flex-direction: column; gap: 12px; color: var(--text-muted); padding: 4px 0 20px; }
+
+    .kontakt { border-top: 1px solid var(--line); }
+    .kontakt .wrap { padding-top: 112px; padding-bottom: 112px; }
+    .kontakt h2 { font-weight: 300; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; max-width: 760px; }
+    .kontakt .spalte p { color: var(--text-muted); max-width: 560px; }
     .kontakt-daten { display: flex; flex-direction: column; gap: 4px; font-size: 20px; }
-    /* Einstieg: der erste Satz ist das Größte, die H1 kleiner darunter */
-    .einstieg-satz { font-family: var(--font-display); font-weight: 300; font-size: clamp(40px, 6.5vw, 76px); line-height: 1.04; letter-spacing: -0.02em; }
-    .einstieg-zeile { font-size: clamp(20px, 2.4vw, 24px); color: var(--text-muted); }
-    .hero h1 { font-size: clamp(26px, 3.2vw, 36px); font-weight: 400; line-height: 1.2; letter-spacing: 0; }
-    .zitat--klein { font-size: clamp(24px, 3vw, 32px); }
+    .kontakt-foto { max-width: 400px; }
   </style>
 
-  <!-- 2. Einstieg mit H1
-       Entschieden am 31.10.2026: Der erste Satz steht ganz oben und ist das Erste, was man liest.
-       Offen: wie Gesprächsszene, „3 Uhr 33" und H1 dazu stehen. Hier gesetzt nach dem Vorschlag der Technik:
-       Der Satz ist optisch das Größte, die H1 trägt Coaching, Zielgruppe und Orte und ist kleiner gesetzt. -->
+  <!-- 2. Einstieg mit H1 -->
   <section class="hero" aria-labelledby="h1">
     <div class="wrap">
       <div class="hero-text">
-        <p class="einstieg-satz">Warum landest du immer wieder an derselben Stelle?</p>
-        <p class="einstieg-zeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
-        <p class="platzhalter">[Text darunter aus der Textwerkstatt mit den Suchbegriffen: immer wieder dasselbe Muster, warum passiert mir immer das Gleiche, Muster in Beziehungen]</p>
-        <p class="platzhalter">[Gesprächsszene „Kennst du das Gefühl …“ und „3 Uhr 33“: Anordnung offen]</p>
-        <h1 id="h1">[H1 aus der Textwerkstatt: Coaching, für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können, Orte]</h1>
-        <p class="platzhalter">[Zeile unter der H1 mit den Orten]</p>
+        <h1 id="h1">Coaching in Berlin, Bielefeld und online: für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können.</h1>
+        <p class="uhrzeit">3 Uhr 33.</p>
+        <p class="leitsatz">Warum landest du immer wieder an derselben Stelle?</p>
+        <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
         <div class="actions">
-          <a class="button" href={buchung}>Erstgespräch vereinbaren</a>
+          <a class="button" href={buchung}>Kostenloses Erstgespräch</a>
           <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
         </div>
       </div>
       <div class="hero-foto">
-        <Image src={fotoEinstieg} alt="Mario Wochner, Coach" width={840} widths={[420, 840]} sizes="(max-width: 700px) 100vw, 420px" loading="eager" />
+        <Image src={fotoEinstieg} alt="Mario Wochner, Coach" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Szene, eigener Block unter dem Einstieg -->
+  <section class="szene" aria-label="Kennst du das Gefühl?">
+    <div class="wrap">
+      <div class="stack">
+        <p>Kennst du das Gefühl? Nach einem Gespräch denkst du: Verdammt, warum habe ich nicht diesen Satz gesagt? Warum konnte ich an der Stelle nicht für mich einstehen? Und jetzt habe ich wieder nur Ja gesagt.</p>
+        <p>Danach bist du wütend, frustriert oder traurig. Eigentlich weißt du ganz genau, wie du hättest reagieren können. Aber im Moment kannst du darauf nicht zugreifen.</p>
+        <p class="gedanke">Warum passiert mir immer das Gleiche?</p>
+        <p>Es ist immer wieder dasselbe Muster, im Job wie in Beziehungen. Ich schaue mit dir genau darauf: woran es liegt, wo du es findest und wie du damit weitergehst.</p>
       </div>
     </div>
   </section>
 
   <!-- 3. Wer ich bin, kurz -->
-  <section id="wer-ich-bin" class="section">
-    <div class="wrap stack">
-      <h2>Wer ich bin</h2>
-      <p class="platzhalter">[Kurzfassung, drei bis vier Sätze: Herkunft, 30 Jahre Handwerk, Selbstständigkeit und Projektleitung, aus Erfahrung und nicht aus dem Lehrbuch]</p>
-      <p class="zitat">„So habe ich meine Antwort gefunden. Mich.“</p>
+  <section id="wer-ich-bin" class="hell">
+    <div class="wrap zweispaltig">
+      <p class="gross-zitat">„Ich coache aus Erfahrung, nicht aus dem Lehrbuch.“</p>
+      <div class="spalte">
+        <h2 class="label">Wer ich bin</h2>
+        <p>Rund 30 Jahre Handwerk, Selbstständigkeit und Projektleitung. Irgendwann habe ich mich selbst zu meinem größten Projekt gemacht und herausgefunden, warum meine Beziehungen immer demselben Muster folgten.</p>
+        <p><strong>So habe ich meine Antwort gefunden. Mich.</strong></p>
+        <a href="/meine-geschichte" class="textlink">Meine Geschichte lesen</a>
+      </div>
     </div>
   </section>
 
   <!-- 4. Für wen das ist -->
-  <section id="fuer-wen" class="section">
-    <div class="wrap stack">
-      <h2>Für wen das ist</h2>
-      <p class="platzhalter">[Text aus der Textwerkstatt. Beziehung weit gemeint: Arbeit, Führung, Familie, Freundschaft, Liebe]</p>
-      <p class="zitat">„An welcher Stelle kommst du eigentlich selbst vor?“</p>
-    </div>
-  </section>
-
-  <!-- 5. Wie ich arbeite („Mein Ansatz" gehört seit 31.10.2026 hierher) -->
-  <section id="wie-ich-arbeite" class="section section--light">
-    <div class="wrap zweispaltig">
-      <p class="zitat">„Was ich kann: bleiben, wenn es eng wird.“</p>
-      <div class="stack">
-        <h2>Wie ich arbeite</h2>
-        <p class="platzhalter">[Wie eine Stunde abläuft und welche Methoden ich nutze. Marios Fassung aus der Textwerkstatt]</p>
-        <p class="zitat zitat--klein">„Nicht nur warum. Vor allem wie und wo.“</p>
-        <p class="platzhalter">[Absatz zum Ansatz aus der Textwerkstatt]</p>
-        <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
+  <section id="fuer-wen">
+    <div class="block">
+      <div class="block-kopf">
+        <p class="label">Für wen das ist</p>
+        <h2>Beziehung meint mehr als Partnerschaft.</h2>
+        <p>Muster tauchen überall dort auf, wo Menschen miteinander zu tun haben. Ich bin kein Trennungscoach. Mich interessiert, was sich wiederholt.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- 6. Angebot und Preise -->
-  <section id="angebot" class="section">
-    <div class="wrap">
-      <h2>Angebot und Preise</h2>
       <div class="karten">
         <div class="karte">
-          <p class="eyebrow">Zum Kennenlernen</p>
-          <h3>Erstgespräch</h3>
-          <p class="preis">kostenlos</p>
-          <p class="platzhalter">[Dauer und Ablauf]</p>
+          <span class="nr">01</span>
+          <h3>Arbeit und Führung</h3>
+          <p>[Ein, zwei Sätze, wie sich das Muster im Job zeigt]</p>
         </div>
         <div class="karte">
-          <p class="eyebrow">Einzeln</p>
-          <h3>Einzelstunde</h3>
-          <p class="preis">{SITE.preise.einzel} €</p>
-          <p class="platzhalter">[Dauer, Hinweis „inkl. MwSt.“]</p>
+          <span class="nr">02</span>
+          <h3>Familie</h3>
+          <p>[Ein, zwei Sätze, wie sich das Muster in der Familie zeigt]</p>
         </div>
         <div class="karte">
-          <p class="eyebrow">Paket</p>
-          <h3>Zwei Stunden</h3>
-          <p class="preis">{SITE.preise.zweier} €</p>
-          <p class="platzhalter">[Kurzbeschreibung]</p>
-        </div>
-        <div class="karte">
-          <p class="eyebrow">Paket</p>
-          <h3>Drei Stunden</h3>
-          <p class="preis">{SITE.preise.dreier} €</p>
-          <p class="platzhalter">[Kurzbeschreibung]</p>
-        </div>
-        <div class="karte">
-          <p class="eyebrow">8 Plätze im Monat</p>
-          <h3>Zahl, was du kannst</h3>
-          <p class="platzhalter">[Text mit Marios Begründung aus der Textwerkstatt]</p>
+          <span class="nr">03</span>
+          <h3>Freundschaft und Liebe</h3>
+          <p>[Ein, zwei Sätze, wie sich das Muster in nahen Beziehungen zeigt]</p>
         </div>
       </div>
-      <div class="stack" style="margin-top: 48px;">
-        <p class="platzhalter">[Orte: online oder vor Ort, bei dir, im Café, beim Spaziergang, in der Natur, in den Praxisräumen bei Bielefeld und bei Berlin]</p>
-        <div class="actions"><a class="button" href={buchung}>Termin buchen</a></div>
+      <p class="schluss-zitat">„An welcher Stelle kommst du eigentlich selbst vor?“</p>
+    </div>
+  </section>
+
+  <div class="trenner"><div></div></div>
+
+  <!-- 5. Wie ich arbeite (mit dem Kernsatz aus „Mein Ansatz") -->
+  <section id="wie-ich-arbeite">
+    <div class="block">
+      <div class="zweispaltig">
+        <p class="gross-zitat">„Was ich kann: bleiben, wenn es eng wird.“</p>
+        <div class="spalte">
+          <p class="label">Wie ich arbeite</p>
+          <h2>Nicht nur warum. Vor allem wie und wo.</h2>
+          <p class="muted">Das Warum erklärt, was passiert ist. Wir schauen, wie es jetzt ist. Und wo das ist, was auf deinem Weg bis hierhin verloren gegangen ist oder noch nicht gefunden wurde. Dort fangen wir an.</p>
+          <p class="muted">[Wie eine Stunde abläuft und welche Methoden ich nutze]</p>
+          <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trenner"><div></div></div>
+
+  <!-- 6. Angebot und Preise -->
+  <section id="angebot">
+    <div class="block">
+      <div class="block-kopf">
+        <h2>Mein Angebot: Einzelcoaching</h2>
+        <p>Einzelcoaching für Menschen, die für sich selbst Verantwortung übernehmen wollen, aber gemerkt haben, dass mehr Druck nicht die Lösung ist.</p>
+      </div>
+      <div class="angebot-karten">
+        <div class="angebot-karte">
+          <p class="label">Zum Kennenlernen</p>
+          <h3>Erstgespräch</h3>
+          <p class="preis">kostenlos</p>
+          <p>Das Erstgespräch ist kostenlos und unverbindlich. Online, per Telefon oder vor Ort.</p>
+        </div>
+        <div class="angebot-karte">
+          <p class="label">Begleitung</p>
+          <h3>Preise</h3>
+          <table class="preise">
+            <tbody>
+              <tr><th scope="row">Einzelstunde</th><td>{SITE.preise.einzel} €</td></tr>
+              <tr><th scope="row">Zweierpaket</th><td>{SITE.preise.zweier} €</td></tr>
+              <tr><th scope="row">Dreierpaket</th><td>{SITE.preise.dreier} €</td></tr>
+            </tbody>
+          </table>
+          <p class="klein">Alle Preise inklusive Mehrwertsteuer.</p>
+        </div>
+        <div class="angebot-karte">
+          <p class="label">8 Termine im Monat</p>
+          <h3>Zahl, was du kannst</h3>
+          <p>Jeden Monat halte ich 8 Termine frei, bei denen du selbst festlegst, was du zahlst. Coaching soll nicht davon abhängen, wie viel Geld jemand hat.</p>
+        </div>
+      </div>
+      <div class="wo">
+        <h3>Wo wir arbeiten</h3>
+        <p>Online oder vor Ort: bei dir, im Café, beim Spaziergang oder draußen in der Natur, in Bielefeld, Hannover, Wolfsburg und Berlin. Oder in meinen Praxisräumen bei Bielefeld und bei Berlin.</p>
+        <p>Deinen Termin für das Erstgespräch buchst du direkt in meinem Kalender.</p>
+        <div class="actions"><a class="button" href={buchung}>Erstgespräch buchen</a></div>
       </div>
     </div>
   </section>
 
   <!-- 7. Meine Geschichte (Verweis auf die Unterseite) -->
-  <section id="geschichte" class="section section--light">
+  <section id="geschichte" class="hell">
     <div class="wrap zweispaltig">
       <Image src={fotoGeschichte} alt="Mario Wochner an einem Seeufer" width={960} widths={[480, 960]} sizes="(max-width: 700px) 100vw, 480px" />
-      <div class="stack">
-        <h2>Meine Geschichte</h2>
-        <p class="platzhalter">[Zwei, drei Sätze als Einladung zum Weiterlesen]</p>
-        <a href="/meine-geschichte">Weiterlesen</a>
+      <div class="spalte">
+        <p class="label">Meine Geschichte</p>
+        <h2>[Suchfrage als Titel, zum Beispiel „Wie geht Selbstliebe?“]</h2>
+        <p>[Zwei, drei Sätze als Einladung zum Weiterlesen]</p>
+        <a href="/meine-geschichte" class="textlink">Weiterlesen</a>
       </div>
     </div>
   </section>
 
   <!-- 8. Häufige Fragen -->
-  <section id="fragen" class="section">
-    <div class="wrap">
+  <section id="fragen">
+    <div class="block">
       <h2>Häufige Fragen</h2>
       <div class="fragen">
-        {fragen.map((frage) => (
+        {fragen.map(({ frage, antwort }) => (
           <details>
             <summary><h3>{frage}</h3></summary>
-            <p class="platzhalter">[Antwort aus der Textwerkstatt]</p>
+            <div class="antwort">{antwort.map((absatz) => <p>{absatz}</p>)}</div>
           </details>
         ))}
       </div>
@@ -189,18 +311,18 @@ const buchung = SITE.bookingUrl || '#kontakt';
   </section>
 
   <!-- 9. Kontakt -->
-  <section id="kontakt" class="section">
+  <section id="kontakt" class="kontakt">
     <div class="wrap zweispaltig">
-      <div class="stack">
-        <h2>Kontakt</h2>
-        <p class="platzhalter">[Kontakttext aus der Textwerkstatt. Bisher: „Wenn du das Gefühl hast, hier könnte etwas anfangen. Schreib mir. Ich antworte persönlich. Und nicht mit einer Vorlage.“]</p>
+      <div class="spalte">
+        <h2>Schreib mir, wo es sich bei dir wiederholt.</h2>
+        <p>Wenn du das Gefühl hast, hier könnte etwas anfangen. Schreib mir. Ich antworte persönlich. Und nicht mit einer Vorlage.</p>
         <div class="kontakt-daten">
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>
         </div>
-        <div class="actions"><a class="button" href={buchung}>Erstgespräch vereinbaren</a></div>
+        <div class="actions"><a class="button" href={buchung}>Kostenloses Erstgespräch</a></div>
       </div>
-      <Image src={fotoKontakt} alt="Mario Wochner lächelt in die Kamera" width={840} widths={[420, 840]} sizes="(max-width: 700px) 100vw, 420px" style="max-width: 420px;" />
+      <Image class="kontakt-foto" src={fotoKontakt} alt="Mario Wochner lächelt in die Kamera" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" />
     </div>
   </section>
 </Layout>

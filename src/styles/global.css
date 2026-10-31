@@ -62,12 +62,7 @@ p { margin: 0; }
 .muted { color: var(--text-muted); }
 
 /* Platzhalter für Texte, die noch aus der Textwerkstatt kommen */
-.platzhalter {
-  border: 1px dashed var(--line-strong);
-  color: var(--text-faint);
-  padding: 16px 20px;
-  font-size: 16px;
-}
+.platzhalter { color: var(--text-faint); }
 
 .button {
   display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px;
@@ -80,7 +75,7 @@ p { margin: 0; }
 .section + .section { border-top: 1px solid var(--line); }
 .section--light { background: var(--bg-light); color: var(--text-on-light); }
 .section--light .muted { color: var(--text-on-light-muted); }
-.section--light .platzhalter { color: var(--text-on-light-muted); border-color: #b9b0a2; }
+.section--light .platzhalter { color: var(--text-on-light-muted); }
 .section--light a { color: var(--accent-on-light); }
 .stack { display: flex; flex-direction: column; gap: 20px; max-width: 680px; }
 .wrap.stack { max-width: var(--max); }
