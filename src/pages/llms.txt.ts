@@ -1,18 +1,17 @@
-// Kurzbeschreibung für KI-Systeme (llms.txt). Wird nach Freigabe der Texte präzisiert.
+// Kurzbeschreibung für KI-Systeme (llms.txt), mit der von Mario entschiedenen Beschreibung.
 import type { APIRoute } from 'astro';
-import { SITE, ORTSZEILE } from '../site.config';
+import { SITE, ORTSZEILE, BESCHREIBUNG, GESCHICHTE_SICHTBAR } from '../site.config';
 
 export const GET: APIRoute = ({ site }) => {
   const url = (pfad: string) => new URL(pfad, site).href;
   const text = `# ${SITE.brand}
 
-> Einzelcoaching für Menschen, die viel erreicht haben und trotzdem nachts wach liegen, und für Menschen, die ihre Muster in Beziehungen kennen und sie trotzdem nicht ändern. ${ORTSZEILE}
+> ${BESCHREIBUNG} ${ORTSZEILE}
 
 ## Seiten
 
 - [Startseite](${url('/')}): Ansatz, Arbeitsweise, Angebot und Preise, häufige Fragen, Kontakt
-- [Meine Geschichte](${url('/meine-geschichte')}): Wie Mario Wochner selbst den Weg gegangen ist, über den er coacht
-
+${GESCHICHTE_SICHTBAR ? `- [Meine Geschichte](${url('/meine-geschichte')}): Warum fühle ich mich leer, obwohl ich alles habe?\n` : ''}
 ## Kontakt
 
 - E-Mail: ${SITE.email}

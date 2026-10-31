@@ -1,4 +1,4 @@
 # Alte Adressen der bisherigen Seite auf die neuen Ziele, damit alte Links nicht ins Leere laufen.
-/about      /meine-geschichte  301
+/about      /                  301
 /fuer-wen   /                  301
 /kontakt    /                  301
