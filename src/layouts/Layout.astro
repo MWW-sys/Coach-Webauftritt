@@ -6,7 +6,7 @@ import '@fontsource/manrope/600.css';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import ogSource from '../assets/mario-seitlich.jpg';
-import { SITE, ORTSZEILE } from '../site.config';
+import { SITE, ORTSZEILE, GESCHICHTE_SICHTBAR } from '../site.config';
 
 interface Props {
   /** Seitentitel für Google und Browser-Tab, höchstens etwa 60 Zeichen */
@@ -29,7 +29,7 @@ const nav = [
   { href: `${home}#fuer-wen`, label: 'Für wen' },
   { href: `${home}#wie-ich-arbeite`, label: 'Wie ich arbeite' },
   { href: `${home}#angebot`, label: 'Angebot' },
-  { href: '/meine-geschichte', label: 'Meine Geschichte' },
+  ...(GESCHICHTE_SICHTBAR ? [{ href: '/meine-geschichte', label: 'Meine Geschichte' }] : []),
   { href: `${home}#fragen`, label: 'Fragen' },
 ];
 ---

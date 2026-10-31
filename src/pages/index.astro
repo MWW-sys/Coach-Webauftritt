@@ -10,10 +10,11 @@ import fotoEinstieg from '../assets/mario-seitlich.jpg';
 import fotoKontakt from '../assets/mario-frontal.jpg';
 import fotoGeschichte from '../assets/mario-auto.jpg';
 import fotoCafe from '../assets/mario-cafe.jpg';
-import { SITE } from '../site.config';
+import { SITE, VORSCHAU, GESCHICHTE_SICHTBAR } from '../site.config';
 
 const title = 'Mario Wochner · Coaching';
-const description = '[Beschreibung aus der Textwerkstatt, höchstens 155 Zeichen]';
+// Bis die Textwerkstatt eine Beschreibung liefert, steht hier die H1.
+const description = 'Coaching in Berlin, Bielefeld und online: für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können.';
 
 const fragen = [
   {
@@ -215,7 +216,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <h2 class="label">Wer ich bin</h2>
         <p>Rund 30 Jahre Handwerk, Selbstständigkeit und Projektleitung. Irgendwann habe ich mich selbst zu meinem größten Projekt gemacht und herausgefunden, warum meine Beziehungen immer demselben Muster folgten.</p>
         <p><strong>So habe ich meine Antwort gefunden. Mich.</strong></p>
-        <a href="/meine-geschichte" class="textlink">Meine Geschichte lesen</a>
+        {GESCHICHTE_SICHTBAR && <a href="/meine-geschichte" class="textlink">Meine Geschichte lesen</a>}
       </div>
     </div>
   </section>
@@ -262,7 +263,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           <p class="label">Wie ich arbeite</p>
           <h2>Nicht nur warum. Vor allem wie und wo.</h2>
           <p class="muted">Das Warum erklärt, was passiert ist. Wir schauen, wie es jetzt ist. Und wo das ist, was auf deinem Weg bis hierhin verloren gegangen ist oder noch nicht gefunden wurde. Dort fangen wir an.</p>
-          <p class="muted">[Wie eine Stunde abläuft: Variante wählt Mario in der Textwerkstatt]</p>
+          {VORSCHAU && <p class="muted">[Wie eine Stunde abläuft: Variante wählt Mario in der Textwerkstatt]</p>}
           <p class="muted">Ich bin systemisch ausgebildet, arbeite mit dem Inneren Team nach Schulz von Thun und hypnosystemisch nach Gunther Schmidt. Welche Methode passt, klären wir im Erstgespräch.</p>
           <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
           <p class="muted">Ich bin mit dir zwar ein Stück gegangen, den Weg selbst bist aber du gegangen.</p>
@@ -314,6 +315,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
   </section>
 
   <!-- 7. Meine Geschichte (Verweis auf die Unterseite). Das Bild am Auto steht seit 31.10.2026 bei „Wer ich bin“. -->
+  {GESCHICHTE_SICHTBAR && (
   <section id="geschichte" class="hell">
     <div class="wrap">
       <div class="spalte" style="max-width: 680px;">
@@ -324,6 +326,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       </div>
     </div>
   </section>
+  )}
 
   <!-- 8. Häufige Fragen -->
   <section id="fragen">

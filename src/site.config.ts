@@ -1,6 +1,12 @@
 // Zentrale Angaben, die auf mehreren Seiten und in den strukturierten Daten vorkommen.
 // Hier ändern, nicht in den einzelnen Seiten.
 
+// Vorschau-Build (PUBLIC_VORSCHAU=1) zeigt Lücken in eckigen Klammern. Die Live-Seite blendet sie aus.
+export const VORSCHAU = import.meta.env.PUBLIC_VORSCHAU === '1';
+// Erst auf true setzen, wenn der Text der Unterseite „Meine Geschichte“ freigegeben ist.
+export const GESCHICHTE_FERTIG = false;
+export const GESCHICHTE_SICHTBAR = VORSCHAU || GESCHICHTE_FERTIG;
+
 export const SITE = {
   name: 'Mario Wochner',
   brand: 'Mario Wochner · Coaching aus Erfahrung',

@@ -4,7 +4,10 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import foto from '../assets/mario-auto.jpg';
-import { SITE } from '../site.config';
+import { SITE, GESCHICHTE_SICHTBAR } from '../site.config';
+
+// Solange der Text fehlt, leitet die Live-Seite von hier auf die Startseite.
+if (!GESCHICHTE_SICHTBAR) return Astro.redirect('/');
 
 const title = '[Title für „Meine Geschichte", höchstens 60 Zeichen]';
 const description = '[Beschreibung für „Meine Geschichte", höchstens 155 Zeichen]';
