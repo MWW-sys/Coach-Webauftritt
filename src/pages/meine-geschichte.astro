@@ -9,8 +9,9 @@ import { SITE, GESCHICHTE_SICHTBAR } from '../site.config';
 // Solange der Text fehlt, leitet die Live-Seite von hier auf die Startseite.
 if (!GESCHICHTE_SICHTBAR) return Astro.redirect('/');
 
-const title = '[Title für „Meine Geschichte", höchstens 60 Zeichen]';
-const description = '[Beschreibung für „Meine Geschichte", höchstens 155 Zeichen]';
+// Vorläufig H1 und Verweistext, bis die Textwerkstatt ein eigenes Paar für Google liefert.
+const title = 'Warum fühle ich mich leer, obwohl ich alles habe?';
+const description = 'Ich liege im Wohnmobil auf dem Sofa und schaue schräg durch das Fenster in die Baumkronen. Ich denke, es muss ein schöner Tag draußen sein. Und hier drin liege ich wie festgenagelt.';
 
 const jsonLd = [
   {

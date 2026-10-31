@@ -4,7 +4,7 @@
 // Vorschau-Build (PUBLIC_VORSCHAU=1) zeigt Lücken in eckigen Klammern. Die Live-Seite blendet sie aus.
 export const VORSCHAU = import.meta.env.PUBLIC_VORSCHAU === '1';
 // Erst auf true setzen, wenn der Text der Unterseite „Meine Geschichte“ freigegeben ist.
-export const GESCHICHTE_FERTIG = false;
+export const GESCHICHTE_FERTIG = true; // freigegeben von Mario am 31.10.2026
 export const GESCHICHTE_SICHTBAR = VORSCHAU || GESCHICHTE_FERTIG;
 
 // Beschreibung für Google, entschieden von Mario am 31.10.2026 (Website-Texte, Abschnitt 9)
