@@ -71,7 +71,7 @@ const nav = [
         .menu { display: block; position: relative; }
         .menu summary { list-style: none; cursor: pointer; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); padding: 0 14px; font-size: 15px; }
         .menu summary::-webkit-details-marker { display: none; }
-        .menu[open] .nav-list { position: absolute; right: 0; top: 52px; flex-direction: column; background: var(--bg); border: 1px solid var(--line-strong); padding: 12px 20px; min-width: 240px; }
+        .menu[open] .nav-list { position: absolute; right: 0; top: 100%; flex-direction: column; background: var(--bg); border: 1px solid var(--line-strong); padding: 12px 20px; min-width: 240px; }
       }
       .site-footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--text-faint); font-size: 15px; }
       .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
@@ -103,6 +103,15 @@ const nav = [
         </details>
       </div>
     </header>
+    <script>
+      // Menü: am Rechner öffnet es beim Überfahren mit der Maus, am Handy beim Tippen
+      // (Entscheidung Mario, 31.10.2026). Tippen und Tastatur laufen über das details-Element.
+      const menu = document.querySelector<HTMLDetailsElement>('.menu');
+      if (menu && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        menu.addEventListener('mouseenter', () => { menu.open = true; });
+        menu.addEventListener('mouseleave', () => { menu.open = false; });
+      }
+    </script>
 
     <main id="inhalt">
       <slot />
