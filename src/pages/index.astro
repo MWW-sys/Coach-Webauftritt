@@ -56,15 +56,26 @@ const buchung = SITE.bookingUrl || '#kontakt';
     .fragen summary h3 { font-size: 22px; }
     .fragen .platzhalter { margin: 8px 0 16px; }
     .kontakt-daten { display: flex; flex-direction: column; gap: 4px; font-size: 20px; }
+    /* Einstieg: der erste Satz ist das Größte, die H1 kleiner darunter */
+    .einstieg-satz { font-family: var(--font-display); font-weight: 300; font-size: clamp(40px, 6.5vw, 76px); line-height: 1.04; letter-spacing: -0.02em; }
+    .einstieg-zeile { font-size: clamp(20px, 2.4vw, 24px); color: var(--text-muted); }
+    .hero h1 { font-size: clamp(26px, 3.2vw, 36px); font-weight: 400; line-height: 1.2; letter-spacing: 0; }
+    .zitat--klein { font-size: clamp(24px, 3vw, 32px); }
   </style>
 
-  <!-- 2. Einstieg mit H1 -->
+  <!-- 2. Einstieg mit H1
+       Entschieden am 31.10.2026: Der erste Satz steht ganz oben und ist das Erste, was man liest.
+       Offen: wie Gesprächsszene, „3 Uhr 33" und H1 dazu stehen. Hier gesetzt nach dem Vorschlag der Technik:
+       Der Satz ist optisch das Größte, die H1 trägt Coaching, Zielgruppe und Orte und ist kleiner gesetzt. -->
   <section class="hero" aria-labelledby="h1">
     <div class="wrap">
       <div class="hero-text">
-        <p class="eyebrow">Coaching in Berlin, Bielefeld, Hannover, Wolfsburg und online</p>
-        <p class="platzhalter">[Kurze Szene zum Einstieg. Entscheidung offen: „3 Uhr 33" oder die Gesprächsszene]</p>
-        <h1 id="h1">[H1 aus der Textwerkstatt: was, für wen, wo]</h1>
+        <p class="einstieg-satz">Warum landest du immer wieder an derselben Stelle?</p>
+        <p class="einstieg-zeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
+        <p class="platzhalter">[Text darunter aus der Textwerkstatt mit den Suchbegriffen: immer wieder dasselbe Muster, warum passiert mir immer das Gleiche, Muster in Beziehungen]</p>
+        <p class="platzhalter">[Gesprächsszene „Kennst du das Gefühl …“ und „3 Uhr 33“: Anordnung offen]</p>
+        <h1 id="h1">[H1 aus der Textwerkstatt: Coaching, für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können, Orte]</h1>
+        <p class="platzhalter">[Zeile unter der H1 mit den Orten]</p>
         <div class="actions">
           <a class="button" href={buchung}>Erstgespräch vereinbaren</a>
           <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
@@ -94,28 +105,21 @@ const buchung = SITE.bookingUrl || '#kontakt';
     </div>
   </section>
 
-  <!-- 5. Mein Ansatz -->
-  <section id="ansatz" class="section">
-    <div class="wrap stack">
-      <h2>Mein Ansatz</h2>
-      <p class="zitat">„Nicht nur warum. Vor allem wie und wo.“</p>
-      <p class="platzhalter">[Absatz zum Ansatz aus der Textwerkstatt]</p>
-    </div>
-  </section>
-
-  <!-- 6. Wie ich arbeite -->
+  <!-- 5. Wie ich arbeite („Mein Ansatz" gehört seit 31.10.2026 hierher) -->
   <section id="wie-ich-arbeite" class="section section--light">
     <div class="wrap zweispaltig">
       <p class="zitat">„Was ich kann: bleiben, wenn es eng wird.“</p>
       <div class="stack">
         <h2>Wie ich arbeite</h2>
         <p class="platzhalter">[Wie eine Stunde abläuft und welche Methoden ich nutze. Marios Fassung aus der Textwerkstatt]</p>
+        <p class="zitat zitat--klein">„Nicht nur warum. Vor allem wie und wo.“</p>
+        <p class="platzhalter">[Absatz zum Ansatz aus der Textwerkstatt]</p>
         <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
       </div>
     </div>
   </section>
 
-  <!-- 7. Angebot und Preise -->
+  <!-- 6. Angebot und Preise -->
   <section id="angebot" class="section">
     <div class="wrap">
       <h2>Angebot und Preise</h2>
@@ -130,7 +134,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
           <p class="eyebrow">Einzeln</p>
           <h3>Einzelstunde</h3>
           <p class="preis">{SITE.preise.einzel} €</p>
-          <p class="platzhalter">[Dauer, Hinweis zur Umsatzsteuer]</p>
+          <p class="platzhalter">[Dauer, Hinweis „inkl. MwSt.“]</p>
         </div>
         <div class="karte">
           <p class="eyebrow">Paket</p>
@@ -157,7 +161,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
     </div>
   </section>
 
-  <!-- 8. Meine Geschichte (Verweis auf die Unterseite) -->
+  <!-- 7. Meine Geschichte (Verweis auf die Unterseite) -->
   <section id="geschichte" class="section section--light">
     <div class="wrap zweispaltig">
       <Image src={fotoGeschichte} alt="Mario Wochner an einem Seeufer" width={960} widths={[480, 960]} sizes="(max-width: 700px) 100vw, 480px" />
@@ -169,7 +173,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
     </div>
   </section>
 
-  <!-- 9. Häufige Fragen -->
+  <!-- 8. Häufige Fragen -->
   <section id="fragen" class="section">
     <div class="wrap">
       <h2>Häufige Fragen</h2>
@@ -184,7 +188,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
     </div>
   </section>
 
-  <!-- 10. Kontakt -->
+  <!-- 9. Kontakt -->
   <section id="kontakt" class="section">
     <div class="wrap zweispaltig">
       <div class="stack">
