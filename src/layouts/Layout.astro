@@ -65,14 +65,12 @@ const nav = [
       .nav-list a { color: var(--text); text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
       .nav-list a:hover { color: var(--accent-hover); }
       .nav-cta { color: var(--accent) !important; font-weight: 600; }
-      .menu { display: none; }
-      @media (max-width: 900px) {
-        .desktop-nav { display: none; }
-        .menu { display: block; position: relative; }
-        .menu summary { list-style: none; cursor: pointer; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); padding: 0 14px; font-size: 15px; }
-        .menu summary::-webkit-details-marker { display: none; }
-        .menu[open] .nav-list { position: absolute; right: 0; top: 100%; flex-direction: column; background: var(--bg); border: 1px solid var(--line-strong); padding: 12px 20px; min-width: 240px; }
-      }
+      /* Menü auf allen Bildschirmen zugeklappt, Button „Menü“ in der Kopfzeile (Entscheidung Mario, 31.10.2026) */
+      .menu { position: relative; }
+      .menu summary { list-style: none; cursor: pointer; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); padding: 0 16px; font-size: 15px; }
+      .menu summary::-webkit-details-marker { display: none; }
+      .menu[open] summary { border-color: var(--accent); }
+      .menu[open] .nav-list { position: absolute; right: 0; top: 100%; flex-direction: column; flex-wrap: nowrap; background: var(--bg); border: 1px solid var(--line-strong); padding: 12px 20px; min-width: 240px; }
       .site-footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--text-faint); font-size: 15px; }
       .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
       .site-footer a { color: var(--text-faint); }
@@ -86,15 +84,9 @@ const nav = [
     <header class="site-header">
       <div class="wrap">
         <a class="logo" href="/">{SITE.name}</a>
-        <nav class="desktop-nav" aria-label="Hauptnavigation">
-          <ul class="nav-list">
-            {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-            <li><a class="nav-cta" href={`${home}#kontakt`}>Erstgespräch</a></li>
-          </ul>
-        </nav>
         <details class="menu">
           <summary aria-label="Menü öffnen">Menü</summary>
-          <nav aria-label="Hauptnavigation mobil">
+          <nav aria-label="Hauptnavigation">
             <ul class="nav-list">
               {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
               <li><a class="nav-cta" href={`${home}#kontakt`}>Erstgespräch</a></li>

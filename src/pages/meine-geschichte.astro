@@ -1,6 +1,6 @@
 ---
 // Unterseite „Meine Geschichte". H1 ist eine Suchfrage, darunter die Zeile „Meine Geschichte".
-// Welche Frage es wird, entscheidet Mario (Hinweis im Projektstand vom 31.10.2026).
+// H1 entschieden von Mario am 31.10.2026 (Verlauf im Projektstand).
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import foto from '../assets/mario-auto.jpg';
@@ -13,7 +13,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: '[H1 von „Meine Geschichte"]',
+    headline: 'Warum fühle ich mich leer, obwohl ich alles habe?',
     author: { '@type': 'Person', name: SITE.name },
     inLanguage: 'de',
   },
@@ -31,7 +31,7 @@ const jsonLd = [
 
   <section class="kopf">
     <div class="wrap stack">
-      <h1>[Suchfrage als H1, zum Beispiel „Warum fühle ich mich leer, obwohl ich alles habe?"]</h1>
+      <h1>Warum fühle ich mich leer, obwohl ich alles habe?</h1>
       <p class="eyebrow">Meine Geschichte</p>
     </div>
   </section>

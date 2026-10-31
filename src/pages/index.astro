@@ -9,6 +9,7 @@ import Layout from '../layouts/Layout.astro';
 import fotoEinstieg from '../assets/mario-seitlich.jpg';
 import fotoKontakt from '../assets/mario-frontal.jpg';
 import fotoGeschichte from '../assets/mario-auto.jpg';
+import fotoCafe from '../assets/mario-cafe.jpg';
 import { SITE } from '../site.config';
 
 const title = 'Mario Wochner · Coaching';
@@ -18,7 +19,7 @@ const fragen = [
   {
     frage: 'Warum wache ich immer um 3 Uhr nachts auf?',
     antwort: [
-      'Es ist nichts kaputt mit dir. Vielleicht ist das Aufwachen kein Fehler, sondern ein Zeichen, dass da drin noch jemand ist.',
+      'Es ist nichts kaputt mit dir. Das Aufwachen ist kein Fehler. Es kann ein Zeichen sein, dass du da drin noch was anderes brauchst.',
       'Wenn du über längere Zeit schlecht schläfst, lass das bitte ärztlich abklären. Im Coaching geht es um das, was dich innerlich wach hält.',
     ],
   },
@@ -77,7 +78,9 @@ const jsonLd = [
   },
 ];
 
+// Bis ein Buchungstool steht, führen die Buttons zu Mail und Telefon im Abschnitt Kontakt (Entscheidung Mario, 31.10.2026).
 const buchung = SITE.bookingUrl || '#kontakt';
+const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${encodeURIComponent('Kostenloses Erstgespräch')}`;
 ---
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
@@ -111,24 +114,24 @@ const buchung = SITE.bookingUrl || '#kontakt';
     /* Wer ich bin: Zitat und Bild links, Text rechts. Das Bild hängt unten in den dunklen Bereich hinein
        (Wunsch Mario, 31.10.2026). Der nächste Abschnitt hält dafür oben mehr Abstand. */
     #wer-ich-bin { position: relative; z-index: 1; }
-    #wer-ich-bin .wrap { padding-top: 2cm; }
+    #wer-ich-bin .wrap { padding-top: 1.5cm; }
     .wer-raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "zitat text" "foto text"; column-gap: 72px; row-gap: 40px; align-items: start; }
     .wer-raster .gross-zitat { grid-area: zitat; font-size: clamp(32px, 3.8vw, 44px); }
     .wer-raster .spalte { grid-area: text; }
-    .wer-foto { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; margin-bottom: -232px;
-      /* unterer Rand mit der Wiese läuft weich ins Dunkle aus */
-      -webkit-mask-image: linear-gradient(to bottom, #000 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
-      mask-image: linear-gradient(to bottom, #000 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%); }
-    /* Wie ich arbeite: Platz für ein Ganzkörperbild unter dem Zitat (Wunsch Mario, 31.10.2026) */
-    .bild-platz { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; background: var(--bg-raised); border: 1px solid var(--line-strong); display: flex; align-items: flex-end; padding: 20px; color: var(--text-faint); font-size: 14px; }
-    #wer-ich-bin + #fuer-wen .block { padding-top: 216px; }
+    .wer-foto { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; margin-bottom: -176px;
+      /* ragt 64 px ins Dunkle; der untere Rand mit der Wiese läuft kurz vor der Kante weich aus */
+      -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 84px), rgba(0, 0, 0, 0.92) calc(100% - 64px), rgba(0, 0, 0, 0.35) calc(100% - 28px), transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 calc(100% - 84px), rgba(0, 0, 0, 0.92) calc(100% - 64px), rgba(0, 0, 0, 0.35) calc(100% - 28px), transparent 100%); }
+    /* Wie ich arbeite: Foto aus dem Café unter dem Zitat (Wunsch Mario, 31.10.2026) */
+    .arbeit-foto { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; }
+    #wer-ich-bin + #fuer-wen .block { padding-top: 160px; }
     @media (max-width: 760px) {
       .wer-raster { grid-template-columns: minmax(0, 1fr); grid-template-areas: "zitat" "text" "foto"; row-gap: 40px; }
-      .wer-foto { max-width: 280px; margin-bottom: -184px;
-        -webkit-mask-image: linear-gradient(to bottom, #000 79%, rgba(0, 0, 0, 0.45) 90%, transparent 100%);
-        mask-image: linear-gradient(to bottom, #000 79%, rgba(0, 0, 0, 0.45) 90%, transparent 100%); }
-      .bild-platz { max-width: 280px; }
-      #wer-ich-bin + #fuer-wen .block { padding-top: 136px; }
+      .wer-foto { max-width: 280px; margin-bottom: -160px;
+        -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 64px), rgba(0, 0, 0, 0.92) calc(100% - 48px), rgba(0, 0, 0, 0.35) calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 calc(100% - 64px), rgba(0, 0, 0, 0.92) calc(100% - 48px), rgba(0, 0, 0, 0.35) calc(100% - 20px), transparent 100%); }
+      .arbeit-foto { max-width: 280px; }
+      #wer-ich-bin + #fuer-wen .block { padding-top: 128px; }
     }
     .spalte { display: flex; flex-direction: column; gap: 20px; }
 
@@ -233,12 +236,12 @@ const buchung = SITE.bookingUrl || '#kontakt';
         <div class="karte">
           <span class="nr">02</span>
           <h3>Familie</h3>
-          <p>Dein Kind steckt mitten in der Pubertät, und im Streit merkst du, wie sich ein Verhalten immer wiederholt. Du gibst ständig mehr und bekommst nicht das, was du jetzt brauchst.</p>
+          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten wieder das Kind von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
         </div>
         <div class="karte">
           <span class="nr">03</span>
           <h3>Freundschaft und Liebe</h3>
-          <p>Im Konflikt mit deinem Partner, deiner Partnerin, fühlst du, wie du kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen.</p>
+          <p>Im Konflikt mit deinem Partner, deiner Partnerin, fühlst du, wie du kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
         </div>
       </div>
       <p class="schluss-zitat">„An welcher Stelle kommst du eigentlich selbst vor?“</p>
@@ -252,13 +255,15 @@ const buchung = SITE.bookingUrl || '#kontakt';
     <div class="block">
       <div class="wer-raster">
         <p class="gross-zitat">„Was ich kann: bleiben, wenn es eng wird.“</p>
-        <div class="bild-platz" role="img" aria-label="Platz für ein Ganzkörperbild">[Ganzkörperbild]</div>
+        <Image class="arbeit-foto" src={fotoCafe} alt="Mario Wochner im Porträt, in einem Straßencafé" width={602} widths={[340, 602]} sizes="(max-width: 760px) 280px, 340px" />
         <div class="spalte">
           <p class="label">Wie ich arbeite</p>
           <h2>Nicht nur warum. Vor allem wie und wo.</h2>
           <p class="muted">Das Warum erklärt, was passiert ist. Wir schauen, wie es jetzt ist. Und wo das ist, was auf deinem Weg bis hierhin verloren gegangen ist oder noch nicht gefunden wurde. Dort fangen wir an.</p>
-          <p class="muted">[Wie eine Stunde abläuft und welche Methoden ich nutze]</p>
+          <p class="muted">[Wie eine Stunde abläuft: Variante wählt Mario in der Textwerkstatt]</p>
+          <p class="muted">Ich bin systemisch ausgebildet, arbeite mit dem Inneren Team nach Schulz von Thun und hypnosystemisch nach Gunther Schmidt. Welche Methode passt, klären wir im Erstgespräch.</p>
           <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
+          <p class="muted">Ich bin mit dir zwar ein Stück gegangen, den Weg selbst bist aber du gegangen.</p>
         </div>
       </div>
     </div>
@@ -301,7 +306,6 @@ const buchung = SITE.bookingUrl || '#kontakt';
       <div class="wo">
         <h3>Wo wir arbeiten</h3>
         <p>Online oder vor Ort: bei dir, im Café, beim Spaziergang oder draußen in der Natur, in Bielefeld, Hannover, Wolfsburg und Berlin. Oder in meinen Praxisräumen bei Bielefeld und bei Berlin.</p>
-        <p>Deinen Termin für das Erstgespräch buchst du direkt in meinem Kalender.</p>
         <div class="actions"><a class="button" href={buchung}>Kostenloses Erstgespräch</a></div>
       </div>
     </div>
@@ -312,7 +316,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
     <div class="wrap">
       <div class="spalte" style="max-width: 680px;">
         <p class="label">Meine Geschichte</p>
-        <h2>[Suchfrage als Titel, zum Beispiel „Wie geht Selbstliebe?“]</h2>
+        <h2>Wie geht Selbstliebe?</h2>
         <p>[Zwei, drei Sätze als Einladung zum Weiterlesen]</p>
         <a href="/meine-geschichte" class="textlink">Weiterlesen</a>
       </div>
@@ -344,7 +348,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>
         </div>
-        <div class="actions"><a class="button" href={buchung}>Kostenloses Erstgespräch</a></div>
+        <div class="actions"><a class="button" href={mailErstgespraech}>Kostenloses Erstgespräch</a></div>
       </div>
       <Image class="kontakt-foto" src={fotoKontakt} alt="Mario Wochner lächelt in die Kamera" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" />
     </div>
