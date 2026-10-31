@@ -30,6 +30,9 @@ const jsonLd = [
     .text { padding-bottom: 96px; }
     .text .stack { max-width: 680px; }
     .foto { max-width: 520px; }
+    .aufklapp { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 8px 0; }
+    .aufklapp summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-family: var(--font-display); font-size: 22px; }
+    .aufklapp p { padding: 8px 0 16px; }
   </style>
 
   <section class="kopf">
@@ -42,10 +45,15 @@ const jsonLd = [
   <section class="text">
     <div class="wrap stack">
       <Image class="foto" src={foto} alt="Mario Wochner an einem Seeufer" width={1040} widths={[520, 1040]} sizes="(max-width: 700px) 100vw, 520px" />
-      <p class="platzhalter">[Text „Meine Geschichte" aus der Textwerkstatt, gegliedert mit Zwischenüberschriften (H2)]</p>
-      <p class="platzhalter">[Hinweis: Coaching ersetzt keine Therapie]</p>
+      <p class="platzhalter">[Sofa-Szene, Text aus der Textwerkstatt]</p>
+      <h2>Wie geht Selbstliebe?</h2>
+      <p>Ich habe das unzählige Male gehört: „Du musst dich selbst lieben.“ Aber keiner konnte mir beantworten: Wie geht das mit der Selbstliebe? Und doch habe ich für mich eine Antwort darauf gefunden. Und die klingt für mich nicht wie Selbstliebe.</p>
+      <details class="aufklapp">
+        <summary>[Überschrift für die Kindheitsgeschichte]</summary>
+        <p class="platzhalter">[Kindheitsgeschichte zum Aufklappen, Text aus der Textwerkstatt]</p>
+      </details>
       <div class="actions" style="display:flex; gap:16px; flex-wrap:wrap;">
-        <a class="button" href="/#kontakt">Erstgespräch vereinbaren</a>
+        <a class="button" href="/#kontakt">Kostenloses Erstgespräch</a>
         <a class="textlink" href="/">Zur Startseite</a>
       </div>
     </div>
