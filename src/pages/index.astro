@@ -153,6 +153,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     .preise th { text-align: left; font-weight: 400; padding: 10px 0; border-bottom: 1px solid var(--line); }
     .preise td { text-align: right; font-family: var(--font-display); font-size: 26px; color: var(--accent); padding: 10px 0; border-bottom: 1px solid var(--line); }
     .klein { font-size: 14px; color: var(--text-faint); }
+    .preise .dauer { display: block; font-size: 14px; color: var(--text-faint); }
     .wo { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
     .wo p { color: var(--text-muted); }
 
@@ -225,6 +226,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       <div class="block-kopf">
         <p class="label">Für wen das ist</p>
         <h2>Beziehung meint mehr als Partnerschaft.</h2>
+        <p>Und Partnerschaft ist nicht nur Romantik. Geschäftspartner zum Beispiel.</p>
         <p>Muster tauchen überall dort auf, wo Menschen miteinander zu tun haben. Ich bin kein Trennungscoach. Mich interessiert, was sich wiederholt.</p>
       </div>
       <div class="karten">
@@ -290,7 +292,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           <h3>Preise</h3>
           <table class="preise">
             <tbody>
-              <tr><th scope="row">Einzelstunde</th><td>{SITE.preise.einzel} €</td></tr>
+              <tr><th scope="row">Einzelstunde<span class="dauer">60 bis 90 Minuten</span></th><td>{SITE.preise.einzel} €</td></tr>
               <tr><th scope="row">Zweierpaket</th><td>{SITE.preise.zweier} €</td></tr>
               <tr><th scope="row">Dreierpaket</th><td>{SITE.preise.dreier} €</td></tr>
             </tbody>
@@ -300,7 +302,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="angebot-karte">
           <p class="label">8 Termine im Monat</p>
           <h3>Zahl, was du kannst</h3>
-          <p>Jeden Monat halte ich 8 Termine frei, bei denen du selbst festlegst, was du zahlst. Coaching soll nicht davon abhängen, wie viel Geld jemand hat.</p>
+          <p>Jeden Monat halte ich 8 Termine frei, bei denen du selbst festlegst, was du zahlst. Coaching soll nicht davon abhängen, wie viel Geld jemand hat. Auch diese Termine vereinbaren wir im Erstgespräch.</p>
         </div>
       </div>
       <div class="wo">
