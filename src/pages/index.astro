@@ -111,14 +111,23 @@ const buchung = SITE.bookingUrl || '#kontakt';
     /* Wer ich bin: Zitat und Bild links, Text rechts. Das Bild hängt unten in den dunklen Bereich hinein
        (Wunsch Mario, 31.10.2026). Der nächste Abschnitt hält dafür oben mehr Abstand. */
     #wer-ich-bin { position: relative; z-index: 1; }
-    .wer-raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "zitat text" "foto text"; column-gap: 72px; row-gap: 56px; align-items: start; }
+    #wer-ich-bin .wrap { padding-top: 2cm; }
+    .wer-raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "zitat text" "foto text"; column-gap: 72px; row-gap: 40px; align-items: start; }
     .wer-raster .gross-zitat { grid-area: zitat; font-size: clamp(32px, 3.8vw, 44px); }
     .wer-raster .spalte { grid-area: text; }
-    .wer-foto { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; margin-bottom: -232px; }
+    .wer-foto { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; margin-bottom: -232px;
+      /* unterer Rand mit der Wiese läuft weich ins Dunkle aus */
+      -webkit-mask-image: linear-gradient(to bottom, #000 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 72%, rgba(0, 0, 0, 0.45) 88%, transparent 100%); }
+    /* Wie ich arbeite: Platz für ein Ganzkörperbild unter dem Zitat (Wunsch Mario, 31.10.2026) */
+    .bild-platz { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; background: var(--bg-raised); border: 1px solid var(--line-strong); display: flex; align-items: flex-end; padding: 20px; color: var(--text-faint); font-size: 14px; }
     #wer-ich-bin + #fuer-wen .block { padding-top: 216px; }
     @media (max-width: 760px) {
       .wer-raster { grid-template-columns: minmax(0, 1fr); grid-template-areas: "zitat" "text" "foto"; row-gap: 40px; }
-      .wer-foto { max-width: 280px; margin-bottom: -184px; }
+      .wer-foto { max-width: 280px; margin-bottom: -184px;
+        -webkit-mask-image: linear-gradient(to bottom, #000 79%, rgba(0, 0, 0, 0.45) 90%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 79%, rgba(0, 0, 0, 0.45) 90%, transparent 100%); }
+      .bild-platz { max-width: 280px; }
       #wer-ich-bin + #fuer-wen .block { padding-top: 136px; }
     }
     .spalte { display: flex; flex-direction: column; gap: 20px; }
@@ -219,17 +228,17 @@ const buchung = SITE.bookingUrl || '#kontakt';
         <div class="karte">
           <span class="nr">01</span>
           <h3>Arbeit und Führung</h3>
-          <p>[Ein, zwei Sätze, wie sich das Muster im Job zeigt]</p>
+          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst wieder Ja, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
         </div>
         <div class="karte">
           <span class="nr">02</span>
           <h3>Familie</h3>
-          <p>[Ein, zwei Sätze, wie sich das Muster in der Familie zeigt]</p>
+          <p>Dein Kind steckt mitten in der Pubertät, und im Streit merkst du, wie sich ein Verhalten immer wiederholt. Du gibst ständig mehr und bekommst nicht das, was du jetzt brauchst.</p>
         </div>
         <div class="karte">
           <span class="nr">03</span>
           <h3>Freundschaft und Liebe</h3>
-          <p>[Ein, zwei Sätze, wie sich das Muster in nahen Beziehungen zeigt]</p>
+          <p>Im Konflikt mit deinem Partner, deiner Partnerin, fühlst du, wie du kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen.</p>
         </div>
       </div>
       <p class="schluss-zitat">„An welcher Stelle kommst du eigentlich selbst vor?“</p>
@@ -241,8 +250,9 @@ const buchung = SITE.bookingUrl || '#kontakt';
   <!-- 5. Wie ich arbeite (mit dem Kernsatz aus „Mein Ansatz") -->
   <section id="wie-ich-arbeite">
     <div class="block">
-      <div class="zweispaltig">
+      <div class="wer-raster">
         <p class="gross-zitat">„Was ich kann: bleiben, wenn es eng wird.“</p>
+        <div class="bild-platz" role="img" aria-label="Platz für ein Ganzkörperbild">[Ganzkörperbild]</div>
         <div class="spalte">
           <p class="label">Wie ich arbeite</p>
           <h2>Nicht nur warum. Vor allem wie und wo.</h2>
@@ -292,7 +302,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
         <h3>Wo wir arbeiten</h3>
         <p>Online oder vor Ort: bei dir, im Café, beim Spaziergang oder draußen in der Natur, in Bielefeld, Hannover, Wolfsburg und Berlin. Oder in meinen Praxisräumen bei Bielefeld und bei Berlin.</p>
         <p>Deinen Termin für das Erstgespräch buchst du direkt in meinem Kalender.</p>
-        <div class="actions"><a class="button" href={buchung}>Erstgespräch buchen</a></div>
+        <div class="actions"><a class="button" href={buchung}>Kostenloses Erstgespräch</a></div>
       </div>
     </div>
   </section>
