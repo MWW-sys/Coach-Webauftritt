@@ -7,6 +7,11 @@ export const VORSCHAU = import.meta.env.PUBLIC_VORSCHAU === '1';
 export const GESCHICHTE_FERTIG = true; // freigegeben von Mario am 31.10.2026
 export const GESCHICHTE_SICHTBAR = VORSCHAU || GESCHICHTE_FERTIG;
 
+// IHK-Zertifikat (Mario, 01.11.2026): Bis zum 6.11.2026 steht an beiden Stellen „ab 6.11.“ dabei.
+// Am 6.11. führt Mario den vorbereiteten Pull Request zusammen, der hier false durch true ersetzt.
+export const ZERTIFIKAT_ERHALTEN = false;
+export const ZERTIFIKAT_KOPF = 'IHK-zertifizierter systemischer Coach' + (ZERTIFIKAT_ERHALTEN ? '' : ' (ab\u00a06.11.)');
+
 // Beschreibung für Google, entschieden von Mario am 31.10.2026 (Website-Texte, Abschnitt 9)
 export const BESCHREIBUNG = 'Warum landest du immer wieder an derselben Stelle? Coaching für wiederkehrende Muster im Job, in der Familie und in der Liebe. Berlin, Bielefeld, online.';
 

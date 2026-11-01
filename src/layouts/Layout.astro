@@ -6,7 +6,7 @@ import '@fontsource/manrope/600.css';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
 import ogSource from '../assets/mario-seitlich.jpg';
-import { SITE, ORTSZEILE } from '../site.config';
+import { SITE, ORTSZEILE, ZERTIFIKAT_KOPF } from '../site.config';
 
 interface Props {
   /** Seitentitel für Google und Browser-Tab, höchstens etwa 60 Zeichen */
@@ -77,6 +77,9 @@ const nav = [
       .kopf-h1 { margin: 0; font-family: var(--font-body); font-size: 13px; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; color: var(--text-faint); max-width: 620px; }
       .kopf-h1-teil { display: block; }
       @media (max-width: 760px) { .kopf-h1 { font-size: 12px; } }
+      .marke-zeile { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; }
+      .kopf-zert { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--text-muted); display: inline-flex; gap: 10px; }
+      @media (max-width: 760px) { .marke-zeile { flex-direction: column; gap: 0; } .kopf-zert { font-size: 12px; } .zert-trenner { display: none; } }
       .logo { font-family: var(--font-display); font-size: 22px; color: var(--text); text-decoration: none; }
       .nav-list { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
       .nav-list a { color: var(--text); text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
@@ -105,7 +108,11 @@ const nav = [
     <header class="site-header">
       <div class="wrap">
         <div class="marke">
-          <a class="logo" href="/">{SITE.name}</a>
+          <!-- IHK-Zertifikat in der Zeile neben dem Namen, kleiner (Vorschlag Design, Mario, 01.11.2026). Am Handy darunter. -->
+          <div class="marke-zeile">
+            <a class="logo" href="/">{SITE.name}</a>
+            <span class="kopf-zert"><span class="zert-trenner" aria-hidden="true">·</span>{ZERTIFIKAT_KOPF}</span>
+          </div>
           {kopfH1 && <h1 class="kopf-h1">{kopfH1.map((teil, i) => <>{i > 0 && ' '}<span class="kopf-h1-teil">{teil}</span></>)}</h1>}
         </div>
         <div class="kopf-rechts">
@@ -133,6 +140,11 @@ const nav = [
         // Ein Klick auf „Menü“ soll das schon offene Menü nicht wieder schließen
         menu.querySelector('summary')?.addEventListener('click', (e) => { e.preventDefault(); menu.open = true; });
       }
+      // Sprünge aus dem Menü landen unter der Kopfzeile, auch wenn sie am Handy höher ist
+      const kopf = document.querySelector<HTMLElement>('.site-header');
+      const kopfHoehe = () => { if (kopf) document.documentElement.style.scrollPaddingTop = `${kopf.offsetHeight + 12}px`; };
+      kopfHoehe();
+      window.addEventListener('resize', kopfHoehe);
       // Mit der Escape-Taste schließen
       menu?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menu.open = false; menu.querySelector('summary')?.focus(); } });
     </script>
