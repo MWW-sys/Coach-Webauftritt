@@ -85,9 +85,15 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
   <style>
-    .hero .wrap { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
-    .hero-text { flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
-    .hero-foto { flex: 1 1 300px; min-width: 0; display: flex; justify-content: center; }
+    /* Einstieg: Button und „Wer ich bin“ rechts unter dem Foto, damit der Text links Luft hat (Mario, 31.10.2026).
+       Am Handy steht der Button vor dem Foto, damit er früh zu sehen ist. */
+    .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); grid-template-areas: "text foto" "text aktionen"; column-gap: 72px; row-gap: 24px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
+    .hero-text { grid-area: text; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+    .hero-foto { grid-area: foto; min-width: 0; display: flex; justify-content: center; align-self: end; }
+    .hero-aktionen { grid-area: aktionen; align-self: start; padding-top: 0; }
+    @media (max-width: 760px) {
+      .hero .wrap { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "aktionen" "foto"; row-gap: 32px; }
+    }
     .hero-foto img { width: 100%; max-width: 400px; aspect-ratio: 4 / 5; object-fit: cover; }
     .hero h1 { font-family: var(--font-body); font-size: 15px; font-weight: 500; letter-spacing: 0.04em; line-height: 1.5; color: var(--text-faint); max-width: 560px; }
     .uhrzeit { font-family: var(--font-display); font-weight: 300; font-size: clamp(64px, 9vw, 88px); line-height: 1; letter-spacing: -0.02em; }
@@ -105,6 +111,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     .hell { background: var(--bg-light); color: var(--text-on-light); }
     .hell .wrap { padding-top: 112px; padding-bottom: 112px; }
     .hell a { color: var(--accent-on-light); }
+    .hell .button, .hell .button:hover { color: var(--bg); }
     .hell .label { color: #5E564B; }
     .zweispaltig { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
     .zweispaltig > * { flex: 1 1 360px; min-width: 0; }
@@ -183,13 +190,13 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <p class="uhrzeit">3 Uhr 33.</p>
         <p class="leitsatz">Warum landest du immer wieder an derselben Stelle?</p>
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
-        <div class="actions">
-          <a class="button" href={buchung}>Kostenloses Erstgespräch</a>
-          <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
-        </div>
       </div>
       <div class="hero-foto">
         <Image src={fotoEinstieg} alt="Mario Wochner, Coach" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
+      </div>
+      <div class="actions hero-aktionen">
+        <a class="button" href={buchung}>Kostenloses Erstgespräch</a>
+        <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
       </div>
     </div>
   </section>
@@ -213,9 +220,9 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       <Image class="wer-foto" src={fotoGeschichte} alt="Mario Wochner lehnt an seinem Auto auf einer Wiese" width={680} widths={[340, 680]} sizes="(max-width: 760px) 280px, 340px" />
       <div class="spalte">
         <h2 class="label">Wer ich bin</h2>
-        <p>Rund 30 Jahre Handwerk, Selbstständigkeit und Projektleitung. Irgendwann habe ich mich selbst zu meinem größten Projekt gemacht und herausgefunden, warum meine Beziehungen immer demselben Muster folgten.</p>
+        <p>Rund 30 Jahre Handwerk, Selbstständigkeit und Projektleitung. Irgendwann habe ich mich selbst zu meinem größten Projekt gemacht. Ich wollte wissen, wo ich in meinen eigenen Beziehungen vorkomme.</p>
         <p><strong>So habe ich meine Antwort gefunden. Mich.</strong></p>
-        {GESCHICHTE_SICHTBAR && <a href="/meine-geschichte" class="textlink">Meine Geschichte lesen</a>}
+        {GESCHICHTE_SICHTBAR && <div class="actions"><a href="/meine-geschichte" class="button">Meine Geschichte …</a></div>}
       </div>
     </div>
   </section>
@@ -227,7 +234,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <p class="label">Für wen das ist</p>
         <h2>Beziehung meint mehr als Partnerschaft.</h2>
         <p>Und Partnerschaft ist nicht nur Romantik. Geschäftspartner zum Beispiel.</p>
-        <p>Muster tauchen überall dort auf, wo Menschen miteinander zu tun haben. Ich bin kein Trennungscoach. Mich interessiert, was sich wiederholt.</p>
+        <p>Muster tauchen überall dort auf, wo Menschen miteinander in Berührung kommen. Ich gehe mit dir durch die Stelle, wo Muster sich scheinbar nicht durchbrechen lassen.</p>
       </div>
       <div class="karten">
         <div class="karte">
@@ -266,7 +273,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           <p class="muted">Wenn du merkst, dass sich beim Lesen etwas in dir bewegt, ist das ein sehr gutes Zeichen dafür, dass du bei mir richtig bist.</p>
           <p class="muted">Ich bin systemisch ausgebildet, arbeite mit dem Inneren Team nach Schulz von Thun und hypnosystemisch nach Gunther Schmidt. Welche Methode passt, klären wir im Erstgespräch.</p>
           <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
-          <p class="muted">Ich bin mit dir zwar ein Stück gegangen, den Weg selbst bist aber du gegangen.</p>
+          <p class="muted">Ich bin mit dir zwar ein Stück gegangen, <strong>den Weg selbst bist aber du gegangen.</strong></p>
         </div>
       </div>
     </div>
@@ -303,7 +310,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="angebot-karte">
           <p class="label">8 Termine im Monat</p>
           <h3>Zahl, was du kannst</h3>
-          <p>Jeden Monat halte ich 8 Termine frei, bei denen du selbst festlegst, was du zahlst. Coaching soll nicht davon abhängen, wie viel Geld jemand hat. Alle Termine vereinbaren wir im Erstgespräch.</p>
+          <p>Jeden Monat halte ich 8 Termine frei, bei denen du selbst festlegst, was du zahlst. Coaching soll nicht nur an der Frage hängen: Kann ich mir das leisten? Alle Termine vereinbaren wir im Erstgespräch.</p>
         </div>
       </div>
       <div class="wo">
@@ -348,7 +355,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     <div class="wrap zweispaltig">
       <div class="spalte">
         <h2>Schreib mir, wo es sich bei dir wiederholt.</h2>
-        <p>Wenn du das Gefühl hast, hier könnte etwas anfangen. Schreib mir. Ich antworte persönlich. Und nicht mit einer Vorlage.</p>
+        <p>Wenn du das Gefühl hast, hier könnte etwas anfangen. Schreib mir. Ich antworte persönlich. Und nicht mit einer Vorlage. Eine Antwort von mir braucht einen Werktag.</p>
         <div class="kontakt-daten">
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>
