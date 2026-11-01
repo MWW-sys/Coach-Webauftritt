@@ -27,13 +27,17 @@ const ogUrl = new URL(og.src, Astro.site).href;
 const isHome = Astro.url.pathname === '/';
 const home = isHome ? '' : '/';
 
+// Menü: Reihenfolge und Namen von Mario in der Designwerkstatt, 01.11.2026.
+// „Zahl, was du kannst“ nach „Mein Angebot“ (Vorschlag Design, bis Mario anders entscheidet).
+// „Meine Geschichte“ steht nicht im Menü, „Wer ich bin“ führt zum Button dorthin (Mario, 01.11.2026).
+const zahlHref = `${home}#zahl-was-du-kannst`;
 const nav = [
+  { href: `${home}#fuer-wen`, label: 'Für wen das ist' },
   { href: `${home}#wer-ich-bin`, label: 'Wer ich bin' },
-  { href: `${home}#fuer-wen`, label: 'Für wen' },
   { href: `${home}#wie-ich-arbeite`, label: 'Wie ich arbeite' },
-  { href: `${home}#angebot`, label: 'Angebot' },
-  // „Meine Geschichte“ steht nicht im Menü, „Wer ich bin“ führt zum Button dorthin (Mario, 01.11.2026)
-  { href: `${home}#fragen`, label: 'Fragen' },
+  { href: `${home}#angebot`, label: 'Mein Angebot' },
+  { href: zahlHref, label: 'Zahl, was du kannst' },
+  { href: `${home}#fragen`, label: 'Deine Fragen' },
 ];
 ---
 
@@ -79,6 +83,10 @@ const nav = [
       .nav-list a:hover { color: var(--accent-hover); }
       .nav-cta { color: var(--accent) !important; font-weight: 600; }
       /* Menü auf allen Bildschirmen zugeklappt, Button „Menü“ in der Kopfzeile (Entscheidung Mario, 31.10.2026) */
+      .kopf-rechts { display: flex; align-items: center; gap: 24px; flex-shrink: 0; }
+      .kopf-zahl { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
+      .kopf-zahl:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 4px; }
+      @media (max-width: 760px) { .kopf-zahl { display: none; } }
       .menu { position: relative; }
       .menu summary { list-style: none; cursor: pointer; min-height: 44px; min-width: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); padding: 0 16px; font-size: 15px; }
       .menu summary::-webkit-details-marker { display: none; }
@@ -100,6 +108,9 @@ const nav = [
           <a class="logo" href="/">{SITE.name}</a>
           {kopfH1 && <h1 class="kopf-h1">{kopfH1.map((teil, i) => <>{i > 0 && ' '}<span class="kopf-h1-teil">{teil}</span></>)}</h1>}
         </div>
+        <div class="kopf-rechts">
+        <!-- „Zahl, was du kannst“ klein in Orange neben „Menü“, nur am Rechner (Mario, Designwerkstatt, 01.11.2026) -->
+        <a class="kopf-zahl" href={zahlHref}>Zahl, was du kannst</a>
         <details class="menu">
           <summary aria-label="Menü öffnen">Menü</summary>
           <nav aria-label="Hauptnavigation">
@@ -109,6 +120,7 @@ const nav = [
             </ul>
           </nav>
         </details>
+        </div>
       </div>
     </header>
     <script>
