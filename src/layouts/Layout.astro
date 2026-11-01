@@ -70,23 +70,33 @@ const nav = [
     ))}
 
     <style>
-      .site-header { position: sticky; top: 0; z-index: 50; background: rgba(20, 18, 15, 0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
-      .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; padding-top: 8px; padding-bottom: 8px; }
+      /* Kopfzeile: am Rechner läuft alles mit (Name, Zertifikat, H1, Menü).
+         Am Handy läuft nur die Leiste mit Name und „Menü“ mit, Zertifikat und H1 scrollen weg (Mario, 01.11.2026). */
+      .kopf { position: sticky; top: 0; z-index: 50; background: rgba(20, 18, 15, 0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+      .kopf-innen { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name rechts" "unter rechts"; align-content: center; column-gap: 16px; row-gap: 2px; min-height: 72px; padding-top: 8px; padding-bottom: 8px; }
+      .site-header { display: contents; }
+      .marke-zeile { grid-area: name; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; min-width: 0; }
+      .kopf-rechts { grid-area: rechts; align-self: center; display: flex; align-items: center; gap: 24px; flex-shrink: 0; }
+      .kopf-unter { grid-area: unter; min-width: 0; }
       /* H1 klein unter dem Namen, bündig links, wie ein Untertitel (Mario, 01.11.2026) */
-      .marke { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; }
       .kopf-h1 { margin: 0; font-family: var(--font-body); font-size: 13px; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; color: var(--text-faint); max-width: 620px; }
       .kopf-h1-teil { display: block; }
-      @media (max-width: 760px) { .kopf-h1 { font-size: 12px; } }
-      .marke-zeile { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; }
       .kopf-zert { font-family: var(--font-body); font-size: 14px; font-weight: 500; color: var(--text-muted); display: inline-flex; gap: 10px; }
-      @media (max-width: 760px) { .marke-zeile { flex-direction: column; gap: 0; } .kopf-zert { font-size: 12px; } .zert-trenner { display: none; } }
+      .kopf-zert--handy { display: none; }
+      @media (max-width: 760px) {
+        .kopf, .kopf-innen { display: contents; }
+        .site-header { display: flex; position: sticky; top: 0; z-index: 50; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: 8px var(--gutter); background: rgba(20, 18, 15, 0.94); backdrop-filter: blur(6px); }
+        .kopf-unter { display: block; padding: 0 var(--gutter) 10px; border-bottom: 1px solid var(--line); }
+        .marke-zeile .kopf-zert { display: none; }
+        .kopf-zert--handy { display: block; font-size: 12px; margin-bottom: 2px; }
+        .kopf-h1 { font-size: 12px; }
+      }
       .logo { font-family: var(--font-display); font-size: 22px; color: var(--text); text-decoration: none; }
       .nav-list { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
       .nav-list a { color: var(--text); text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
       .nav-list a:hover { color: var(--accent-hover); }
       .nav-cta { color: var(--accent) !important; font-weight: 600; }
       /* Menü auf allen Bildschirmen zugeklappt, Button „Menü“ in der Kopfzeile (Entscheidung Mario, 31.10.2026) */
-      .kopf-rechts { display: flex; align-items: center; gap: 24px; flex-shrink: 0; }
       .kopf-zahl { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
       .kopf-zahl:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 4px; }
       @media (max-width: 760px) { .kopf-zahl { display: none; } }
@@ -105,31 +115,35 @@ const nav = [
   <body>
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
-    <header class="site-header">
-      <div class="wrap">
-        <div class="marke">
-          <!-- IHK-Zertifikat in der Zeile neben dem Namen, kleiner (Vorschlag Design, Mario, 01.11.2026). Am Handy darunter. -->
+    <div class="kopf">
+      <div class="wrap kopf-innen">
+        <header class="site-header">
+          <!-- IHK-Zertifikat in der Zeile neben dem Namen, kleiner (Vorschlag Design, Mario, 01.11.2026) -->
           <div class="marke-zeile">
             <a class="logo" href="/">{SITE.name}</a>
             <span class="kopf-zert"><span class="zert-trenner" aria-hidden="true">·</span>{ZERTIFIKAT_KOPF}</span>
           </div>
+          <div class="kopf-rechts">
+            <!-- „Zahl, was du kannst“ klein in Orange neben „Menü“, nur am Rechner (Mario, Designwerkstatt, 01.11.2026) -->
+            <a class="kopf-zahl" href={zahlHref}>Zahl, was du kannst</a>
+            <details class="menu">
+              <summary aria-label="Menü öffnen">Menü</summary>
+              <nav aria-label="Hauptnavigation">
+                <ul class="nav-list">
+                  {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+                  <li><a class="nav-cta" href={`${home}#kontakt`}>Kontakt</a></li>
+                </ul>
+              </nav>
+            </details>
+          </div>
+        </header>
+        <div class="kopf-unter">
+          <!-- Am Handy steht das Zertifikat hier, unter der mitlaufenden Leiste -->
+          <p class="kopf-zert kopf-zert--handy">{ZERTIFIKAT_KOPF}</p>
           {kopfH1 && <h1 class="kopf-h1">{kopfH1.map((teil, i) => <>{i > 0 && ' '}<span class="kopf-h1-teil">{teil}</span></>)}</h1>}
         </div>
-        <div class="kopf-rechts">
-        <!-- „Zahl, was du kannst“ klein in Orange neben „Menü“, nur am Rechner (Mario, Designwerkstatt, 01.11.2026) -->
-        <a class="kopf-zahl" href={zahlHref}>Zahl, was du kannst</a>
-        <details class="menu">
-          <summary aria-label="Menü öffnen">Menü</summary>
-          <nav aria-label="Hauptnavigation">
-            <ul class="nav-list">
-              {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-              <li><a class="nav-cta" href={`${home}#kontakt`}>Kontakt</a></li>
-            </ul>
-          </nav>
-        </details>
-        </div>
       </div>
-    </header>
+    </div>
     <script>
       // Menü: am Rechner öffnet es beim Überfahren mit der Maus, am Handy beim Tippen
       // (Entscheidung Mario, 31.10.2026). Tippen und Tastatur laufen über das details-Element.
@@ -141,8 +155,13 @@ const nav = [
         menu.querySelector('summary')?.addEventListener('click', (e) => { e.preventDefault(); menu.open = true; });
       }
       // Sprünge aus dem Menü landen unter der Kopfzeile, auch wenn sie am Handy höher ist
-      const kopf = document.querySelector<HTMLElement>('.site-header');
-      const kopfHoehe = () => { if (kopf) document.documentElement.style.scrollPaddingTop = `${kopf.offsetHeight + 12}px`; };
+      // Gemessen wird, was mitläuft: am Rechner die ganze Kopfzeile, am Handy nur die Leiste
+      const kopfHoehe = () => {
+        const ganz = document.querySelector<HTMLElement>('.kopf');
+        const leiste = document.querySelector<HTMLElement>('.site-header');
+        const mit = ganz && getComputedStyle(ganz).display !== 'contents' ? ganz : leiste;
+        if (mit) document.documentElement.style.scrollPaddingTop = `${mit.offsetHeight + 12}px`;
+      };
       kopfHoehe();
       window.addEventListener('resize', kopfHoehe);
       // Mit der Escape-Taste schließen
