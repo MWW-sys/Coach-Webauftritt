@@ -83,19 +83,19 @@ const buchung = SITE.bookingUrl || '#kontakt';
 const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${encodeURIComponent('Kostenloses Erstgespräch')}`;
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd}>
+<Layout title={title} description={description} jsonLd={jsonLd} kopfH1="Coaching in Berlin, Bielefeld und online: für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können.">
   <style>
     /* Einstieg: Button und „Wer ich bin“ rechts unter dem Foto, damit der Text links Luft hat (Mario, 31.10.2026).
        Am Handy steht der Button vor dem Foto, damit er früh zu sehen ist. */
     .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); grid-template-areas: "text foto" "text aktionen"; column-gap: 72px; row-gap: 24px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
     .hero-text { grid-area: text; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
     .hero-foto { grid-area: foto; min-width: 0; display: flex; justify-content: center; align-self: end; }
-    .hero-aktionen { grid-area: aktionen; align-self: start; padding-top: 0; }
+    /* Unter dem Foto: zuerst „Wer ich bin“, darunter der Button, beide bündig mit der linken Bildkante (Mario, 01.11.2026) */
+    .actions.hero-aktionen { grid-area: aktionen; align-self: start; flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 0; }
     @media (max-width: 760px) {
       .hero .wrap { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "aktionen" "foto"; row-gap: 32px; }
     }
     .hero-foto img { width: 100%; max-width: 400px; aspect-ratio: 4 / 5; object-fit: cover; }
-    .hero h1 { font-family: var(--font-body); font-size: 15px; font-weight: 500; letter-spacing: 0.04em; line-height: 1.5; color: var(--text-faint); max-width: 560px; }
     .uhrzeit { font-family: var(--font-display); font-weight: 300; font-size: clamp(64px, 9vw, 88px); line-height: 1; letter-spacing: -0.02em; }
     .leitsatz { font-family: var(--font-display); font-size: clamp(26px, 3vw, 32px); line-height: 1.25; max-width: 560px; }
     .leitzeile { color: var(--text-muted); max-width: 520px; }
@@ -183,10 +183,9 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
   </style>
 
   <!-- 2. Einstieg mit H1 -->
-  <section class="hero" aria-labelledby="h1">
+  <section class="hero" aria-label="Einstieg">
     <div class="wrap">
       <div class="hero-text">
-        <h1 id="h1">Coaching in Berlin, Bielefeld und online: für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können.</h1>
         <p class="uhrzeit">3 Uhr 33.</p>
         <p class="leitsatz">Warum landest du immer wieder an derselben Stelle?</p>
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
@@ -195,8 +194,8 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <Image src={fotoEinstieg} alt="Mario Wochner, Coach" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
       </div>
       <div class="actions hero-aktionen">
-        <a class="button" href={buchung}>Kostenloses Erstgespräch</a>
         <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
+        <a class="button" href={buchung}>Kostenloses Erstgespräch</a>
       </div>
     </div>
   </section>

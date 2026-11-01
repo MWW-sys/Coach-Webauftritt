@@ -15,9 +15,11 @@ interface Props {
   description: string;
   /** Strukturierte Daten (JSON-LD), je Seite */
   jsonLd?: object[];
+  /** Nur Startseite: die H1 steht klein in der Kopfzeile neben dem Namen (Mario, 01.11.2026) */
+  kopfH1?: string;
 }
 
-const { title, description, jsonLd = [] } = Astro.props;
+const { title, description, jsonLd = [], kopfH1 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const og = await getImage({ src: ogSource, width: 1200, format: 'jpg' });
 const ogUrl = new URL(og.src, Astro.site).href;
@@ -44,7 +46,10 @@ const nav = [
     <!-- Vorbehalt gegen Text und Data Mining nach § 44b UrhG, maschinenlesbar (TDM Reservation Protocol) -->
     <meta name="tdm-reservation" content="1" />
     <link rel="canonical" href={canonical} />
+    <!-- Icon: MW in Orange auf Dunkel (Mario, 01.11.2026) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
@@ -61,7 +66,10 @@ const nav = [
 
     <style>
       .site-header { position: sticky; top: 0; z-index: 50; background: rgba(20, 18, 15, 0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
-      .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+      .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; padding-top: 8px; padding-bottom: 8px; }
+      .marke { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 20px; min-width: 0; }
+      .kopf-h1 { margin: 0; font-family: var(--font-body); font-size: 13px; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; color: var(--text-faint); max-width: 620px; }
+      @media (max-width: 760px) { .marke { flex-direction: column; align-items: flex-start; gap: 2px; } .kopf-h1 { font-size: 12px; } }
       .logo { font-family: var(--font-display); font-size: 22px; color: var(--text); text-decoration: none; }
       .nav-list { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
       .nav-list a { color: var(--text); text-decoration: none; display: inline-flex; min-height: 44px; align-items: center; }
@@ -85,7 +93,10 @@ const nav = [
 
     <header class="site-header">
       <div class="wrap">
-        <a class="logo" href="/">{SITE.name}</a>
+        <div class="marke">
+          <a class="logo" href="/">{SITE.name}</a>
+          {kopfH1 && <h1 class="kopf-h1">{kopfH1}</h1>}
+        </div>
         <details class="menu">
           <summary aria-label="Menü öffnen">Menü</summary>
           <nav aria-label="Hauptnavigation">
