@@ -15,8 +15,9 @@ interface Props {
   description: string;
   /** Strukturierte Daten (JSON-LD), je Seite */
   jsonLd?: object[];
-  /** Nur Startseite: die H1 steht klein in der Kopfzeile neben dem Namen (Mario, 01.11.2026) */
-  kopfH1?: string;
+  /** Nur Startseite: die H1 steht klein in der Kopfzeile unter dem Namen, in Teilen, je Teil eine Zeile.
+      Reihenfolge: zuerst der Zielgruppensatz, dahinter die Orte (Mario, Entscheidungsraum, 01.11.2026) */
+  kopfH1?: string[];
 }
 
 const { title, description, jsonLd = [], kopfH1 } = Astro.props;
@@ -70,6 +71,7 @@ const nav = [
       /* H1 klein unter dem Namen, bündig links, wie ein Untertitel (Mario, 01.11.2026) */
       .marke { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; }
       .kopf-h1 { margin: 0; font-family: var(--font-body); font-size: 13px; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; color: var(--text-faint); max-width: 620px; }
+      .kopf-h1-teil { display: block; }
       @media (max-width: 760px) { .kopf-h1 { font-size: 12px; } }
       .logo { font-family: var(--font-display); font-size: 22px; color: var(--text); text-decoration: none; }
       .nav-list { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
@@ -96,7 +98,7 @@ const nav = [
       <div class="wrap">
         <div class="marke">
           <a class="logo" href="/">{SITE.name}</a>
-          {kopfH1 && <h1 class="kopf-h1">{kopfH1}</h1>}
+          {kopfH1 && <h1 class="kopf-h1">{kopfH1.map((teil, i) => <>{i > 0 && ' '}<span class="kopf-h1-teil">{teil}</span></>)}</h1>}
         </div>
         <details class="menu">
           <summary aria-label="Menü öffnen">Menü</summary>

@@ -83,7 +83,7 @@ const buchung = SITE.bookingUrl || '#kontakt';
 const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${encodeURIComponent('Kostenloses Erstgespräch')}`;
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd} kopfH1="Coaching in Berlin, Bielefeld und online: für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können.">
+<Layout title={title} description={description} jsonLd={jsonLd} kopfH1={['für Menschen, die ihre Muster kennen und sie trotzdem nicht ändern können', 'Coaching in Berlin, Bielefeld und online']}>
   <style>
     /* Einstieg: Button und „Wer ich bin“ rechts unter dem Foto, damit der Text links Luft hat (Mario, 31.10.2026).
        Am Handy steht der Button vor dem Foto, damit er früh zu sehen ist. */
