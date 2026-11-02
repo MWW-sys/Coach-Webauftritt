@@ -7,7 +7,7 @@ import '../styles/global.css';
 import { getImage } from 'astro:assets';
 // Vorschaubild beim Teilen (WhatsApp, LinkedIn): Querformat 1200 × 630, Gesicht ganz im Bild (Mario, 02.11.2026)
 import ogSource from '../assets/og-vorschau.jpg';
-import { SITE, ORTSZEILE, ZERTIFIKAT_KOPF } from '../site.config';
+import { SITE, ORTSZEILE, ZERTIFIKAT_KOPF, STIMMEN_OEFFENTLICH } from '../site.config';
 
 interface Props {
   /** Seitentitel für Google und Browser-Tab, höchstens etwa 60 Zeichen */
@@ -19,9 +19,11 @@ interface Props {
   /** Nur Startseite: die H1 steht klein in der Kopfzeile unter dem Namen, in Teilen, je Teil eine Zeile.
       Reihenfolge: zuerst der Zielgruppensatz, dahinter die Orte (Mario, Entscheidungsraum, 01.11.2026) */
   kopfH1?: string[];
+  /** Seite nicht bei Google aufnehmen */
+  nichtIndexieren?: boolean;
 }
 
-const { title, description, jsonLd = [], kopfH1 } = Astro.props;
+const { title, description, jsonLd = [], kopfH1, nichtIndexieren = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const og = await getImage({ src: ogSource, width: 1200, format: 'jpg' });
 const ogUrl = new URL(og.src, Astro.site).href;
@@ -39,6 +41,7 @@ const nav = [
   { href: `${home}#angebot`, label: 'Mein Angebot' },
   { href: zahlHref, label: 'Zahl, was du kannst' },
   { href: `${home}#fragen`, label: 'Deine Fragen' },
+  ...(STIMMEN_OEFFENTLICH ? [{ href: '/was-andere-ueber-mich-sagen', label: 'Was andere über mich sagen' }] : []),
 ];
 ---
 
@@ -51,6 +54,7 @@ const nav = [
     <meta name="description" content={description} />
     <!-- Vorbehalt gegen Text und Data Mining nach § 44b UrhG, maschinenlesbar (TDM Reservation Protocol) -->
     <meta name="tdm-reservation" content="1" />
+    {nichtIndexieren && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <!-- Icon: MW in Orange auf Dunkel (Mario, 01.11.2026) -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -177,6 +181,8 @@ const nav = [
         if (location.hash) history.replaceState(null, '', location.pathname + location.search);
         window.scrollTo(0, 0);
       }
+      // Nach dem Antippen eines Menüpunkts klappt das Menü wieder zu (Mario, 02.11.2026)
+      menu?.querySelectorAll('.nav-list a').forEach((a) => a.addEventListener('click', () => { menu.open = false; }));
       // Mit der Escape-Taste schließen
       menu?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menu.open = false; menu.querySelector('summary')?.focus(); } });
     </script>

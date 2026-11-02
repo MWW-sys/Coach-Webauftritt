@@ -1,0 +1,54 @@
+---
+// Eigene Seite „Was andere über mich sagen“ (Mario, 02.11.2026). Wortlaut: Website-Texte, Abschnitt 13, unverändert.
+// Gestaltung: Vorlage „Was andere über mich sagen“ im Design-Canvas. Die Namen setzt Mario später selbst ein.
+// Die Seite steht nicht bei Google (noindex) und nicht in der Sitemap; ins Menü kommt sie über STIMMEN_OEFFENTLICH.
+import Layout from '../layouts/Layout.astro';
+import { VORSCHAU, STIMMEN_OEFFENTLICH } from '../site.config';
+
+const title = 'Was andere über mich sagen · Mario Wochner';
+const description = 'Stimmen aus meiner Coaching-Ausbildung.';
+
+// Name je Stimme hier eintragen, sobald die Zustimmung da ist (leer = kein Name)
+const stimmen = [
+  { zitat: "„Du bist ein super Coach, weil du einen ganz, ganz wundervollen Zugang zu deinen Emotionen hast. Und du zeigst Menschen, dass es erlaubt ist, Emotionen auf dem Tablett tragen zu dürfen. Und dass das vor allem, finde ich, auch als Coach, was in einer oftmals anders tickt, was ganz, ganz Besonderes ist. Und dass man bei dir wirklich auch tief erreichen darf, wenn du dazu zulässt.“", name: '' },
+  { zitat: "„Und du hast so einen Forschergeist, ne? Du willst irgendwie diesen Dingen so sehr auf den Grund gehen. Und das sind ja einfach super Voraussetzungen. Du bist dabei unglaublich wertschätzend. Dass man sich bei dir sehr angenommen und sicher fühlen kann. Du bist sehr neugierig und möchtest verstehen und möchtest dein Gegenüber und deinen Coachee kennenlernen. Und zwar wirklich auch tiefgründig kennenlernen.“", name: '' },
+  { zitat: "„Und bei dir besteht das oberste Interesse, zu gehen und auch zu verstehen, warum Dinge so sind, wie sie sind. Du traust dich, ins Problem zu fragen, ohne Angst zu haben, was kaputt zu machen, weil du ein Gefühl dafür hast, wann der Punkt erreicht ist, an dem es in dem Moment gut ist.“", name: '' },
+  { zitat: "„Du bist ein guter Coach, weil du sehr gut observieren kannst, beobachten kannst und dabei sehr analytisch bist und sehr schnell in anderen Personen die Ressourcen kennst und die spiegeln kannst, weil du sehr achtsame und aber auch ehrliche Art und Weise und eine sehr neugierige und mutig machende Art und Weise.“", name: '' },
+  { zitat: "„Du bist ein guter Coach, weil du so ganz ehrlich bei der anderen Person bist, weil dir das wichtig ist für dein Gegenüber. Und du bist ein guter Coach, weil du so sehr aber auch deine eigene Person bist und so sehr was Eigenes mitbringst, weil du dich gut kennengelernt hast und kennst und so authentisch deine Person und dein Sein damit reinbringst, dass du so was ganz Eigenes hast, was man nicht in einem Lehrbuch so sich abgucken kann.“", name: '' },
+  { zitat: "„Und du bist ein guter Coach, weil du nicht in Schubladen denkst, dass man nicht das Gefühl hat, ah, der hat das jetzt schon irgendwie alles, sondern du willst wirklich wissen. Also ich glaube schon, dass du auch eigene Hypothesen hast, aber du hast diese Bereitschaft, das immer sofort wieder über den Haufen zu werfen und wirklich dahinter zu kommen, was der Kern ist.“", name: '' },
+  { zitat: "„Ich finde, du bist ein guter Coach, weil du erkennst, dass jeder Mensch in seiner Fülle schon ganz ist und trotzdem aber auch anerkennst, dass es halt Themen gibt, die manche Menschen für sich erarbeiten und du auch. Und da aber auch offen und respektvoll und vulnerabel zeigst, dass es einfach Themen gibt, wo du noch keine Antworten hast und du aber auch zeigst, wie sehr du dein Herz für dich deinen Weg zu gehen und deinen Weg zu finden.“", name: '' },
+  { zitat: "„Und das ist ein sehr schöner Zustand zu beobachten. Auch sehr ehrlich und sehr einladend, dass du sagst, es gab halt Momente in meinem Leben, wo ich vielleicht noch nicht so reagiert habe, wie ich gerne wollte. Und du bringst es in die Welt und sagst, es ist okay und ich stehe dazu. Das ist sehr …“", name: '' },
+  { zitat: "„Und du bist ein guter Coach, weil du viel Respekt vor dem Prozess auch mitbringst, vor diesem Coaching-Prozess.“", name: '' },
+  { zitat: "„Du bist ein guter Coach, weil du sehr demütig vor den Menschen bist, der seine eigene Position hat, seine eigene Ansicht und du magst eine andere haben, aber du kannst dich dann voll auf die Insel deines Coachees beamen und die Sachen finden.“", name: '' },
+  { zitat: "„Du bist ein guter Coach, weil du dich selber sehr tief begegnest. Wir können andere ja auch immer nur so tief begegnen, wie wir uns selbst begegnen. Und dadurch ermöglichst du auch den Rahmen.“", name: '' }
+];
+---
+
+<Layout title={title} description={description} nichtIndexieren={!STIMMEN_OEFFENTLICH}>
+  <style>
+    .stimmen-seite { max-width: calc(760px + 2 * var(--gutter)); margin: 0 auto; padding: 72px var(--gutter) 96px; display: flex; flex-direction: column; gap: 24px; }
+    .stimmen-seite h1 { font-family: var(--font-display); font-weight: 300; font-size: 56px; line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .stimme { background: var(--bg-raised); border-left: 3px solid var(--accent); padding: 28px 32px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .stimme blockquote { margin: 0; font-family: var(--font-display); font-weight: 300; font-size: 20px; line-height: 1.5; color: var(--text); }
+    .stimme figcaption { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--text-faint); }
+    .stimmen-seite .actions { padding-top: 24px; }
+    @media (max-width: 760px) {
+      .stimmen-seite { padding-top: 48px; }
+      .stimmen-seite h1 { font-size: 36px; }
+      .stimme { padding: 24px 20px; }
+    }
+  </style>
+
+  <section class="stimmen-seite">
+    <h1>Was andere über mich sagen</h1>
+    {stimmen.map(({ zitat, name }) => (
+      <figure class="stimme">
+        <blockquote><p>{zitat}</p></blockquote>
+        {(name || VORSCHAU) && <figcaption>{name || '[Name]'}</figcaption>}
+      </figure>
+    ))}
+    <div class="actions">
+      <a class="button" href="/">Zur Startseite</a>
+    </div>
+  </section>
+</Layout>

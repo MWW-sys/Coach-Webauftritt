@@ -7,6 +7,11 @@ export const VORSCHAU = import.meta.env.PUBLIC_VORSCHAU === '1';
 export const GESCHICHTE_FERTIG = true; // freigegeben von Mario am 31.10.2026
 export const GESCHICHTE_SICHTBAR = VORSCHAU || GESCHICHTE_FERTIG;
 
+// „Was andere über mich sagen“ (Mario, 02.11.2026): Die Seite ist über ihren Link erreichbar, damit Mario die
+// Zustimmung der fünf einholen kann. Sie steht nicht bei Google und nicht in der Sitemap. Ob und wann sie ins Menü
+// kommt, entscheidet Mario; dann hier auf true setzen.
+export const STIMMEN_OEFFENTLICH = false;
+
 // IHK-Zertifikat (Mario, 01.11.2026): Bis zum 6.11.2026 steht an beiden Stellen „ab 6.11.“ dabei.
 // Am 6.11. führt Mario den vorbereiteten Pull Request zusammen, der hier false durch true ersetzt.
 export const ZERTIFIKAT_ERHALTEN = false;
@@ -28,10 +33,10 @@ export const SITE = {
     linkedin: '',
     instagram: 'https://www.instagram.com/mario_on_offroad/',
   },
+  // Preise, freigegeben von Mario am 02.11.2026 (Textwerkstatt)
   preise: {
-    einzel: 120,
-    zweier: 220,
-    dreier: 300,
+    einzel: { '60 Minuten': 80, '90 Minuten': 120, '2 × 90 Minuten': 220, '3 × 90 Minuten': 300 },
+    paar: { '60 Minuten': 110, '90 Minuten': 160, '2 × 90 Minuten': 300, '3 × 90 Minuten': 420 },
   },
 };
 

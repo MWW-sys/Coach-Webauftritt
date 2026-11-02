@@ -71,7 +71,7 @@ const fragen = [
   {
     frage: 'Was kostet ein Coaching?',
     antwort: [
-      `Das Erstgespräch ist kostenlos. Eine Einzelstunde kostet ${SITE.preise.einzel} €, das Zweierpaket ${SITE.preise.zweier} €, das Dreierpaket ${SITE.preise.dreier} €. Dazu gibt es jeden Monat 8 Termine, bei denen du zahlst, was du kannst.`,
+      'Das Erstgespräch ist kostenlos. Einzelcoaching kostet 80 € für 60 Minuten und 120 € für 90 Minuten, zwei Sitzungen zu 90 Minuten 220 €, drei 300 €. Als Paar zahlt ihr 110 € für 60 Minuten und 160 € für 90 Minuten, zwei Sitzungen zu 90 Minuten 300 €, drei 420 €. Dazu gibt es jeden Monat 8 Termine, bei denen du zahlst, was du kannst, auch als Paar.',
       'Pakete kannst du jederzeit beenden, ohne Abo und ohne Bindung. Die genutzten Stunden rechne ich dann zum Einzelpreis ab, den Rest bekommst du zurück. Du zahlst also nie mehr, als wenn du einzeln gebucht hättest.',
       'Musst du einen festen Termin absagen, sag mir bitte mindestens 48 Stunden vorher Bescheid. Sagst du später ab, berechne ich den halben Preis, ab 24 Stunden vorher 75 Prozent und am Tag des Termins den vollen Preis.',
     ],
@@ -94,7 +94,7 @@ const jsonLd = [
     email: SITE.email,
     telephone: SITE.phone,
     areaServed: [...SITE.orte.map((ort) => ({ '@type': 'City', name: ort })), { '@type': 'Place', name: 'Online' }],
-    priceRange: `${SITE.preise.einzel} € bis ${SITE.preise.dreier} €`,
+    priceRange: '80 € bis 420 €',
     founder: { '@type': 'Person', name: SITE.name, jobTitle: 'Coach' },
   },
 ];
@@ -187,7 +187,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     /* Angebote je Bereich (Mario, 02.11.2026) */
     .uebergang { font-family: var(--font-display); font-weight: 300; font-size: 24px; line-height: 1.35; color: var(--text); max-width: 760px; }
     .angebote-reihe { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .angebot-neu { border: 1px solid var(--line-strong); background: var(--bg); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .angebot-neu { background: var(--bg-raised); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
     .angebot-neu .nr { font-family: var(--font-display); font-size: 15px; line-height: 24px; color: var(--accent); }
     .angebot-neu h3 { font-size: 26px; line-height: 1.2; }
     .angebot-neu p { color: var(--text-muted); font-size: 16px; }
@@ -195,7 +195,6 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     /* Roter Faden: markierte Worte in Orange, im Fließtext halbfett, nicht umbrechen (Mario, 02.11.2026) */
     .m { color: var(--accent); font-weight: 600; white-space: nowrap; }
     .leitsatz .m, .schluss-zitat .m { font-weight: inherit; }
-    .m--frei { white-space: normal; }
     :global(#inhalt) { position: relative; }
     .faden { position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: hidden; }
     .faden svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; }
@@ -206,7 +205,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     }
 
     .angebot-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .angebot-karte { border: 1px solid var(--line-strong); padding: 36px; display: flex; flex-direction: column; gap: 14px; }
+    .angebot-karte { background: var(--bg-raised); padding: 36px; display: flex; flex-direction: column; gap: 14px; }
     .angebot-karte h3 { font-size: 30px; }
     .angebot-karte p { color: var(--text-muted); font-size: 16px; }
     .angebot-karte .preis { font-family: var(--font-display); font-size: 40px; color: var(--accent); line-height: 1.1; }
@@ -214,7 +213,8 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     .preise th { text-align: left; font-weight: 400; padding: 10px 0; border-bottom: 1px solid var(--line); }
     .preise td { white-space: nowrap; text-align: right; font-family: var(--font-display); font-size: 26px; color: var(--accent); padding: 10px 0; border-bottom: 1px solid var(--line); }
     .klein { font-size: 14px; color: var(--text-faint); }
-    .preise .dauer { display: block; font-size: 14px; color: var(--text-faint); }
+    .preise caption { text-align: left; font-family: var(--font-body); font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; padding: 8px 0 2px; }
+    .preise + .preise { margin-top: 12px; }
     .wo { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
     .wo p { color: var(--text-muted); }
 
@@ -246,7 +246,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <!-- Einstieg Variante B aus dem Design-Canvas, Wortlaut Textwerkstatt (Mario, 02.11.2026) -->
         <p class="uhrzeit">3 Uhr 33. Du hast schon wieder Ja gesagt.</p>
         <span class="einstieg-strich" aria-hidden="true"></span>
-        <p class="leitsatz" data-zone>Landest du <span class="m m--frei" data-mark>immer wieder an derselben Stelle</span>?</p>
+        <p class="leitsatz" data-zone>Landest du <span class="m" data-mark>immer wieder</span> an derselben Stelle?</p>
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
       </div>
       <div class="hero-foto">
@@ -317,17 +317,17 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="angebot-neu" data-zone id="fuehrung-kommunikation">
           <span class="nr">01 · Mein Angebot</span>
           <h3>Führungscoaching und Kommunikationstraining</h3>
-          <p>Zwischen Halle und Führungsebene landen Gespräche oft <span class="m" data-mark>immer wieder an derselben Stelle</span>. Dabei wollen beide Seiten dasselbe: ein gutes Ergebnis für ihren Einsatz. Was im Missverständnis zerrieben wird, ist weg, und es kostet jedes Mal neu, solange das Muster bleibt. Ich kenne beide Seiten, aus 30 Jahren Handwerk, Selbstständigkeit und Projektleitung. Wir schauen genau auf diese Stelle und üben, dort für dich einzustehen, auch im Rollenspiel. Wie wir das aufbauen, klären wir im Erstgespräch.</p>
+          <p>Zwischen Halle und Führungsebene landen Gespräche oft <span class="m" data-mark>immer wieder</span> an derselben Stelle. Dabei wollen beide Seiten dasselbe: ein gutes Ergebnis für ihren Einsatz. Was im Missverständnis zerrieben wird, ist weg, und es kostet jedes Mal neu, solange das Muster bleibt. Ich kenne beide Seiten, aus 30 Jahren Handwerk, Selbstständigkeit und Projektleitung. Wir schauen genau auf diese Stelle und üben, dort für dich einzustehen, auch im Rollenspiel. Wie wir das aufbauen, klären wir im Erstgespräch.</p>
         </div>
         <div class="angebot-neu" data-zone id="familiencoaching">
           <span class="nr">02 · Mein Angebot</span>
           <h3>Familiencoaching</h3>
-          <p>Ob mit den Eltern, den Kindern oder unter Geschwistern: Wo du in der Familie <span class="m" data-mark>immer wieder an derselben Stelle</span> landest, wirken oft Muster, die älter sind als du. Wir schauen gemeinsam darauf, wo du darin vorkommst. Ob weitere aus deiner Familie dazukommen und was es kostet, klären wir im Erstgespräch.</p>
+          <p>Ob mit den Eltern, den Kindern oder unter Geschwistern: Wo du in der Familie <span class="m" data-mark>immer wieder</span> an derselben Stelle landest, wirken oft Muster, die älter sind als du. Wir schauen gemeinsam darauf, wo du darin vorkommst. Ob weitere aus deiner Familie dazukommen und was es kostet, klären wir im Erstgespräch.</p>
         </div>
         <div class="angebot-neu" data-zone id="konflikt-paar-beziehung">
           <span class="nr">03 · Mein Angebot</span>
           <h3>Konflikt-, Paar- und Beziehungscoaching</h3>
-          <p>Ob im Konflikt oder in einer Beziehung, im Job, in der Familie oder in der Paardynamik: Wo es zwischen Menschen <span class="m" data-mark>immer wieder an derselben Stelle</span> hakt, steckt oft ein Muster dahinter. Als Paar könnt ihr auch zu zweit kommen. Wie wir das aufbauen und was es kostet, klären wir im Erstgespräch.</p>
+          <p>Ob im Konflikt oder in einer Beziehung, im Job, in der Familie oder in der Paardynamik: Wo es zwischen Menschen <span class="m" data-mark>immer wieder</span> an derselben Stelle hakt, steckt oft ein Muster dahinter. Als Paar könnt ihr auch zu zweit kommen, ab 110 € für 60 Minuten. Wie wir das aufbauen, klären wir im Erstgespräch.</p>
         </div>
       </div>
     </div>
@@ -383,15 +383,16 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="angebot-karte">
           <p class="label">Begleitung</p>
           <h3>Preise</h3>
-          <table class="preise">
-            <tbody>
-              <tr><th scope="row">Einzelstunde<span class="dauer">90 Minuten, nach Absprache auch 60</span></th><td>{SITE.preise.einzel} €</td></tr>
-              <tr><th scope="row">Zweierpaket</th><td>{SITE.preise.zweier} €</td></tr>
-              <tr><th scope="row">Dreierpaket</th><td>{SITE.preise.dreier} €</td></tr>
-            </tbody>
-          </table>
-          <p class="klein">Pakete jederzeit beendbar. Du zahlst nie mehr als einzeln gebucht.</p>
-          <p class="klein">Alle Preise inklusive Mehrwertsteuer.</p>
+          <!-- Zwei Blöcke, kürzere Dauer zuerst (Mario, 02.11.2026) -->
+          {[['Einzelcoaching', SITE.preise.einzel], ['Paarcoaching', SITE.preise.paar]].map(([name, liste]) => (
+            <table class="preise">
+              <caption>{name}</caption>
+              <tbody>
+                {Object.entries(liste).map(([dauer, preis]) => <tr><th scope="row">{dauer}</th><td>{preis} €</td></tr>)}
+              </tbody>
+            </table>
+          ))}
+          <p class="klein">‚Zahl, was du kannst‘ gilt auch für Paare. Pakete jederzeit beendbar. Du zahlst nie mehr als einzeln gebucht. Alle Preise inklusive Mehrwertsteuer.</p>
         </div>
       </div>
       <div class="wo">
@@ -456,45 +457,21 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     const f = (n: number) => Math.round(n * 10) / 10;
     type Stelle = { l: number; t: number; b: number; zl: number; zt: number; zb: number };
 
+    // Rechner (Feintuning Mario, 02.11.2026): eine gerade Linie 40 px links der Inhaltskante, ein Punkt auf Höhe
+    // jeder Markierung (fast gleich hohe nur einmal), am Ende ein Bogen zu „die Stelle“ mit Punkt.
     function bauRechner(p: Stelle[], X: number) {
-      const G = 12, R = 22, C = 34;
-      const y = (q: Stelle) => q.b + 5;
-      const reihen: Stelle[][] = [];
-      p.forEach((q) => { const r = reihen.find((g) => Math.abs(g[0].zt - q.zt) < 4); if (r) r.push(q); else reihen.push([q]); });
-      const rund = (pts: number[][]) => {
-        let d = 'M ' + f(pts[0][0]) + ' ' + f(pts[0][1]);
-        for (let i = 1; i < pts.length - 1; i++) {
-          const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
-          const l1 = Math.hypot(x1 - x0, y1 - y0) || 1, l2 = Math.hypot(x2 - x1, y2 - y1) || 1;
-          const r = Math.min(R, l1 / 2, l2 / 2);
-          d += ' L ' + f(x1 - (x1 - x0) / l1 * r) + ' ' + f(y1 - (y1 - y0) / l1 * r) + ' Q ' + f(x1) + ' ' + f(y1) + ' ' + f(x1 + (x2 - x1) / l2 * r) + ' ' + f(y1 + (y2 - y1) / l2 * r);
-        }
-        const l = pts[pts.length - 1];
-        return d + ' L ' + f(l[0]) + ' ' + f(l[1]);
-      };
-      let d = '';
-      const oben = y(reihen[0][0]) - C - 40;
-      let unten = 0;
-      let start: number | null = null;
-      reihen.forEach((g, gi) => {
-        g.sort((a, b) => a.l - b.l);
-        const y1 = y(g[0]);
-        if (gi === 0 && g.length === 1) {
-          d += ' M ' + f(g[0].l) + ' ' + f(y1) + ' L ' + f(X + C) + ' ' + f(y1) + ' Q ' + f(X) + ' ' + f(y1) + ' ' + f(X) + ' ' + f(y1 + C);
-          start = y1 + C; unten = Math.max(unten, y1); return;
-        }
-        d += ' M ' + f(X) + ' ' + f(y1 - C) + ' Q ' + f(X) + ' ' + f(y1) + ' ' + f(X + C) + ' ' + f(y1) + ' L ' + f(g[0].l) + ' ' + f(y1);
-        unten = Math.max(unten, y1);
-        if (g.length === 1) return;
-        const yb = Math.max(...g.map((q) => q.zb)) + 20;
-        for (let i = 1; i < g.length; i++) {
-          const t = g[i];
-          d += ' ' + rund([[X, yb - 60], [X, yb], [t.zl - G, yb], [t.zl - G, y(t)], [t.l, y(t)]]);
-        }
-        unten = Math.max(unten, yb - R + C);
-      });
-      d = 'M ' + f(X) + ' ' + f(start !== null ? start : oben) + ' L ' + f(X) + ' ' + f(unten - C) + d;
-      return { d: d.trim(), punkte: p.map((q) => ({ x: q.l - 4, y: y(q) - 4, g: 8 })) };
+      const C = 34;
+      const q = p.slice().sort((a, b) => a.t - b.t);
+      const letzte = q[q.length - 1];
+      const mitte = (m: Stelle) => (m.t + m.b) / 2;
+      const yl = letzte.b + 5;
+      const hoehen: number[] = [];
+      q.slice(0, -1).forEach((m) => { const y = mitte(m); if (!hoehen.length || Math.abs(hoehen[hoehen.length - 1] - y) > 16) hoehen.push(y); });
+      const y0 = hoehen.length ? hoehen[0] : yl - C;
+      const d = 'M ' + f(X) + ' ' + f(y0) + ' L ' + f(X) + ' ' + f(yl - C) + ' Q ' + f(X) + ' ' + f(yl) + ' ' + f(X + C) + ' ' + f(yl) + ' L ' + f(letzte.l) + ' ' + f(yl);
+      const punkte = hoehen.map((y) => ({ x: X - 4, y: y - 4, g: 8 }));
+      punkte.push({ x: letzte.l - 4, y: yl - 4, g: 8 });
+      return { d, punkte };
     }
 
     function bauHandy(p: Stelle[]) {
