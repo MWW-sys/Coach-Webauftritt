@@ -87,17 +87,39 @@ const fragen = [
   },
 ];
 
+// Strukturierte Daten für Google (unsichtbar): Website „Mario Wochner“, die Person dazu mit ihren Profilen, das Angebot.
+// Freigegeben von Mario am 02.11.2026. Profile kommen aus SITE.social, ein leerer Eintrag fehlt einfach.
+const startUrl = new URL('/', Astro.site).href;
+const profile = Object.values(SITE.social).filter(Boolean);
 const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${startUrl}#website`,
+    name: SITE.name,
+    url: startUrl,
+    inLanguage: 'de',
+    publisher: { '@id': `${startUrl}#person` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${startUrl}#person`,
+    name: SITE.name,
+    url: startUrl,
+    jobTitle: 'Systemischer Coach',
+    ...(profile.length ? { sameAs: profile } : {}),
+  },
   {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: SITE.brand,
-    url: new URL('/', Astro.site).href,
+    url: startUrl,
     email: SITE.email,
     telephone: SITE.phone,
     areaServed: [...SITE.orte.map((ort) => ({ '@type': 'City', name: ort })), { '@type': 'Place', name: 'Online' }],
     priceRange: '80 € bis 420 €',
-    founder: { '@type': 'Person', name: SITE.name, jobTitle: 'Coach' },
+    founder: { '@id': `${startUrl}#person` },
   },
 ];
 
