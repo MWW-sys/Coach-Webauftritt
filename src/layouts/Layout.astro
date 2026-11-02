@@ -164,6 +164,15 @@ const nav = [
       };
       kopfHoehe();
       window.addEventListener('resize', kopfHoehe);
+      // Neu laden führt immer nach oben (Mario, 02.11.2026). Ohne das stellt der Browser die alte Position
+      // wieder her, und weil Schriften und Bilder nachladen, landet man jedes Mal an einer anderen Stelle.
+      // Ein geteilter Link mit Sprungziel (zum Beispiel #kontakt) funktioniert beim ersten Öffnen weiter.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+      if (nav?.type === 'reload') {
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+        window.scrollTo(0, 0);
+      }
       // Mit der Escape-Taste schließen
       menu?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menu.open = false; menu.querySelector('summary')?.focus(); } });
     </script>
