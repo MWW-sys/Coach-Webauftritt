@@ -10,7 +10,8 @@ import { SITE, GESCHICHTE_SICHTBAR } from '../site.config';
 if (!GESCHICHTE_SICHTBAR) return Astro.redirect('/');
 
 // Vorläufig H1 und Verweistext, bis die Textwerkstatt ein eigenes Paar für Google liefert.
-const title = 'Warum fühle ich mich leer, obwohl ich alles habe?';
+// Frage für die Suche nach der Leere, Name für die Namenssuche (Mario, Strategieraum, 02.11.2026)
+const title = 'Warum fühle ich mich leer, obwohl ich alles habe? · Mario Wochner';
 // Beschreibung für Google, entschieden von Mario am 01.11.2026 (Website-Texte, Abschnitt 9)
 const description = 'Ich kenne das Gefühl, dass etwas fehlt, obwohl alles da ist. Wie ein schweres schwarzes Loch in der Brust. Meine Geschichte und meine Antwort darauf.';
 
@@ -29,6 +30,7 @@ const jsonLd = [
   <style>
     .kopf { padding: 72px 0 48px; }
     .kopf .stack { max-width: 820px; }
+    .kopf-aktion { padding-top: 8px; }
     .text { padding-bottom: 96px; }
     .text .stack { max-width: 680px; }
     .foto { max-width: 520px; }
@@ -48,6 +50,8 @@ const jsonLd = [
     <div class="wrap stack">
       <h1>Warum fühle ich mich leer, obwohl ich alles habe?</h1>
       <p class="eyebrow">Meine Geschichte</p>
+      <!-- Klarer Weg zum Angebot gleich oben (Mario, Strategieraum, 02.11.2026) -->
+      <div class="actions kopf-aktion"><a class="button" href="/#angebot">Mein Angebot</a></div>
     </div>
   </section>
 
