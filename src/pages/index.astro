@@ -72,6 +72,7 @@ const fragen = [
     frage: 'Was kostet ein Coaching?',
     antwort: [
       `Das Erstgespräch ist kostenlos. Eine Einzelstunde kostet ${SITE.preise.einzel} €, das Zweierpaket ${SITE.preise.zweier} €, das Dreierpaket ${SITE.preise.dreier} €. Dazu gibt es jeden Monat 8 Termine, bei denen du zahlst, was du kannst.`,
+      'Pakete kannst du jederzeit beenden, ohne Abo und ohne Bindung. Die genutzten Stunden rechne ich dann zum Einzelpreis ab, den Rest bekommst du zurück. Du zahlst also nie mehr, als wenn du einzeln gebucht hättest.',
     ],
   },
   {
@@ -321,7 +322,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
   <section id="angebot">
     <div class="block">
       <div class="block-kopf">
-        <h2>Mein Angebot: Einzelcoaching</h2>
+        <h2>Mein Angebot</h2>
         <p>Einzelcoaching für Menschen, die für sich selbst Verantwortung übernehmen wollen, aber gemerkt haben, dass mehr Druck nicht die Lösung ist.</p>
       </div>
       <!-- Reihenfolge: Erstgespräch, Zahl, was du kannst, Preise (Mario, Designwerkstatt, 01.11.2026) -->
@@ -347,6 +348,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
               <tr><th scope="row">Dreierpaket</th><td>{SITE.preise.dreier} €</td></tr>
             </tbody>
           </table>
+          <p class="klein">Pakete jederzeit beendbar. Du zahlst nie mehr als einzeln gebucht.</p>
           <p class="klein">Alle Preise inklusive Mehrwertsteuer.</p>
         </div>
         <!-- Viertes Angebot (Mario, Textwerkstatt, 02.11.2026). Vorläufig über die ganze Breite, Platz stimmt die Designwerkstatt ab. -->
