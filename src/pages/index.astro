@@ -6,7 +6,8 @@
 // Text in eckigen Klammern fehlt noch und kommt aus der Textwerkstatt.
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import fotoEinstieg from '../assets/mario-seitlich.jpg';
+import fotoEinstieg from '../assets/mario-see-einstieg.jpg';
+import fotoArbeitszimmer from '../assets/mario-arbeitszimmer.jpg';
 import fotoKontakt from '../assets/mario-frontal.jpg';
 import fotoGeschichte from '../assets/mario-auto.jpg';
 import fotoCafe from '../assets/mario-cafe.jpg';
@@ -116,7 +117,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     @media (max-width: 760px) {
       .hero .wrap { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "aktionen" "foto"; row-gap: 32px; }
     }
-    .hero-foto img { width: 100%; max-width: 400px; aspect-ratio: 4 / 5; object-fit: cover; }
+    .hero-foto img { width: 100%; max-width: 400px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
     /* Einstieg B, Maße aus dem Design-Canvas (Mario, 02.11.2026) */
     .uhrzeit { font-family: var(--font-display); font-weight: 300; font-size: 20px; line-height: 1.3; color: var(--text-faint); }
     .einstieg-strich { display: block; width: 56px; height: 1px; background: var(--line-strong); margin: 28px 0; }
@@ -204,17 +205,28 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       :global(#inhalt .wrap), :global(#inhalt .block), .trenner { padding-left: 28px; }
     }
 
-    .angebot-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .angebot-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start; }
     .angebot-karte { background: var(--bg-raised); padding: 36px; display: flex; flex-direction: column; gap: 14px; }
     .angebot-karte h3 { font-size: 30px; }
     .angebot-karte p { color: var(--text-muted); font-size: 16px; }
     .angebot-karte .preis { font-family: var(--font-display); font-size: 40px; color: var(--accent); line-height: 1.1; }
-    .preise { width: 100%; border-collapse: collapse; font-size: 17px; }
-    .preise th { text-align: left; font-weight: 400; padding: 10px 0; border-bottom: 1px solid var(--line); }
-    .preise td { white-space: nowrap; text-align: right; font-family: var(--font-display); font-size: 26px; color: var(--accent); padding: 10px 0; border-bottom: 1px solid var(--line); }
     .klein { font-size: 14px; color: var(--text-faint); }
-    .preise caption { text-align: left; font-family: var(--font-body); font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; padding: 8px 0 2px; }
-    .preise + .preise { margin-top: 12px; }
+    .preise-auf details { border-top: 1px solid var(--line-strong); }
+    .preise-auf summary { cursor: pointer; list-style: none; min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .preise-auf summary::-webkit-details-marker { display: none; }
+    .preise-auf summary::after { content: '+'; font-family: var(--font-display); font-size: 28px; color: var(--accent); }
+    .preise-auf details[open] summary::after { content: '−'; }
+    .preise-kopf { display: flex; flex-direction: column; line-height: 1.3; }
+    .preise-name { font-family: var(--font-display); font-size: 22px; color: var(--text); }
+    .preise-ab { font-size: 15px; color: var(--text-faint); }
+    .preise-auf ul { list-style: none; margin: 0 0 12px; padding: 0; font-size: 16px; color: var(--text-muted); }
+    .preise-auf li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid #2E2923; }
+    .preise-betrag { color: var(--text); white-space: nowrap; }
+    /* Meine Geschichte: zwei Spalten wie bei „Wer ich bin“ (Mario, Designwerkstatt, 02.11.2026) */
+    .geschichte-raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 400px); column-gap: 72px; row-gap: 40px; align-items: center; }
+    .geschichte-raster .spalte { max-width: 680px; }
+    .geschichte-foto { width: 100%; max-width: 400px; aspect-ratio: 1 / 1; object-fit: cover; }
+    @media (max-width: 760px) { .geschichte-raster { grid-template-columns: minmax(0, 1fr); } }
     .wo { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
     .wo p { color: var(--text-muted); }
 
@@ -250,7 +262,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
       </div>
       <div class="hero-foto">
-        <Image src={fotoEinstieg} alt="Mario Wochner, Coach" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
+        <Image src={fotoEinstieg} alt="Mario Wochner am Seeufer" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
       </div>
       <div class="actions hero-aktionen">
         <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
@@ -383,15 +395,17 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="angebot-karte">
           <p class="label">Begleitung</p>
           <h3>Preise</h3>
-          <!-- Zwei Blöcke, kürzere Dauer zuerst (Mario, 02.11.2026) -->
-          {[['Einzelcoaching', SITE.preise.einzel], ['Paarcoaching', SITE.preise.paar]].map(([name, liste]) => (
-            <table class="preise">
-              <caption>{name}</caption>
-              <tbody>
-                {Object.entries(liste).map(([dauer, preis]) => <tr><th scope="row">{dauer}</th><td>{preis} €</td></tr>)}
-              </tbody>
-            </table>
-          ))}
+          <!-- Preise zum Aufklappen, geschlossen beim Laden; die Preise stehen trotzdem im Quelltext (Mario, Designwerkstatt, 02.11.2026) -->
+          <div class="preise-auf">
+            {[['Einzelcoaching', SITE.preise.einzel], ['Paarcoaching', SITE.preise.paar]].map(([name, liste]) => (
+              <details>
+                <summary><span class="preise-kopf"><span class="preise-name">{name}</span><span class="preise-ab">ab {Math.min(...Object.values(liste))} €</span></span></summary>
+                <ul>
+                  {Object.entries(liste).map(([dauer, preis]) => <li><span>{dauer}</span><span class="preise-betrag">{preis} €</span></li>)}
+                </ul>
+              </details>
+            ))}
+          </div>
           <p class="klein">‚Zahl, was du kannst‘ gilt auch für Paare. Pakete jederzeit beendbar. Du zahlst nie mehr als einzeln gebucht. Alle Preise inklusive Mehrwertsteuer.</p>
         </div>
       </div>
@@ -403,16 +417,17 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     </div>
   </section>
 
-  <!-- 7. Meine Geschichte (Verweis auf die Unterseite). Das Bild am Auto steht seit 31.10.2026 bei „Wer ich bin“. -->
+  <!-- 7. Meine Geschichte (Verweis auf die Unterseite). Text links, Foto aus dem Arbeitszimmer rechts, am Handy darunter (Mario, Designwerkstatt, 02.11.2026). -->
   {GESCHICHTE_SICHTBAR && (
   <section id="geschichte" class="hell">
-    <div class="wrap">
-      <div class="spalte" style="max-width: 680px;">
+    <div class="wrap geschichte-raster">
+      <div class="spalte">
         <p class="label">Meine Geschichte</p>
         <h2>Das Einzige, was in allen meinen Beziehungen immer gleich war, bin ich.</h2>
         <p>Ich liege im Wohnmobil auf dem Sofa und schaue schräg durch das Fenster in die Baumkronen. Ich denke, es muss ein schöner Tag draußen sein. Und hier drin liege ich wie festgenagelt.</p>
         <a href="/meine-geschichte" class="textlink">Weiterlesen</a>
       </div>
+      <Image class="geschichte-foto" src={fotoArbeitszimmer} alt="Mario Wochner am Schreibtisch mit Notizbuch" width={800} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 400px" />
     </div>
   </section>
   )}
