@@ -1,8 +1,8 @@
 // Sitemap ohne Zusatzpaket. Die Adresse kommt aus astro.config.mjs (site).
 import type { APIRoute } from 'astro';
-import { GESCHICHTE_SICHTBAR } from '../site.config';
+import { GESCHICHTE_SICHTBAR, STIMMEN_OEFFENTLICH } from '../site.config';
 
-const seiten = ['/', ...(GESCHICHTE_SICHTBAR ? ['/meine-geschichte'] : []), '/impressum', '/datenschutz'];
+const seiten = ['/', ...(GESCHICHTE_SICHTBAR ? ['/meine-geschichte'] : []), ...(STIMMEN_OEFFENTLICH ? ['/was-andere-ueber-mich-sagen'] : []), '/impressum', '/datenschutz'];
 
 export const GET: APIRoute = ({ site }) => {
   const urls = seiten

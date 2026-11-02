@@ -10,7 +10,7 @@ export const GESCHICHTE_SICHTBAR = VORSCHAU || GESCHICHTE_FERTIG;
 // „Was andere über mich sagen“ (Mario, 02.11.2026): Die Seite ist über ihren Link erreichbar, damit Mario die
 // Zustimmung der fünf einholen kann. Sie steht nicht bei Google und nicht in der Sitemap. Ob und wann sie ins Menü
 // kommt, entscheidet Mario; dann hier auf true setzen.
-export const STIMMEN_OEFFENTLICH = false;
+export const STIMMEN_OEFFENTLICH = true;
 
 // IHK-Zertifikat (Mario, 01.11.2026): Bis zum 6.11.2026 steht an beiden Stellen „ab 6.11.“ dabei.
 // Am 6.11. führt Mario den vorbereiteten Pull Request zusammen, der hier false durch true ersetzt.

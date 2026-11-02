@@ -1,6 +1,6 @@
 // Kurzbeschreibung für KI-Systeme (llms.txt), mit der von Mario entschiedenen Beschreibung.
 import type { APIRoute } from 'astro';
-import { SITE, ORTSZEILE, BESCHREIBUNG, GESCHICHTE_SICHTBAR } from '../site.config';
+import { SITE, ORTSZEILE, BESCHREIBUNG, GESCHICHTE_SICHTBAR, STIMMEN_OEFFENTLICH } from '../site.config';
 
 export const GET: APIRoute = ({ site }) => {
   const url = (pfad: string) => new URL(pfad, site).href;
@@ -11,7 +11,7 @@ export const GET: APIRoute = ({ site }) => {
 ## Seiten
 
 - [Startseite](${url('/')}): Ansatz, Arbeitsweise, Angebot und Preise, häufige Fragen, Kontakt
-${GESCHICHTE_SICHTBAR ? `- [Meine Geschichte](${url('/meine-geschichte')}): Warum fühle ich mich leer, obwohl ich alles habe?\n` : ''}
+${GESCHICHTE_SICHTBAR ? `- [Meine Geschichte](${url('/meine-geschichte')}): Warum fühle ich mich leer, obwohl ich alles habe?\n` : ''}${STIMMEN_OEFFENTLICH ? `- [Was andere über mich sagen](${url('/was-andere-ueber-mich-sagen')}): Stimmen aus der Coaching-Ausbildung\n` : ''}
 ## Kontakt
 
 - E-Mail: ${SITE.email}
