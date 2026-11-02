@@ -24,7 +24,7 @@ interface Props {
 }
 
 const { title, description, jsonLd = [], kopfH1, nichtIndexieren = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site).href;
 const og = await getImage({ src: ogSource, width: 1200, format: 'jpg' });
 const ogUrl = new URL(og.src, Astro.site).href;
 const isHome = Astro.url.pathname === '/';
