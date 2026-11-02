@@ -5,7 +5,8 @@ import '@fontsource/manrope/500.css';
 import '@fontsource/manrope/600.css';
 import '../styles/global.css';
 import { getImage } from 'astro:assets';
-import ogSource from '../assets/mario-seitlich.jpg';
+// Vorschaubild beim Teilen (WhatsApp, LinkedIn): Querformat 1200 × 630, Gesicht ganz im Bild (Mario, 02.11.2026)
+import ogSource from '../assets/og-vorschau.jpg';
 import { SITE, ORTSZEILE, ZERTIFIKAT_KOPF } from '../site.config';
 
 interface Props {
@@ -63,6 +64,9 @@ const nav = [
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mario Wochner, Coach" />
     <meta name="twitter:card" content="summary_large_image" />
 
     {jsonLd.map((data) => (
