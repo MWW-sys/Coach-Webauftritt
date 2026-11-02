@@ -73,6 +73,7 @@ const fragen = [
     antwort: [
       `Das Erstgespräch ist kostenlos. Eine Einzelstunde kostet ${SITE.preise.einzel} €, das Zweierpaket ${SITE.preise.zweier} €, das Dreierpaket ${SITE.preise.dreier} €. Dazu gibt es jeden Monat 8 Termine, bei denen du zahlst, was du kannst.`,
       'Pakete kannst du jederzeit beenden, ohne Abo und ohne Bindung. Die genutzten Stunden rechne ich dann zum Einzelpreis ab, den Rest bekommst du zurück. Du zahlst also nie mehr, als wenn du einzeln gebucht hättest.',
+      'Musst du einen festen Termin absagen, sag mir bitte mindestens 48 Stunden vorher Bescheid. Sagst du später ab, berechne ich den halben Preis, ab 24 Stunden vorher 75 Prozent und am Tag des Termins den vollen Preis.',
     ],
   },
   {
@@ -183,10 +184,28 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     .karte .nr { font-family: var(--font-display); font-size: 15px; color: var(--accent); }
     .karte p { color: var(--text-muted); font-size: 16px; }
     .schluss-zitat { font-family: var(--font-display); font-weight: 300; font-size: clamp(28px, 3.5vw, 36px); line-height: 1.2; max-width: 760px; }
+    /* Angebote je Bereich (Mario, 02.11.2026) */
+    .uebergang { font-family: var(--font-display); font-weight: 300; font-size: 24px; line-height: 1.35; color: var(--text); max-width: 760px; }
+    .angebote-reihe { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .angebot-neu { border: 1px solid var(--line-strong); background: var(--bg); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .angebot-neu .nr { font-family: var(--font-display); font-size: 15px; line-height: 24px; color: var(--accent); }
+    .angebot-neu h3 { font-size: 26px; line-height: 1.2; }
+    .angebot-neu p { color: var(--text-muted); font-size: 16px; }
+    @media (max-width: 760px) { .uebergang { font-size: 20px; } .angebot-neu { padding: 24px 20px; } .angebot-neu h3 { font-size: 24px; } }
+    /* Roter Faden: markierte Worte in Orange, im Fließtext halbfett, nicht umbrechen (Mario, 02.11.2026) */
+    .m { color: var(--accent); font-weight: 600; white-space: nowrap; }
+    .leitsatz .m, .schluss-zitat .m { font-weight: inherit; }
+    .m--frei { white-space: normal; }
+    :global(#inhalt) { position: relative; }
+    .faden { position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: hidden; }
+    .faden svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; }
+    .faden :global(.faden-punkt) { position: absolute; border-radius: 50%; background: var(--accent); }
+    /* Unter 1184 px ist links kein Platz für den Faden mit Ausläufern: Linie am Rand, Text rückt etwas ein */
+    @media (max-width: 1183px) {
+      :global(#inhalt .wrap), :global(#inhalt .block), .trenner { padding-left: 28px; }
+    }
 
     .angebot-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .angebot-karte--breit { grid-column: 1 / -1; }
-    .angebot-karte--breit p { max-width: 760px; }
     .angebot-karte { border: 1px solid var(--line-strong); padding: 36px; display: flex; flex-direction: column; gap: 14px; }
     .angebot-karte h3 { font-size: 30px; }
     .angebot-karte p { color: var(--text-muted); font-size: 16px; }
@@ -217,6 +236,9 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     .kontakt-foto { max-width: 400px; }
   </style>
 
+  <!-- Roter Faden, rein dekorativ (Entwurf der Designwerkstatt, freigegeben von Mario am 02.11.2026) -->
+  <div class="faden" aria-hidden="true"><svg><path fill="none" stroke="#D49A5A" stroke-linecap="round" /></svg></div>
+
   <!-- 2. Einstieg mit H1 -->
   <section class="hero" aria-label="Einstieg">
     <div class="wrap">
@@ -224,7 +246,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <!-- Einstieg Variante B aus dem Design-Canvas, Wortlaut Textwerkstatt (Mario, 02.11.2026) -->
         <p class="uhrzeit">3 Uhr 33. Du hast schon wieder Ja gesagt.</p>
         <span class="einstieg-strich" aria-hidden="true"></span>
-        <p class="leitsatz">Landest du immer wieder an derselben Stelle?</p>
+        <p class="leitsatz" data-zone>Landest du <span class="m m--frei" data-mark>immer wieder an derselben Stelle</span>?</p>
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
       </div>
       <div class="hero-foto">
@@ -272,23 +294,42 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <p>Und Partnerschaft ist nicht nur Romantik. Geschäftspartner zum Beispiel. Muster tauchen überall dort auf, wo Menschen miteinander in Berührung kommen. Ich gehe mit dir durch die Stelle, wo Muster sich scheinbar nicht durchbrechen lassen.</p>
       </div>
       <div class="karten">
-        <div class="karte">
+        <div class="karte" data-zone>
           <span class="nr">01</span>
           <h3>Arbeit und Führung</h3>
-          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst wieder Ja, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
+          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst <span class="m" data-mark>wieder Ja</span>, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
         </div>
-        <div class="karte">
+        <div class="karte" data-zone>
           <span class="nr">02</span>
           <h3>Familie</h3>
-          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten wieder das Kind von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
+          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten <span class="m" data-mark>wieder das Kind</span> von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
         </div>
-        <div class="karte">
+        <div class="karte" data-zone>
           <span class="nr">03</span>
           <h3>Freundschaft und Liebe</h3>
-          <p>Im Konflikt mit deinem Partner, deiner Partnerin, fühlst du, wie du kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
+          <p>Im Konflikt mit deinem Partner, deiner Partnerin, <span class="m" data-mark>fühlst du, wie du</span> kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
         </div>
       </div>
-      <p class="schluss-zitat">„An welcher Stelle kommst du eigentlich selbst vor?“</p>
+      <p class="schluss-zitat" data-zone>„An welcher <span class="m" data-mark>Stelle</span> kommst du eigentlich selbst vor?“</p>
+      <!-- Angebote je Bereich, Entwurf „Roter Faden · fünf Stellen“, freigegeben von Mario am 02.11.2026 -->
+      <p class="uebergang">Die Stelle ist eigentlich überall dieselbe. Nur die Themen geben ihr immer wieder ein neues Bild. Die Art, wie wir hinschauen, bleibt gleich.</p>
+      <div class="angebote-reihe">
+        <div class="angebot-neu" data-zone id="fuehrung-kommunikation">
+          <span class="nr">01 · Mein Angebot</span>
+          <h3>Führungscoaching und Kommunikationstraining</h3>
+          <p>Zwischen Halle und Führungsebene landen Gespräche oft <span class="m" data-mark>immer wieder an derselben Stelle</span>. Dabei wollen beide Seiten dasselbe: ein gutes Ergebnis für ihren Einsatz. Was im Missverständnis zerrieben wird, ist weg, und es kostet jedes Mal neu, solange das Muster bleibt. Ich kenne beide Seiten, aus 30 Jahren Handwerk, Selbstständigkeit und Projektleitung. Wir schauen genau auf diese Stelle und üben, dort für dich einzustehen, auch im Rollenspiel. Wie wir das aufbauen, klären wir im Erstgespräch.</p>
+        </div>
+        <div class="angebot-neu" data-zone id="familiencoaching">
+          <span class="nr">02 · Mein Angebot</span>
+          <h3>Familiencoaching</h3>
+          <p>Ob mit den Eltern, den Kindern oder unter Geschwistern: Wo du in der Familie <span class="m" data-mark>immer wieder an derselben Stelle</span> landest, wirken oft Muster, die älter sind als du. Wir schauen gemeinsam darauf, wo du darin vorkommst. Ob weitere aus deiner Familie dazukommen und was es kostet, klären wir im Erstgespräch.</p>
+        </div>
+        <div class="angebot-neu" data-zone id="konflikt-paar-beziehung">
+          <span class="nr">03 · Mein Angebot</span>
+          <h3>Konflikt-, Paar- und Beziehungscoaching</h3>
+          <p>Ob im Konflikt oder in einer Beziehung, im Job, in der Familie oder in der Paardynamik: Wo es zwischen Menschen <span class="m" data-mark>immer wieder an derselben Stelle</span> hakt, steckt oft ein Muster dahinter. Als Paar könnt ihr auch zu zweit kommen. Wie wir das aufbauen und was es kostet, klären wir im Erstgespräch.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -309,6 +350,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           <p class="muted">Am Anfang gehört der Raum dir. Ich höre zu: was in dir brennt, was dir auf der Leber liegt. Nicht nur, bis ich verstanden habe, worum es geht. Sondern bis ich eine Ahnung habe, wie es sich für dich anfühlt. Und wo. Ich wiederhole, was ich dabei von dir verstehe. Und du sagst mir, ob es stimmt. Ich frage nach dem, was du nebenbei sagst. Nach dem halben Satz, den du nicht zu Ende bringst. Dann suchen wir den Moment in deinem Leben, an dem das, was du heute brauchst, schon einmal funktioniert hat. Meistens muss nichts Neues erfunden werden. Es muss wiedergefunden werden. Ich biete dir auch an, dass wir es gleich hier ausprobieren. Am Ende hast du einen Schritt für den nächsten Tag. Etwas, das du wirklich umsetzen kannst. Von dir formuliert und von dir selbst gefunden.</p>
           <p class="muted">Wenn du merkst, dass sich beim Lesen etwas in dir bewegt, ist das ein sehr gutes Zeichen dafür, dass du bei mir richtig bist.</p>
           <p class="muted">Ich bin systemischer Coach, {ZERTIFIKAT_ERHALTEN ? '' : 'ab 6.11. '}zertifiziert von der IHK und von InKonstellation, und geschult im Umgang mit unterschiedlichen Methoden, unter anderem zu Konflikten, inneren Anteilen und Emotionen. Daraus ist meine eigene Art zu arbeiten entstanden. Welche Methode passt, klären wir im Erstgespräch.</p>
+          <p class="muted" data-zone>Ich finde mit dir <span class="m" data-mark>die Stelle</span>, an der ein Teil von dir feststeckt und nicht weiterkommt. Danach kennst du den Weg, den ich mit dir dahin gegangen bin, und kannst ihn selber nochmal gehen. Und vor allem findest du die Antwort auf dein Thema dann in dir selbst wieder. Jedes Mal wieder.</p>
           <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
           <p class="muted">Ich bin mit dir zwar ein Stück gegangen, <strong>den Weg selbst bist aber du gegangen.</strong></p>
         </div>
@@ -350,11 +392,6 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           </table>
           <p class="klein">Pakete jederzeit beendbar. Du zahlst nie mehr als einzeln gebucht.</p>
           <p class="klein">Alle Preise inklusive Mehrwertsteuer.</p>
-        </div>
-        <!-- Viertes Angebot (Mario, Textwerkstatt, 02.11.2026). Vorläufig über die ganze Breite, Platz stimmt die Designwerkstatt ab. -->
-        <div class="angebot-karte angebot-karte--breit" id="konflikt-paar-beziehung">
-          <h3>Konflikt-, Paar- und Beziehungscoaching</h3>
-          <p>Ob im Konflikt oder in einer Beziehung, im Job, in der Familie oder in der Paardynamik: Wo es zwischen Menschen immer wieder an derselben Stelle hakt, steckt oft ein Muster dahinter. Als Paar könnt ihr auch zu zweit kommen. Wie wir das aufbauen und was es kostet, klären wir im Erstgespräch.</p>
         </div>
       </div>
       <div class="wo">
@@ -409,4 +446,97 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       <Image class="kontakt-foto" src={fotoKontakt} alt="Mario Wochner lächelt in die Kamera" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" />
     </div>
   </section>
+  <script>
+    // Roter Faden: Linie und Punkte werden im Browser an die markierten Worte gelegt, damit sie bei jeder
+    // Breite stimmen. Vorlage: FadenRechner.dc.html und FadenHandy.dc.html aus dem Design-Canvas (02.11.2026).
+    const wurzel = document.getElementById('inhalt');
+    const ebene = document.querySelector<HTMLElement>('.faden');
+    const pfad = ebene?.querySelector('path');
+    const breit = window.matchMedia('(min-width: 1184px)');
+    const f = (n: number) => Math.round(n * 10) / 10;
+    type Stelle = { l: number; t: number; b: number; zl: number; zt: number; zb: number };
+
+    function bauRechner(p: Stelle[], X: number) {
+      const G = 12, R = 22, C = 34;
+      const y = (q: Stelle) => q.b + 5;
+      const reihen: Stelle[][] = [];
+      p.forEach((q) => { const r = reihen.find((g) => Math.abs(g[0].zt - q.zt) < 4); if (r) r.push(q); else reihen.push([q]); });
+      const rund = (pts: number[][]) => {
+        let d = 'M ' + f(pts[0][0]) + ' ' + f(pts[0][1]);
+        for (let i = 1; i < pts.length - 1; i++) {
+          const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
+          const l1 = Math.hypot(x1 - x0, y1 - y0) || 1, l2 = Math.hypot(x2 - x1, y2 - y1) || 1;
+          const r = Math.min(R, l1 / 2, l2 / 2);
+          d += ' L ' + f(x1 - (x1 - x0) / l1 * r) + ' ' + f(y1 - (y1 - y0) / l1 * r) + ' Q ' + f(x1) + ' ' + f(y1) + ' ' + f(x1 + (x2 - x1) / l2 * r) + ' ' + f(y1 + (y2 - y1) / l2 * r);
+        }
+        const l = pts[pts.length - 1];
+        return d + ' L ' + f(l[0]) + ' ' + f(l[1]);
+      };
+      let d = '';
+      const oben = y(reihen[0][0]) - C - 40;
+      let unten = 0;
+      let start: number | null = null;
+      reihen.forEach((g, gi) => {
+        g.sort((a, b) => a.l - b.l);
+        const y1 = y(g[0]);
+        if (gi === 0 && g.length === 1) {
+          d += ' M ' + f(g[0].l) + ' ' + f(y1) + ' L ' + f(X + C) + ' ' + f(y1) + ' Q ' + f(X) + ' ' + f(y1) + ' ' + f(X) + ' ' + f(y1 + C);
+          start = y1 + C; unten = Math.max(unten, y1); return;
+        }
+        d += ' M ' + f(X) + ' ' + f(y1 - C) + ' Q ' + f(X) + ' ' + f(y1) + ' ' + f(X + C) + ' ' + f(y1) + ' L ' + f(g[0].l) + ' ' + f(y1);
+        unten = Math.max(unten, y1);
+        if (g.length === 1) return;
+        const yb = Math.max(...g.map((q) => q.zb)) + 20;
+        for (let i = 1; i < g.length; i++) {
+          const t = g[i];
+          d += ' ' + rund([[X, yb - 60], [X, yb], [t.zl - G, yb], [t.zl - G, y(t)], [t.l, y(t)]]);
+        }
+        unten = Math.max(unten, yb - R + C);
+      });
+      d = 'M ' + f(X) + ' ' + f(start !== null ? start : oben) + ' L ' + f(X) + ' ' + f(unten - C) + d;
+      return { d: d.trim(), punkte: p.map((q) => ({ x: q.l - 4, y: y(q) - 4, g: 8 })) };
+    }
+
+    function bauHandy(p: Stelle[]) {
+      const X = 10;
+      const ys = p.map((q) => (q.t + q.b) / 2);
+      return { d: 'M ' + X + ' ' + f(ys[0]) + ' L ' + X + ' ' + f(ys[ys.length - 1]), punkte: ys.map((y) => ({ x: X - 6, y: y - 6, g: 12 })) };
+    }
+
+    let letzte = '';
+    function messen() {
+      if (!wurzel || !ebene || !pfad) return;
+      const wb = wurzel.getBoundingClientRect();
+      const stellen: Stelle[] = Array.from(wurzel.querySelectorAll<HTMLElement>('[data-mark]')).map((el) => {
+        const r = el.getClientRects()[0] || el.getBoundingClientRect();
+        const z = (el.closest('[data-zone]') || el).getBoundingClientRect();
+        return { l: r.left - wb.left, t: r.top - wb.top, b: r.bottom - wb.top, zl: z.left - wb.left, zt: z.top - wb.top, zb: z.bottom - wb.top };
+      });
+      if (!stellen.length) return;
+      // Inhaltskante = linke Kante des Leitsatzes; die Senkrechte läuft 40 px links davon
+      const kante = stellen[0].zl;
+      const ergebnis = breit.matches && kante - 40 >= 12 ? bauRechner(stellen, kante - 40) : bauHandy(stellen);
+      const schluessel = ergebnis.d;
+      if (schluessel === letzte) return;
+      letzte = schluessel;
+      const amRechner = ergebnis.punkte[0]?.g === 8;
+      pfad.setAttribute('d', ergebnis.d);
+      pfad.setAttribute('stroke-width', amRechner ? '1.5' : '2');
+      pfad.setAttribute('opacity', amRechner ? '0.9' : '1');
+      ebene.querySelectorAll('.faden-punkt').forEach((n) => n.remove());
+      ergebnis.punkte.forEach((q) => {
+        const n = document.createElement('span');
+        n.className = 'faden-punkt';
+        n.style.cssText = `left:${f(q.x)}px;top:${f(q.y)}px;width:${q.g}px;height:${q.g}px`;
+        ebene.appendChild(n);
+      });
+    }
+    messen();
+    document.fonts?.ready.then(messen);
+    window.addEventListener('load', messen);
+    setTimeout(messen, 400);
+    setTimeout(messen, 1500);
+    if ('ResizeObserver' in window && wurzel) new ResizeObserver(() => messen()).observe(wurzel);
+    breit.addEventListener?.('change', messen);
+  </script>
 </Layout>
