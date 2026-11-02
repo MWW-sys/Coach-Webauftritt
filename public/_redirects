@@ -2,3 +2,6 @@
 /about      /                  301
 /fuer-wen   /                  301
 /kontakt    /                  301
+
+# Alte Netlify-Adresse auf die eigene Domain (seit 02.11.2026).
+https://coach-mario.netlify.app/*  https://mario-wochner.de/:splat  301!
