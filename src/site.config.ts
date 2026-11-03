@@ -30,7 +30,7 @@ export const SITE = {
   // Link zur Terminbuchung, sobald das Werkzeug feststeht (offene Entscheidung im Projektstand)
   bookingUrl: '',
   social: {
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/mario-wochner-412860373/',
     instagram: 'https://www.instagram.com/mario_on_offroad/',
   },
   // Preise, freigegeben von Mario am 02.11.2026 (Textwerkstatt)
