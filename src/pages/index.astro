@@ -229,7 +229,8 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       :global(#inhalt .wrap), :global(#inhalt .block), .trenner { padding-left: 28px; }
     }
 
-    /* Link-Kette durch die Faden-Worte (Mario, Designwerkstatt, 03.11.2026) */
+    /* Link-Kette durch die Faden-Worte (Mario, Designwerkstatt, 03.11.2026). Die drei Karten und das Zitat führen alle zur
+       Angebotskarte 01 (Mario, 03.11.2026): 1 → 2, 2 bis 5 → 6, 6 → 7 → 8 → 1. */
     .kette { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--accent); scroll-margin-top: 35vh; }
     .kette:hover, .kette:hover .m { color: var(--accent-hover); text-decoration-color: var(--accent-hover); }
     /* Die vier Fragen nach „Wie ich arbeite“ */
@@ -350,17 +351,17 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="karte" data-zone>
           <span class="nr">01</span>
           <h3>Arbeit und Führung</h3>
-          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst <a class="kette" id="faden-2" href="#faden-3" aria-label="wieder Ja, weiter zur nächsten Stelle"><span class="m" data-mark>wieder Ja</span></a>, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
+          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst <a class="kette" id="faden-2" href="#faden-6" aria-label="wieder Ja, weiter zur nächsten Stelle"><span class="m" data-mark>wieder Ja</span></a>, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
         </div>
         <div class="karte" data-zone>
           <span class="nr">02</span>
           <h3>Familie</h3>
-          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten <a class="kette" id="faden-3" href="#faden-4" aria-label="wieder das Kind, weiter zur nächsten Stelle"><span class="m" data-mark>wieder das Kind</span></a> von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
+          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten <a class="kette" id="faden-3" href="#faden-6" aria-label="wieder das Kind, weiter zur nächsten Stelle"><span class="m" data-mark>wieder das Kind</span></a> von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
         </div>
         <div class="karte" data-zone>
           <span class="nr">03</span>
           <h3>Freundschaft und Liebe</h3>
-          <p>Im Konflikt mit deinem Partner, deiner Partnerin, <a class="kette" id="faden-4" href="#faden-5" aria-label="fühlst du, wie du, weiter zur nächsten Stelle"><span class="m" data-mark>fühlst du, wie du</span></a> kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
+          <p>Im Konflikt mit deinem Partner, deiner Partnerin, <a class="kette" id="faden-4" href="#faden-6" aria-label="fühlst du, wie du, weiter zur nächsten Stelle"><span class="m" data-mark>fühlst du, wie du</span></a> kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
         </div>
       </div>
       <p class="schluss-zitat" data-zone>„An welcher <a class="kette" id="faden-5" href="#faden-6" aria-label="Stelle, weiter zur nächsten Stelle"><span class="m" data-mark>Stelle</span></a> kommst du eigentlich selbst vor?“</p>
