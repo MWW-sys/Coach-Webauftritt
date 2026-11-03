@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 import { VORSCHAU, STIMMEN_OEFFENTLICH } from '../site.config';
 
 const title = 'Was andere über mich sagen · Mario Wochner';
-const description = 'Stimmen aus meiner Coaching-Ausbildung.';
+const description = 'Was Kolleginnen und Kollegen über mich als Coach sagen. Mario Wochner, Coaching in Berlin, Wolfsburg, Hannover und online.';
 
 // Name je Stimme hier eintragen, sobald die Zustimmung da ist (leer = kein Name)
 const stimmen = [
@@ -27,7 +27,8 @@ const stimmen = [
 <Layout title={title} description={description} nichtIndexieren={!STIMMEN_OEFFENTLICH}>
   <style>
     .stimmen-seite { max-width: calc(760px + 2 * var(--gutter)); margin: 0 auto; padding: 72px var(--gutter) 96px; display: flex; flex-direction: column; gap: 24px; }
-    .stimmen-seite h1 { font-family: var(--font-display); font-weight: 300; font-size: 56px; line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .stimmen-seite h1 { font-family: var(--font-display); font-weight: 300; font-size: 56px; line-height: 1.06; letter-spacing: -0.02em; }
+    .herkunft { color: var(--text-muted); font-size: 18px; margin-top: -8px; margin-bottom: 24px; }
     .stimme { background: var(--bg-raised); border-left: 3px solid var(--accent); padding: 28px 32px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
     .stimme blockquote { margin: 0; font-family: var(--font-display); font-weight: 300; font-size: 20px; line-height: 1.5; color: var(--text); }
     .stimme figcaption { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--text-faint); }
@@ -41,6 +42,7 @@ const stimmen = [
 
   <section class="stimmen-seite">
     <h1>Was andere über mich sagen</h1>
+    <p class="herkunft">Stimmen von Coaching-Kolleginnen und -Kollegen.</p>
     {stimmen.map(({ zitat, name }) => (
       <figure class="stimme">
         <blockquote><p>{zitat}</p></blockquote>

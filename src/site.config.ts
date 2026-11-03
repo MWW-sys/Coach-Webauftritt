@@ -18,7 +18,7 @@ export const ZERTIFIKAT_ERHALTEN = false;
 export const ZERTIFIKAT_KOPF = 'IHK-zertifizierter systemischer Coach' + (ZERTIFIKAT_ERHALTEN ? '' : ' (ab\u00a06.11.)');
 
 // Beschreibung für Google, neuer Leitsatz, freigegeben von Mario am 02.11.2026 (Textwerkstatt)
-export const BESCHREIBUNG = 'Landest du immer wieder an derselben Stelle? Coaching für wiederkehrende Muster im Job, in der Familie und in der Liebe. Berlin, Bielefeld, online.';
+export const BESCHREIBUNG = 'Landest du immer wieder an derselben Stelle? Coaching für wiederkehrende Muster im Job, in der Familie, in der Liebe. Berlin, Wolfsburg, Hannover, online.';
 
 export const SITE = {
   name: 'Mario Wochner',
@@ -26,7 +26,8 @@ export const SITE = {
   email: 'mario.wochner@t-online.de',
   phone: '+4915563417899',
   phoneDisplay: '0155 63417899',
-  orte: ['Berlin', 'Bielefeld', 'Hannover', 'Wolfsburg'],
+  // Hauptstandorte, Bielefeld entfällt (Mario, 03.11.2026). Daraus entsteht die Ortszeile in der Fußzeile.
+  orte: ['Berlin', 'Wolfsburg', 'Hannover'],
   // Link zur Terminbuchung, sobald das Werkzeug feststeht (offene Entscheidung im Projektstand)
   bookingUrl: '',
   social: {

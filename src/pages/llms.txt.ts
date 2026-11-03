@@ -11,7 +11,7 @@ export const GET: APIRoute = ({ site }) => {
 ## Seiten
 
 - [Startseite](${url('/')}): Ansatz, Arbeitsweise, Angebot und Preise, häufige Fragen, Kontakt
-${GESCHICHTE_SICHTBAR ? `- [Meine Geschichte](${url('/meine-geschichte')}): Warum fühle ich mich leer, obwohl ich alles habe?\n` : ''}${STIMMEN_OEFFENTLICH ? `- [Was andere über mich sagen](${url('/was-andere-ueber-mich-sagen')}): Stimmen aus der Coaching-Ausbildung\n` : ''}
+${GESCHICHTE_SICHTBAR ? `- [Meine Geschichte](${url('/meine-geschichte')}): Warum fühle ich mich leer, obwohl ich alles habe?\n` : ''}${STIMMEN_OEFFENTLICH ? `- [Was andere über mich sagen](${url('/was-andere-ueber-mich-sagen')}): Was Kolleginnen und Kollegen über mich als Coach sagen\n` : ''}
 ## Kontakt
 
 - E-Mail: ${SITE.email}
