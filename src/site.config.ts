@@ -23,7 +23,7 @@ export const BESCHREIBUNG = 'Landest du immer wieder an derselben Stelle? Coachi
 export const SITE = {
   name: 'Mario Wochner',
   brand: 'Mario Wochner · Coaching aus Erfahrung',
-  email: 'mario.wochner@t-online.de',
+  email: 'coach@mario-wochner.de',
   phone: '+4915563417899',
   phoneDisplay: '0155 63417899',
   // Hauptstandorte, Bielefeld entfällt (Mario, 03.11.2026). Daraus entsteht die Ortszeile in der Fußzeile.
