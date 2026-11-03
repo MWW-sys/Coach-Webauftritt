@@ -6,9 +6,10 @@
 // Text in eckigen Klammern fehlt noch und kommt aus der Textwerkstatt.
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import fotoEinstieg from '../assets/mario-see-einstieg.jpg';
+// Fotos im Einstieg und bei Kontakt getauscht (Mario, 03.11.2026)
+import fotoEinstieg from '../assets/mario-see-kontakt.jpg';
 import fotoArbeitszimmer from '../assets/mario-arbeitszimmer.jpg';
-import fotoKontakt from '../assets/mario-see-kontakt.jpg';
+import fotoKontakt from '../assets/mario-see-einstieg.jpg';
 import fotoGeschichte from '../assets/mario-auto.jpg';
 import fotoCafe from '../assets/mario-cafe-neu.jpg';
 import { SITE, VORSCHAU, GESCHICHTE_SICHTBAR, BESCHREIBUNG, ZERTIFIKAT_ERHALTEN } from '../site.config';
@@ -304,7 +305,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
       </div>
       <div class="hero-foto">
-        <Image src={fotoEinstieg} alt="Mario Wochner am Seeufer" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
+        <Image src={fotoEinstieg} alt="Mario Wochner lächelt in die Kamera, am Seeufer" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" loading="eager" />
       </div>
       <div class="actions hero-aktionen">
         <a class="textlink" href="#wer-ich-bin">Wer ich bin</a>
@@ -509,7 +510,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         </div>
         <div class="actions"><a class="button" href={mailErstgespraech}>Kostenloses Erstgespräch</a></div>
       </div>
-      <Image class="kontakt-foto" src={fotoKontakt} alt="Mario Wochner lächelt in die Kamera" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" />
+      <Image class="kontakt-foto" src={fotoKontakt} alt="Mario Wochner am Seeufer, mit Blick über die Schulter" width={800} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 400px" />
     </div>
   </section>
   <script>
