@@ -92,6 +92,7 @@ const fragen = [
 // Freigegeben von Mario am 02.11.2026. Profile kommen aus SITE.social, ein leerer Eintrag fehlt einfach.
 const startUrl = new URL('/', Astro.site).href;
 const profile = Object.values(SITE.social).filter(Boolean);
+const ohneHtml = (t: string) => t.replace(/<[^>]+>/g, '');
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -121,6 +122,16 @@ const jsonLd = [
     areaServed: [...SITE.orte.map((ort) => ({ '@type': 'City', name: ort })), { '@type': 'Place', name: 'Online' }],
     priceRange: '80 € bis 420 €',
     founder: { '@id': `${startUrl}#person` },
+  },
+  // Häufige Fragen für Google, aus denselben Daten wie die sichtbaren Antworten
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: fragen.map((f) => ({
+      '@type': 'Question',
+      name: f.frage,
+      acceptedAnswer: { '@type': 'Answer', text: f.antwort.map(ohneHtml).join(' ') },
+    })),
   },
 ];
 
@@ -365,7 +376,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           <p>Im Konflikt mit deinem Partner, deiner Partnerin, <a class="kette" id="faden-4" href="#faden-6" aria-label="fühlst du, wie du, weiter zur nächsten Stelle"><span class="m" data-mark>fühlst du, wie du</span></a> kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
         </div>
       </div>
-      <p class="schluss-zitat" data-zone>„An welcher <a class="kette" id="faden-5" href="#faden-6" aria-label="Stelle, weiter zur nächsten Stelle"><span class="m" data-mark>Stelle</span></a> kommst du eigentlich selbst vor?“</p>
+      <p class="schluss-zitat" data-zone>„An <a class="kette" id="faden-5" href="#faden-6" aria-label="welcher Stelle, weiter zur nächsten Stelle">welcher <span class="m" data-mark>Stelle</span></a> kommst du eigentlich selbst vor?“</p>
       <!-- Angebote je Bereich, Entwurf „Roter Faden · fünf Stellen“, freigegeben von Mario am 02.11.2026 -->
       <p class="uebergang">Die Stelle ist eigentlich überall dieselbe. Nur die Themen geben ihr immer wieder ein neues Bild. Die Art, wie wir hinschauen, bleibt gleich.</p>
       <div class="angebote-reihe">
@@ -416,7 +427,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <p>Ist dein Thema eine Entscheidung? <span class="antwort">Dann kann ein Weg sichtbar werden.</span></p>
         <p>Ist dein Thema eine Unsicherheit? <span class="antwort">Dann kann Orientierung sichtbar werden.</span></p>
         <span class="einstieg-strich vier-strich" aria-hidden="true"></span>
-        <p class="vier-letzte" data-zone>Ist dein Thema ein Muster oder ein Verhalten? Dann wird es richtig spannend. Denn an der <a class="kette" id="faden-8" href="#faden-1" aria-label="Stelle bist du. Versteckt., zurück zum Anfang"><span class="m" data-mark>Stelle</span> bist du. Versteckt.</a></p>
+        <p class="vier-letzte" data-zone>Ist dein Thema ein Muster oder ein Verhalten? Dann wird es richtig spannend. Denn <a class="kette" id="faden-8" href="#faden-1" aria-label="an der Stelle bist du. Versteckt., zurück zum Anfang">an der <span class="m" data-mark>Stelle</span> bist du. Versteckt.</a></p>
       </div>
     </div>
   </section>
