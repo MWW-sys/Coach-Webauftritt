@@ -8,9 +8,9 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import fotoEinstieg from '../assets/mario-see-einstieg.jpg';
 import fotoArbeitszimmer from '../assets/mario-arbeitszimmer.jpg';
-import fotoKontakt from '../assets/mario-frontal.jpg';
+import fotoKontakt from '../assets/mario-see-kontakt.jpg';
 import fotoGeschichte from '../assets/mario-auto.jpg';
-import fotoCafe from '../assets/mario-cafe.jpg';
+import fotoCafe from '../assets/mario-cafe-neu.jpg';
 import { SITE, VORSCHAU, GESCHICHTE_SICHTBAR, BESCHREIBUNG, ZERTIFIKAT_ERHALTEN } from '../site.config';
 
 // Name vorn, damit die Startseite bei der Suche nach dem Namen gefunden wird (Mario, Textwerkstatt, 02.11.2026)
@@ -188,14 +188,15 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 84px), rgba(0, 0, 0, 0.92) calc(100% - 64px), rgba(0, 0, 0, 0.35) calc(100% - 28px), transparent 100%);
       mask-image: linear-gradient(to bottom, #000 calc(100% - 84px), rgba(0, 0, 0, 0.92) calc(100% - 64px), rgba(0, 0, 0, 0.35) calc(100% - 28px), transparent 100%); }
     /* Wie ich arbeite: Foto aus dem Café unter dem Zitat (Wunsch Mario, 31.10.2026) */
-    .arbeit-foto { grid-area: foto; width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; }
+    /* Neues Café-Foto vollständig, ohne Beschnitt (Mario, Designwerkstatt, 03.11.2026) */
+    .arbeit-foto { grid-area: foto; width: 100%; max-width: 420px; height: auto; }
     #wer-ich-bin + #fuer-wen .block { padding-top: 160px; }
     @media (max-width: 760px) {
       .wer-raster { grid-template-columns: minmax(0, 1fr); grid-template-areas: "zitat" "text" "foto"; row-gap: 40px; }
       .wer-foto { max-width: 280px; margin-bottom: -160px;
         -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 64px), rgba(0, 0, 0, 0.92) calc(100% - 48px), rgba(0, 0, 0, 0.35) calc(100% - 20px), transparent 100%);
         mask-image: linear-gradient(to bottom, #000 calc(100% - 64px), rgba(0, 0, 0, 0.92) calc(100% - 48px), rgba(0, 0, 0, 0.35) calc(100% - 20px), transparent 100%); }
-      .arbeit-foto { max-width: 280px; }
+      .arbeit-foto { max-width: 320px; }
       #wer-ich-bin + #fuer-wen .block { padding-top: 128px; }
     }
     .spalte { display: flex; flex-direction: column; gap: 20px; }
@@ -228,6 +229,23 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       :global(#inhalt .wrap), :global(#inhalt .block), .trenner { padding-left: 28px; }
     }
 
+    /* Link-Kette durch die Faden-Worte (Mario, Designwerkstatt, 03.11.2026) */
+    .kette { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--accent); scroll-margin-top: 35vh; }
+    .kette:hover, .kette:hover .m { color: var(--accent-hover); text-decoration-color: var(--accent-hover); }
+    /* Die vier Fragen nach „Wie ich arbeite“ */
+    .vier-fragen { display: flex; flex-direction: column; gap: 16px; max-width: 1040px; margin-top: 48px; }
+    .vier-fragen p { font-family: var(--font-display); font-weight: 300; font-size: 30px; line-height: 1.35; color: var(--text); }
+    .vier-fragen .antwort { color: var(--text-faint); }
+    .vier-fragen .vier-strich { margin: 24px 0; }
+    .vier-fragen .vier-letzte { font-size: 40px; line-height: 1.25; letter-spacing: -0.01em; }
+    .vier-letzte .m { font-weight: inherit; }
+    @media (max-width: 760px) {
+      .vier-fragen { gap: 14px; margin-top: 8px; }
+      .vier-fragen p { font-size: 20px; }
+      .vier-fragen .vier-strich { margin: 12px 0; }
+      .vier-fragen .vier-letzte { font-size: 26px; }
+      #wie-ich-arbeite .block { padding-bottom: 64px; }
+    }
     .angebot-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: start; }
     .angebot-karte { background: var(--bg-raised); padding: 36px; display: flex; flex-direction: column; gap: 14px; }
     .angebot-karte h3 { font-size: 30px; }
@@ -281,7 +299,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <!-- Einstieg Variante B aus dem Design-Canvas, Wortlaut Textwerkstatt (Mario, 02.11.2026) -->
         <p class="uhrzeit">3 Uhr 33. Du hast schon wieder Ja gesagt.</p>
         <span class="einstieg-strich" aria-hidden="true"></span>
-        <p class="leitsatz" data-zone>Landest du <span class="m" data-mark>immer wieder</span> an derselben Stelle?</p>
+        <p class="leitsatz" data-zone>Landest du <a class="kette" id="faden-1" href="#faden-2" aria-label="immer wieder, weiter zur nächsten Stelle"><span class="m" data-mark>immer wieder</span></a> an derselben Stelle?</p>
         <p class="leitzeile">Im Job, in der Führung, in der Familie, in der Liebe.</p>
       </div>
       <div class="hero-foto">
@@ -332,27 +350,27 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
         <div class="karte" data-zone>
           <span class="nr">01</span>
           <h3>Arbeit und Führung</h3>
-          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst <span class="m" data-mark>wieder Ja</span>, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
+          <p>Du stehst vor deinem Vorgesetzten, deiner Vorgesetzten, und sagst <a class="kette" id="faden-2" href="#faden-3" aria-label="wieder Ja, weiter zur nächsten Stelle"><span class="m" data-mark>wieder Ja</span></a>, obwohl du die Zeit für dich geplant hattest. Oder du führst ein Team und weichst dem Konflikt aus, damit die Harmonie stehen bleibt.</p>
         </div>
         <div class="karte" data-zone>
           <span class="nr">02</span>
           <h3>Familie</h3>
-          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten <span class="m" data-mark>wieder das Kind</span> von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
+          <p>Beim Besuch bei deinen Eltern bist du nach zehn Minuten <a class="kette" id="faden-3" href="#faden-4" aria-label="wieder das Kind, weiter zur nächsten Stelle"><span class="m" data-mark>wieder das Kind</span></a> von früher. Oder mit deinem Kind in der Pubertät zählst du die Eskalationen nicht mehr pro Woche, sondern pro Tag. Und viel zu oft denkst du: Verdammt noch mal, wieso ist das immer das Gleiche?</p>
         </div>
         <div class="karte" data-zone>
           <span class="nr">03</span>
           <h3>Freundschaft und Liebe</h3>
-          <p>Im Konflikt mit deinem Partner, deiner Partnerin, <span class="m" data-mark>fühlst du, wie du</span> kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
+          <p>Im Konflikt mit deinem Partner, deiner Partnerin, <a class="kette" id="faden-4" href="#faden-5" aria-label="fühlst du, wie du, weiter zur nächsten Stelle"><span class="m" data-mark>fühlst du, wie du</span></a> kleiner wirst. Du weißt genau, was du brauchst, aber es kommt dir nicht über die Lippen. Deinen Freunden gibst du gerne. Und wie oft ertappst du dich bei dem Gedanken: Sag mal, geht das hier alles eigentlich immer nur noch einseitig? Oder sehe ich es nicht richtig?</p>
         </div>
       </div>
-      <p class="schluss-zitat" data-zone>„An welcher <span class="m" data-mark>Stelle</span> kommst du eigentlich selbst vor?“</p>
+      <p class="schluss-zitat" data-zone>„An welcher <a class="kette" id="faden-5" href="#faden-6" aria-label="Stelle, weiter zur nächsten Stelle"><span class="m" data-mark>Stelle</span></a> kommst du eigentlich selbst vor?“</p>
       <!-- Angebote je Bereich, Entwurf „Roter Faden · fünf Stellen“, freigegeben von Mario am 02.11.2026 -->
       <p class="uebergang">Die Stelle ist eigentlich überall dieselbe. Nur die Themen geben ihr immer wieder ein neues Bild. Die Art, wie wir hinschauen, bleibt gleich.</p>
       <div class="angebote-reihe">
         <div class="angebot-neu" data-zone id="fuehrung-kommunikation">
           <span class="nr">01 · Mein Angebot</span>
           <h3>Führungscoaching und Kommunikationstraining</h3>
-          <p>Zwischen Halle und Führungsebene landen Gespräche oft <span class="m" data-mark>immer wieder</span> an derselben Stelle. Dabei wollen beide Seiten dasselbe: ein gutes Ergebnis für ihren Einsatz. Was im Missverständnis zerrieben wird, ist weg, und es kostet jedes Mal neu, solange das Muster bleibt. Ich kenne beide Seiten, aus 30 Jahren Handwerk, Selbstständigkeit und Projektleitung. Wir schauen genau auf diese Stelle und üben, dort für dich einzustehen, auch im Rollenspiel. Wie wir das aufbauen, klären wir im Erstgespräch.</p>
+          <p>Zwischen Halle und Führungsebene landen Gespräche oft <a class="kette" id="faden-6" href="#faden-7" aria-label="immer wieder, weiter zur nächsten Stelle"><span class="m" data-mark>immer wieder</span></a> an derselben Stelle. Dabei wollen beide Seiten dasselbe: ein gutes Ergebnis für ihren Einsatz. Was im Missverständnis zerrieben wird, ist weg, und es kostet jedes Mal neu, solange das Muster bleibt. Ich kenne beide Seiten, aus 30 Jahren Handwerk, Selbstständigkeit und Projektleitung. Wir schauen genau auf diese Stelle und üben, dort für dich einzustehen, auch im Rollenspiel. Wie wir das aufbauen, klären wir im Erstgespräch.</p>
         </div>
         <div class="angebot-neu" data-zone id="familiencoaching">
           <span class="nr">02 · Mein Angebot</span>
@@ -375,7 +393,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     <div class="block">
       <div class="wer-raster">
         <p class="gross-zitat zitat-dreizeilig"><span>„Was ich kann?</span><span class="mittig">Bleiben …</span><span class="mittig">Bleiben, wenn es eng wird!“</span></p>
-        <Image class="arbeit-foto" src={fotoCafe} alt="Mario Wochner im Porträt, in einem Straßencafé" width={602} widths={[340, 602]} sizes="(max-width: 760px) 280px, 340px" />
+        <Image class="arbeit-foto" src={fotoCafe} alt="Mario Wochner im Porträt, in einem Straßencafé" width={830} widths={[420, 830]} sizes="(max-width: 760px) 320px, 420px" />
         <div class="spalte">
           <p class="label">Wie ich arbeite</p>
           <h2>Nicht nur warum. Vor allem wie und wo.</h2>
@@ -385,10 +403,18 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
           <p class="muted">Am Anfang gehört der Raum dir. Ich höre zu: was in dir brennt, was dir auf der Leber liegt. Nicht nur, bis ich verstanden habe, worum es geht. Sondern bis ich eine Ahnung habe, wie es sich für dich anfühlt. Und wo. Ich wiederhole, was ich dabei von dir verstehe. Und du sagst mir, ob es stimmt. Ich frage nach dem, was du nebenbei sagst. Nach dem halben Satz, den du nicht zu Ende bringst. Dann suchen wir den Moment in deinem Leben, an dem das, was du heute brauchst, schon einmal funktioniert hat. Meistens muss nichts Neues erfunden werden. Es muss wiedergefunden werden. Ich biete dir auch an, dass wir es gleich hier ausprobieren. Am Ende hast du einen Schritt für den nächsten Tag. Etwas, das du wirklich umsetzen kannst. Von dir formuliert und von dir selbst gefunden.</p>
           <p class="muted">Wenn du merkst, dass sich beim Lesen etwas in dir bewegt, ist das ein sehr gutes Zeichen dafür, dass du bei mir richtig bist.</p>
           <p class="muted">Ich bin systemischer Coach, {ZERTIFIKAT_ERHALTEN ? '' : 'ab 6.11. '}zertifiziert von der IHK und von InKonstellation, und geschult im Umgang mit unterschiedlichen Methoden, unter anderem zu Konflikten, inneren Anteilen und Emotionen. Daraus ist meine eigene Art zu arbeiten entstanden. Welche Methode passt, klären wir im Erstgespräch.</p>
-          <p class="muted" data-zone>Ich finde mit dir <span class="m" data-mark>die Stelle</span>, an der ein Teil von dir feststeckt und nicht weiterkommt. Danach kennst du den Weg, den ich mit dir dahin gegangen bin, und kannst ihn selber nochmal gehen. Und vor allem findest du die Antwort auf dein Thema dann in dir selbst wieder. Jedes Mal wieder.</p>
+          <p class="muted" data-zone>Ich finde mit dir <a class="kette" id="faden-7" href="#faden-8" aria-label="die Stelle, weiter zur nächsten Stelle"><span class="m" data-mark>die Stelle</span></a>, an der ein Teil von dir feststeckt und nicht weiterkommt. Danach kennst du den Weg, den ich mit dir dahin gegangen bin, und kannst ihn selber nochmal gehen. Und vor allem findest du die Antwort auf dein Thema dann in dir selbst wieder. Jedes Mal wieder.</p>
           <p><strong>Mein Ziel ist, dass du mich danach nicht mehr brauchst.</strong></p>
           <p class="muted">Ich bin mit dir zwar ein Stück gegangen, <strong>den Weg selbst bist aber du gegangen.</strong></p>
         </div>
+      </div>
+      <!-- Die vier Fragen, ohne Überschrift (Mario, Textwerkstatt und Designwerkstatt, 03.11.2026) -->
+      <div class="vier-fragen">
+        <p>Ist dein Thema eine Frage? <span class="antwort">Dann kann deine Antwort sichtbar werden.</span></p>
+        <p>Ist dein Thema eine Entscheidung? <span class="antwort">Dann kann ein Weg sichtbar werden.</span></p>
+        <p>Ist dein Thema eine Unsicherheit? <span class="antwort">Dann kann Orientierung sichtbar werden.</span></p>
+        <span class="einstieg-strich vier-strich" aria-hidden="true"></span>
+        <p class="vier-letzte" data-zone>Ist dein Thema ein Muster oder ein Verhalten? Dann wird es richtig spannend. Denn an der <a class="kette" id="faden-8" href="#faden-1" aria-label="Stelle bist du. Versteckt., zurück zum Anfang"><span class="m" data-mark>Stelle</span> bist du. Versteckt.</a></p>
       </div>
     </div>
   </section>
@@ -493,22 +519,32 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
     const pfad = ebene?.querySelector('path');
     const breit = window.matchMedia('(min-width: 1184px)');
     const f = (n: number) => Math.round(n * 10) / 10;
-    type Stelle = { l: number; t: number; b: number; zl: number; zt: number; zb: number };
+    type Stelle = { l: number; r: number; t: number; b: number; zl: number; zr: number; zt: number; zb: number };
 
     // Rechner (Feintuning Mario, 02.11.2026): eine gerade Linie 40 px links der Inhaltskante, ein Punkt auf Höhe
     // jeder Markierung (fast gleich hohe nur einmal), am Ende ein Bogen zu „die Stelle“ mit Punkt.
+    // Faden weiter (Mario, Designwerkstatt, 03.11.2026): vom Punkt bei „die Stelle“ läuft die Linie auf derselben
+    // Höhe nach rechts bis 40 px rechts der Textspalte, im Bogen hinunter, im Bogen nach links und endet unter dem
+    // letzten e von „Stelle“ in den vier Fragen. Vorlage: build() in FadenWeiter.dc.html.
     function bauRechner(p: Stelle[], X: number) {
       const C = 34;
       const q = p.slice().sort((a, b) => a.t - b.t);
-      const letzte = q[q.length - 1];
+      const b = q[q.length - 1];
+      const a = q[q.length - 2];
       const mitte = (m: Stelle) => (m.t + m.b) / 2;
-      const yl = letzte.b + 5;
+      const ya = a.b + 5;
+      const yb = b.b + 5;
+      const R = a.zr + 40;
+      const xe = b.r - 10;
       const hoehen: number[] = [];
-      q.slice(0, -1).forEach((m) => { const y = mitte(m); if (!hoehen.length || Math.abs(hoehen[hoehen.length - 1] - y) > 16) hoehen.push(y); });
-      const y0 = hoehen.length ? hoehen[0] : yl - C;
-      const d = 'M ' + f(X) + ' ' + f(y0) + ' L ' + f(X) + ' ' + f(yl - C) + ' Q ' + f(X) + ' ' + f(yl) + ' ' + f(X + C) + ' ' + f(yl) + ' L ' + f(letzte.l) + ' ' + f(yl);
+      q.slice(0, -2).forEach((m) => { const y = mitte(m); if (!hoehen.length || Math.abs(hoehen[hoehen.length - 1] - y) > 16) hoehen.push(y); });
+      const y0 = hoehen.length ? hoehen[0] : ya - C;
+      const d = 'M ' + f(X) + ' ' + f(y0) + ' L ' + f(X) + ' ' + f(ya - C) + ' Q ' + f(X) + ' ' + f(ya) + ' ' + f(X + C) + ' ' + f(ya)
+        + ' L ' + f(R - C) + ' ' + f(ya) + ' Q ' + f(R) + ' ' + f(ya) + ' ' + f(R) + ' ' + f(ya + C)
+        + ' L ' + f(R) + ' ' + f(yb - C) + ' Q ' + f(R) + ' ' + f(yb) + ' ' + f(R - C) + ' ' + f(yb) + ' L ' + f(xe) + ' ' + f(yb);
       const punkte = hoehen.map((y) => ({ x: X - 4, y: y - 4, g: 8 }));
-      punkte.push({ x: letzte.l - 4, y: yl - 4, g: 8 });
+      punkte.push({ x: a.l - 4, y: ya - 4, g: 8 });
+      punkte.push({ x: xe - 4, y: yb - 4, g: 8 });
       return { d, punkte };
     }
 
@@ -525,7 +561,7 @@ const mailErstgespraech = SITE.bookingUrl || `mailto:${SITE.email}?subject=${enc
       const stellen: Stelle[] = Array.from(wurzel.querySelectorAll<HTMLElement>('[data-mark]')).map((el) => {
         const r = el.getClientRects()[0] || el.getBoundingClientRect();
         const z = (el.closest('[data-zone]') || el).getBoundingClientRect();
-        return { l: r.left - wb.left, t: r.top - wb.top, b: r.bottom - wb.top, zl: z.left - wb.left, zt: z.top - wb.top, zb: z.bottom - wb.top };
+        return { l: r.left - wb.left, r: r.right - wb.left, t: r.top - wb.top, b: r.bottom - wb.top, zl: z.left - wb.left, zr: z.right - wb.left, zt: z.top - wb.top, zb: z.bottom - wb.top };
       });
       if (!stellen.length) return;
       // Inhaltskante = linke Kante des Leitsatzes; die Senkrechte läuft 40 px links davon
